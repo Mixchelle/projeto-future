@@ -1,0 +1,7 @@
+{
+    "watch": ["."],
+    "ext": "js,jsx,ts,tsx,json,css,scss,html",
+    "ignore": ["node_modules", "dist"],
+    "exec": "next dev"
+  }
+  

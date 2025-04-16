@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Imports de arquivos globais */
+@import "./SideBar.css";
+@import "./Header.css";
+@import "./FormSection.css";
+@import "./cardForm.css";
+@import "./login.css";
+@import "./NistTable.css";
+@import "./analises.module.css";
+@import "./FormularioRecomendacao.css";
+@import "./LoadingSpinner.css";
+@import "./ErrorMessage.css";
+@import "./FloatingSocialMenu.css";
+
+
+
+/* Reset e estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f3f4f6;
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+}
+
+/* Exemplo de layout base */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px; /* Altura do Header */
+  margin-left: 160px;
+  transition: margin-left 0.3s ease-in-out;
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+  width: 100%;
+}
+
+
+
+
+.sidebar.collapsed + .main-content {
+  margin-left: 80px;
+}
+
+
+
+  

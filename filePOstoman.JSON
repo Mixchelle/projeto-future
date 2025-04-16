@@ -1,0 +1,1193 @@
+{
+    "info": {
+      "_postman_id": "c0d0b0a0-0b0a-0c0d-0e0f-0a0b0c0d0e0f",
+      "name": "Projeto Future",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Home",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8000/",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8000",
+            "path": [""]
+          }
+        }
+      },
+      {
+        "name": "Admin",
+        "item": [
+          {
+            "name": "Admin Index",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin App List",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/<app_label>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "<app_label>", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Catch All View",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/<url>",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "<url>"]
+              }
+            }
+          },
+          {
+            "name": "Admin Auth Group Change",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/auth/group/<path:object_id>/change/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "auth", "group", "<path:object_id>", "change", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Auth Group Delete",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/auth/group/<path:object_id>/delete/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "auth", "group", "<path:object_id>", "delete", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Auth Group History",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/auth/group/<path:object_id>/history/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "auth", "group", "<path:object_id>", "history", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Auth Group Add",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/auth/group/add/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "auth", "group", "add", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Autocomplete",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/autocomplete/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "autocomplete", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accessattempt Change",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accessattempt/<path:object_id>/change/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accessattempt", "<path:object_id>", "change", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accessattempt Delete",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accessattempt/<path:object_id>/delete/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accessattempt", "<path:object_id>", "delete", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accessattempt History",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accessattempt/<path:object_id>/history/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accessattempt", "<path:object_id>", "history", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accessattempt Add",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accessattempt/add/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accessattempt", "add", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accessfailurelog Change",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accessfailurelog/<path:object_id>/change/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accessfailurelog", "<path:object_id>", "change", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accessfailurelog Delete",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accessfailurelog/<path:object_id>/delete/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accessfailurelog", "<path:object_id>", "delete", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accessfailurelog History",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accessfailurelog/<path:object_id>/history/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accessfailurelog", "<path:object_id>", "history", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accessfailurelog Add",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accessfailurelog/add/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accessfailurelog", "add", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accesslog Change",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accesslog/<path:object_id>/change/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accesslog", "<path:object_id>", "change", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accesslog Delete",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accesslog/<path:object_id>/delete/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accesslog", "<path:object_id>", "delete", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accesslog History",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accesslog/<path:object_id>/history/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accesslog", "<path:object_id>", "history", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Axes Accesslog Add",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/axes/accesslog/add/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "axes", "accesslog", "add", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Core User Change",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/core/user/<path:object_id>/change/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "core", "user", "<path:object_id>", "change", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Core User Delete",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/core/user/<path:object_id>/delete/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "core", "user", "<path:object_id>", "delete", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Core User History",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/core/user/<path:object_id>/history/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "core", "user", "<path:object_id>", "history", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Core User Add",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/core/user/add/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "core", "user", "add", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Jsi18n",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/jsi18n/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "jsi18n", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Login",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/login/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "login", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Logout",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/logout/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "logout", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Password Change",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/password_change/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "password_change", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Password Change Done",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/password_change/done/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "password_change", "done", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin View On Site",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/r/<int:content_type_id>/<path:object_id>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "r", "<int:content_type_id>", "<path:object_id>", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Users Customuser Change",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/users/customuser/<path:object_id>/change/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "users", "customuser", "<path:object_id>", "change", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Users Customuser Delete",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/users/customuser/<path:object_id>/delete/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "users", "customuser", "<path:object_id>", "delete", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Users Customuser History",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/users/customuser/<path:object_id>/history/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "users", "customuser", "<path:object_id>", "history", ""]
+              }
+            }
+          },
+          {
+            "name": "Admin Users Customuser Add",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/admin/users/customuser/add/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["admin", "users", "customuser", "add", ""]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "API",
+        "item": [
+          {
+            "name": "API Root",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/api/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["api", ""]
+              }
+            }
+          },
+          {
+            "name": "API Control Assessments List",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/api/control-assessments/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["api", "control-assessments", ""]
+              }
+            }
+          },
+          {
+            "name": "API Control Assessments Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/api/control-assessments/<pk>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["api", "control-assessments", "<pk>", ""]
+              }
+            }
+          },
+          {
+            "name": "API Control Assessments Filter",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/api/control-assessments/filter_assessments/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["api", "control-assessments", "filter_assessments", ""]
+              }
+            }
+          },
+          {
+            "name": "API Protected View",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/api/protected/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["api", "protected", ""]
+              }
+            }
+          },
+          {
+            "name": "API Public View",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/api/public/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["api", "public", ""]
+              }
+            }
+          },
+          {
+            "name": "API Token Obtain Pair",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/api/token/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["api", "token", ""]
+              }
+            }
+          },
+          {
+            "name": "API Token Refresh",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/api/token/refresh/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["api", "token", "refresh", ""]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Assessments API",
+        "item": [
+          {
+            "name": "Assessments API Root",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/assessments/api/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["assessments", "api", ""]
+              }
+            }
+          },
+          {
+            "name": "Assessments API Control Assessments",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/assessments/api/control-assessments/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["assessments", "api", "control-assessments", ""]
+              }
+            }
+          },
+          {
+            "name": "Assessments API Control Assessments Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/assessments/api/control-assessments/<pk>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["assessments", "api", "control-assessments", "<pk>", ""]
+              }
+            }
+          },
+          {
+            "name": "Assessments API Executive Report",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/assessments/api/executive-report/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["assessments", "api", "executive-report", ""]
+              }
+            }
+          },
+          {
+            "name": "Assessments API Questions",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/assessments/api/questions/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["assessments", "api", "questions", ""]
+              }
+            }
+          },
+          {
+            "name": "Assessments API Risk Assessments",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/assessments/api/risk-assessments/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["assessments", "api", "risk-assessments", ""]
+              }
+            }
+          },
+          {
+            "name": "Assessments API Risk Assessments Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/assessments/api/risk-assessments/<pk>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["assessments", "api", "risk-assessments", "<pk>", ""]
+              }
+            }
+          },
+          {
+            "name": "Assessments API Save Assessments",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/assessments/api/save-assessments/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["assessments", "api", "save-assessments", ""]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Auth",
+        "item": [
+          {
+            "name": "Auth User Info",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/auth/user/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["auth", "user", ""]
+              }
+            }
+          },
+          {
+            "name": "Auth Validate Token",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/auth/validate-token/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["auth", "validate-token", ""]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Compliance",
+        "item": [
+          {
+            "name": "Compliance List",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/compliance/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["compliance", ""]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Core API Auth",
+        "item": [
+          {
+            "name": "Core API Auth Login",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api-auth/login/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api-auth", "login", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Auth Logout",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api-auth/logout/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api-auth", "logout", ""]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Core API",
+        "item": [
+          {
+            "name": "Core API Root",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Control Assessments",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/control-assessments/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "control-assessments", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Control Assessments Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/control-assessments/<pk>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "control-assessments", "<pk>", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Executive Report",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/executive-report/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "executive-report", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Questions",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/questions/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "questions", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Risk Assessments",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/risk-assessments/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "risk-assessments", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Risk Assessments Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/risk-assessments/<pk>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "risk-assessments", "<pk>", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Save Assessments",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/save-assessments/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "save-assessments", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Assessments",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/assessments/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "assessments", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Assessments Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/assessments/<pk>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "assessments", "<pk>", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Compliance",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/compliance/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "compliance", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Compliance Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/compliance/<pk>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "compliance", "<pk>", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Reports",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/reports/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "reports", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Reports Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/reports/<pk>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "reports", "<pk>", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Users",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/users/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "users", ""]
+              }
+            }
+          },
+          {
+            "name": "Core API Users Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/api/users/<pk>/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "api", "users", "<pk>", ""]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Core Executive Report",
+        "item": [
+          {
+            "name": "Core Executive Report",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/core/executive-report/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["core", "executive-report", ""]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Create Report",
+        "item": [
+          {
+            "name": "Create Report",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/create_report/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["create_report", ""]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Form",
+        "item": [
+          {
+            "name": "Form Root",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/form/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["form", ""]
+              }
+            }
+          },
+          {
+            "name": "Formularios List",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/form/formularios/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["formularios", ""]
+              }
+            }
+          },
+          {
+            "name": "Formularios Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/form/formularios/1/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["formularios", "1", ""]
+              }
+            }
+          },
+          {
+            "name": "Categorias List by Formulario",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/form/formularios/1/categorias/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["formularios", "1", "categorias", ""]
+              }
+            }
+          },
+          {
+            "name": "Categorias Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/form/formularios/1/categorias/1/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["formularios", "1", "categorias", "1", ""]
+              }
+            }
+          },
+          {
+            "name": "Perguntas List by Categoria",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/form/categorias/1/perguntas/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["categorias", "1", "perguntas", ""]
+              }
+            }
+          },
+          {
+            "name": "Perguntas Detail",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/form/categorias/1/perguntas/1/",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8000",
+                "path": ["categorias", "1", "perguntas", "1", ""]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }

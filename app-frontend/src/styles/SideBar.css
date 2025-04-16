@@ -1,0 +1,141 @@
+/* Sidebar */
+.sidebar {
+  width: 160px;
+  height: 100%;
+  background-color: #FF7900; /* Laranja escuro */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: width 0.3s ease-in-out;
+  z-index: 1001;
+  margin-top: 0;
+}
+
+/* Quando recolhido */
+.sidebar.collapsed {
+  width: 80px;
+}
+
+/* Cabeçalho */
+.sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+/* Usuário */
+.user-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-avatar {
+  width: 65px;
+  height: 65px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.user-name {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.user-type {
+  font-size: 14px;
+  color: #f0f0f0;
+}
+
+/* Links */
+.menu-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.menu-link:hover {
+  background-color: #F27405; /* Tom mais escuro */
+}
+
+/* Quando recolhido, só exibe os ícones */
+.sidebar.collapsed .menu-link span {
+  display: none;
+}
+
+.sidebar.collapsed .menu-link {
+  justify-content: center;
+}
+
+/* Logout */
+.logout-section {
+  padding: 16px;
+  margin-bottom: 50px;
+}
+
+.logout-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #EBEBEB;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #F27405;
+}
+
+/* Se recolhido, só mostra o ícone */
+.sidebar.collapsed .logout-button span {
+  display: none;
+}
+
+/* Rota ativa */
+.menu-link.active {
+  background-color: #F27405;
+  font-weight: bold;
+  border-left: 5px solid white;
+}
+
+.sidebar.collapsed ~ .header {
+  left: 80px;
+  width: calc(100% - 80px);
+}
+
+
+.container-avaliacao{
+  width: 100%;
+  margin-left: 10px;
+}
+
+
+
+

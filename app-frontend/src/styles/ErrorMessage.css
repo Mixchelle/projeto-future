@@ -1,0 +1,103 @@
+/* ErrorMessage Styles */
+.error-message {
+    border-radius: 0.375rem; /* rounded-md */
+    padding: 1rem; /* p-4 */
+    display: flex;
+    align-items: flex-start;
+    background-color: #fef2f2; /* bg-red-50 */
+    color: #991b1b; /* text-red-700 */
+  }
+  
+  .error-message .icon {
+    width: 1.25rem; /* h-5 */
+    height: 1.25rem; /* w-5 */
+    color: #f87171; /* text-red-400 */
+  }
+  
+  .error-message .message {
+    margin-left: 0.75rem; /* ml-3 */
+    flex: 1;
+  }
+  
+  .error-message .message p {
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+  }
+  
+  /* Button styles */
+  .error-message .retry-button {
+    margin-top: 0.5rem; /* mt-2 */
+  }
+  
+  .error-message .retry-button button {
+    padding: 0.25rem 0.5rem; /* px-2 py-1 */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    border-radius: 0.375rem; /* rounded-md */
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .error-message .retry-button.error {
+    color: #7f1d1d; /* text-red-800 */
+    background-color: transparent;
+  }
+  
+  .error-message .retry-button.error:hover {
+    background-color: #fee2e2; /* hover:bg-red-100 */
+  }
+  
+  .error-message .retry-button.error:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.5); /* focus:ring-2 focus:ring-offset-2 focus:ring-red-500 */
+  }
+  
+  /* Warning and info button styles */
+  .error-message .retry-button.warning {
+    color: #b45309; /* text-yellow-800 */
+    background-color: transparent;
+  }
+  
+  .error-message .retry-button.warning:hover {
+    background-color: #fef3c7; /* hover:bg-yellow-100 */
+  }
+  
+  .error-message .retry-button.warning:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(252, 211, 77, 0.5); /* focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 */
+  }
+  
+  .error-message .retry-button.info {
+    color: #1e40af; /* text-blue-800 */
+    background-color: transparent;
+  }
+  
+  .error-message .retry-button.info:hover {
+    background-color: #bfdbfe; /* hover:bg-blue-100 */
+  }
+  
+  .error-message .retry-button.info:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5); /* focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 */
+  }
+  
+  /* Warning Style */
+  .warning {
+    background-color: #fefce8; /* bg-yellow-50 */
+    color: #9a741d; /* text-yellow-700 */
+  }
+  
+  .warning .icon {
+    color: #fbbf24; /* text-yellow-400 */
+  }
+  
+  /* Info Style */
+  .info {
+    background-color: #eff6ff; /* bg-blue-50 */
+    color: #1e3a8a; /* text-blue-700 */
+  }
+  
+  .info .icon {
+    color: #3b82f6; /* text-blue-400 */
+  }
+  

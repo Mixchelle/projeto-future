@@ -1,0 +1,27 @@
+{
+  "name": "fs3m",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">   <img src=\"https://github.com/user-attachments/assets/efaea5cf-122e-4625-8c37-c25d2a923c30\" alt=\"image\" width=\"500\"> </p>",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+"scripts": {
+    "dev": "docker-compose up --build -d && npm run migrations",
+    "start": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "frontend:dev": "cd frontend && npm install && npm run dev",
+    "backend:dev": "cd backend && python -m venv .venv && .venv\\Scripts\\activate.ps1 && pip install -r requirements.txt && python manage.py runserver",
+    "build": "docker-compose build",
+    "migrations": "node run-migrations.js",
+    "prod": "docker-compose -f docker-compose.prod.yml up --build -d && npm run migrations"
+
+},
+
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lucide-react": "^0.482.0"
+  }
+}

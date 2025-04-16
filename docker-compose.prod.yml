@@ -1,0 +1,69 @@
+name: future-prod
+
+networks:
+  future_network:
+    driver: bridge
+
+services:
+  frontend:
+    container_name: future_frontend_prod
+    build:
+      context: ./app-frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    restart: always
+    networks:
+      - future_network
+
+  backend:
+    container_name: future_backend_prod
+    build:
+      context: .
+      dockerfile: infra/docker/Dockerfile
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "sleep 10 &&
+             python manage.py migrate &&
+             gunicorn api.wsgi:application --bind 0.0.0.0:8000"
+    environment:
+      - ENV=production
+      - POSTGRES_DB=cybersec_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=dU2q4Lpm12@#$
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    depends_on:
+      - db
+    restart: always
+    networks:
+      - future_network
+
+  db:
+    image: postgres:latest
+    container_name: future_db_prod
+    restart: always
+    environment:
+      POSTGRES_DB: cybersec_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dU2q4Lpm12@#$
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - future_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d cybersec_db" ]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+
+volumes:
+  db_data:
+    driver: local

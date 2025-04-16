@@ -1,0 +1,92 @@
+.floating-menu {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+  }
+
+  .floating-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #ffa800;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+  }
+
+  .floating-button:hover {
+    background-color: #e76c08;
+  }
+
+  .social-menu {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 220px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .menu-header {
+    background-color: #ffa800;
+    color: #fff;
+    padding: 12px 16px;
+    font-weight: bold;
+  }
+
+  .menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-item a {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #353535;
+    transition: background 0.25s;
+  }
+
+  .menu-item:hover a {
+    background-color: #f3f4f6;
+  }
+
+  .icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: white;
+    margin-right: 10px;
+    transition: transform 0.2s;
+  }
+
+  .menu-item:hover .icon-wrapper {
+    transform: scale(1.1);
+  }
+
+  .icon-label {
+    font-size: 14px;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }

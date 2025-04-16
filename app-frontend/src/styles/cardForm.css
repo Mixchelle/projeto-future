@@ -1,0 +1,50 @@
+.cardForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #F27405; /* Cor laranja */
+    color: white;
+    width: 250px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cardForm:hover {
+    transform: scale(1.05);
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cardForm h2 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cardForm p {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.nist{
+    background: red;
+    display: flex;
+    width:  100% - 180px;
+    margin-left: 180px;
+    margin-top: 50px;
+}
+
+.fundo{
+    background-color: #f3f4f6;
+
+  }
