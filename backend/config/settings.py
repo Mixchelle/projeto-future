@@ -122,10 +122,7 @@ MIDDLEWARE = [
     "axes.middleware.AxesMiddleware",  # Middleware do django-axes
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://ip172-18-0-24-cvvud2i91nsg00dfnr2g-3000.direct.labs.play-with-docker.com/login",
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = "config.urls"
 
