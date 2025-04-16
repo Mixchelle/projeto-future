@@ -16,8 +16,8 @@ services:
       - ./app-frontend:/app
       - /app/node_modules
     environment:
-      - NODE_ENV=development
-      - BACKEND_URL=http://future_backend:8000  
+    - NODE_ENV=development
+    - NEXT_PUBLIC_API_URL=http://future_backend:8000
     command: npm run dev
     restart: always
     networks:
