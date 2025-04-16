@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { getBaseUrl } from "@/util/baseUrl";
 
 interface Formulario {
   id: number;
@@ -95,7 +96,7 @@ interface FormularioEmAnaliseExibicao {
 }
 
 
-const API_URL = "http://localhost:8000/form";
+const API_URL = `${getBaseUrl()}/form`;
 
 export const useFormulario = () => {
   const [formularios, setFormularios] = useState<Formulario[]>([]);

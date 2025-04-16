@@ -1,3 +1,4 @@
+import { getBaseUrl } from '@/util/baseUrl';
 import { getDescricaoSubcategoria } from '@/util/subCategorias';
 import { useState, useEffect } from 'react';
 
@@ -76,9 +77,10 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
         if (!token) {
           throw new Error('Token de autenticação não encontrado');
         }
+        const url = `${getBaseUrl()}/api/maturity-results/maturity-results/${formularioRespondidoId}/`
 
         const response = await fetch(
-          `http://localhost:8000/api/maturity-results/maturity-results/${formularioRespondidoId}/`,
+          url,
           {
             headers: {
               Authorization: `Bearer ${token}`,
