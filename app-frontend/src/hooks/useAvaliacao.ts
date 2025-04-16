@@ -1,6 +1,5 @@
 import { getDescricaoSubcategoria } from '@/util/subCategorias';
 import { useState, useEffect } from 'react';
-import api from '@/util/api'; 
 
 export interface Subcategoria {
   id: string;
@@ -63,8 +62,8 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
           throw new Error('Token de autenticação não encontrado');
         }
 
-        const response = await api.get(
-          `/api/maturity-results/maturity-results/${formularioRespondidoId}/`,
+        const response = await fetch(
+          `http://ip172-18-0-139-cvvh40291nsg009e3c4g-8000.direct.labs.play-with-docker.com/api/maturity-results/maturity-results/${formularioRespondidoId}/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -106,7 +105,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
           // Processar as subcategorias (agora você vai mapear as perguntas de forma correta)
           funcao.categorias.forEach((cat) => {
             
-            const sigla =cat.sigla;  // Corrigir a sigla, se necessário
+            const sigla = cat.sigla;  // Corrigir a sigla, se necessário
             const descricaoSubcategoria = getDescricaoSubcategoria(sigla) || cat.sigla;
 
             // Verificar se a chave existe no objeto subcategoriasProcessadas

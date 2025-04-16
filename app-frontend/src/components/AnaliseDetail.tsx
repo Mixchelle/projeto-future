@@ -21,9 +21,16 @@ interface AnaliseDetailProps {
   empresaId: string;
 }
 
+type SubcategoriaType = {
+  id: number;
+  subcategoria: string;
+  politica?: number;
+  pratica?: number;
+  objetivo: number;
+};
 export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
   const [mostrarFormulario, setMostrarFormulario] = useState<string | null>(null);
-  const [subcategoria, setSubcategoria] = useState<any>(null);
+  const [subcategoria, setSubcategoria] = useState<Record<string, SubcategoriaType[]> | null>(null);
 
   const [formData, setFormData] = useState({
     nome: "",
@@ -40,7 +47,8 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
     justificativa: "",
     observacoes: "",
   impacto: "",
-  gravidade: ""
+  gravidade: "",
+    Meses: ""
   });
 
   // Convertendo o ID para número (Next.js passa como string)
@@ -95,7 +103,10 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
       investimentos: "",
       riscos: "",
       justificativa: "",
-      observacoes: ""
+      observacoes: "",
+      impacto: "",
+      gravidade: "",
+      Meses: "",
     });
     setMostrarFormulario(null);
   };
@@ -111,7 +122,7 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
           ]}
         />
         <div className="flex justify-center items-center w-full h-full">
-          <LoadingSpinner size="md" color="primary" />
+          <LoadingSpinner />
         </div>
       </div>
     );

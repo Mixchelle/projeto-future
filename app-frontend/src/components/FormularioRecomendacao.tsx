@@ -16,6 +16,7 @@ interface FormData {
   observacoes: string;
   impacto: string;
   gravidade: string;
+  Meses: string;
 }
 
 interface Props {
@@ -214,7 +215,6 @@ const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit,
         <div className="form-group">
           <h2 className="form-subtitulo">Descrição do projeto</h2>
           <textarea
-            type="text"
             name="detalhes"
             placeholder="Detalhes do projeto"
             value={formData.detalhes}

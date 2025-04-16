@@ -95,8 +95,16 @@ interface FormularioEmAnaliseExibicao {
   nome_formulario: string;
 }
 
+interface FormularioData {
+  id_cliente: number;
+  nome_cliente: string;
+  id_formulario: number;
+  nome_formulario: string;
+  // adicione mais campos se necessário
+}
 
-const API_URL = "http://localhost:8000/form";
+
+const API_URL = "http://ip172-18-0-139-cvvh40291nsg009e3c4g-8000.direct.labs.play-with-docker.com/form";
 
 export const useFormulario = () => {
   const [formularios, setFormularios] = useState<Formulario[]>([]);
@@ -291,7 +299,7 @@ export const useFormulario = () => {
       );
 
       const data = response.data;
-      const formulariosArray: FormularioEmAnaliseExibicao[] = Object.entries(data).map(
+      const formulariosArray: FormularioEmAnaliseExibicao[] = Object.entries(data as Record<string, FormularioData>).map(
         ([id, formulario]) => ({
           id_formulario_respondido: parseInt(id),
           id_cliente: formulario.id_cliente,
