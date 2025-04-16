@@ -6,10 +6,6 @@ import Sidebar from "@/components/Sidebar";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { FiHome, FiBarChart2, FiFileText } from "react-icons/fi";
 
-interface PageProps {
-  params: { slug: string };
-
-}
 
 export default function AnaliseDetailPage() {
   const [formularioRespondidoId, setFormularioRespondidoId] = useState<number | null>(null);
@@ -34,7 +30,7 @@ export default function AnaliseDetailPage() {
     ]}
   />
   <div className="flex justify-center items-center w-full h-full">
-    <LoadingSpinner  />
+    <LoadingSpinner />
   </div>
 </div>;
 

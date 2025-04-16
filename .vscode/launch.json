@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Django",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/backend/manage.py",
+        "args": ["runserver"],
+        "django": true
+      },
+      {
+        "name": "Next.js",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/frontend/node_modules/.bin/next",
+        "args": ["dev"],
+        "console": "integratedTerminal"
+      }
+    ]
+  }
+  

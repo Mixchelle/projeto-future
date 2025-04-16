@@ -36,7 +36,22 @@ interface AvaliacaoData {
   subcategorias: Record<string, Subcategoria[]>;
 }
 
+const CATEGORIAS_SIGLAS: Record<string, string> = {
+  "Governança": "GV",
+  "Identificar": "ID",
+  "Proteger": "PR",
+  "Detectar": "DE",
+  "Responder": "RS",
+  "Recuperar": "RC",
+};
 
+const corrigirSigla = (sigla: string): string => {
+  const siglasCorretas: Record<string, string> = {
+    "GO": "GV",
+    "RE": "RS",
+  };
+  return sigla;
+};
 
 const useAvaliacao = (formularioRespondidoId: number | null) => {
   const [data, setData] = useState<AvaliacaoData | null>(null);
@@ -63,7 +78,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
         }
 
         const response = await fetch(
-          `http://ip172-18-0-139-cvvh40291nsg009e3c4g-8000.direct.labs.play-with-docker.com/api/maturity-results/maturity-results/${formularioRespondidoId}/`,
+          `http://localhost:8000/api/maturity-results/maturity-results/${formularioRespondidoId}/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -105,7 +120,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
           // Processar as subcategorias (agora você vai mapear as perguntas de forma correta)
           funcao.categorias.forEach((cat) => {
             
-            const sigla = cat.sigla;  // Corrigir a sigla, se necessário
+            const sigla = corrigirSigla(cat.sigla);  // Corrigir a sigla, se necessário
             const descricaoSubcategoria = getDescricaoSubcategoria(sigla) || cat.sigla;
 
             // Verificar se a chave existe no objeto subcategoriasProcessadas

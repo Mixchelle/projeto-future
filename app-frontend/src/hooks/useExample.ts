@@ -1,5 +1,5 @@
-// import { useState } from 'react'; export function useExample() { const [state, setState] = useState(null); return { state, setState }; }
-// const mockData = {
+import { useState } from 'react'; export function useExample() { const [state, setState] = useState(null); return { state, setState }; }
+// const mockData: AvaliacaoData = {
 //   formulario: {
 //     id: 1,
 //     nome: "Avaliação de Maturidade em Segurança Cibernética",

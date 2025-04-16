@@ -1,0 +1,17 @@
+{
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "ms-python.python",
+      "ms-python.black-formatter",
+      "ms-python.flake8",
+      "ms-python.mypy-type-checker",
+      "ms-azuretools.vscode-docker",
+      "ms-vscode.vscode-typescript-next",
+      "editorconfig.editorconfig",
+      "formulahendry.auto-close-tag",
+      "formulahendry.auto-rename-tag",
+      "pkief.material-icon-theme"
+    ]
+  }
+  

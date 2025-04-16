@@ -26,7 +26,7 @@ export default function AnalisesList() {
           { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
           { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
         ]}
-
+      
       />
 
       <main className={` flex main-content ${isSidebarOpen ? "sidebar-open" : "sidebar-collapsed"}`}>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import api from '@/util/api'; 
 
 interface Formulario {
   id: number;
@@ -95,16 +94,8 @@ interface FormularioEmAnaliseExibicao {
   nome_formulario: string;
 }
 
-interface FormularioData {
-  id_cliente: number;
-  nome_cliente: string;
-  id_formulario: number;
-  nome_formulario: string;
-  // adicione mais campos se necessário
-}
 
-
-const API_URL = "http://ip172-18-0-139-cvvh40291nsg009e3c4g-8000.direct.labs.play-with-docker.com/form";
+const API_URL = "http://localhost:8000/form";
 
 export const useFormulario = () => {
   const [formularios, setFormularios] = useState<Formulario[]>([]);
@@ -129,7 +120,7 @@ export const useFormulario = () => {
 
   async function getFormularios() {
     try {
-      const response = await api.get(`/form/formularios/`, getAuthConfig());
+      const response = await axios.get(`${API_URL}/formularios/`, getAuthConfig());
       setFormularios(response.data);
       
       response.data.forEach((formulario: { id: number; total: number }) => {
@@ -143,8 +134,8 @@ export const useFormulario = () => {
 
   const getCategoriasByFormulario = async (formularioId: number) => {
     try {
-      const response = await api.get(
-        `/form/formularios/${formularioId}/categorias/`,
+      const response = await axios.get(
+        `${API_URL}/formularios/${formularioId}/categorias/`,
         getAuthConfig()
       );
       setCategorias(response.data);
@@ -155,8 +146,8 @@ export const useFormulario = () => {
 
   const getQuestoesByCategoria = async (categoriaId: number) => {
     try {
-      const response = await api.get(
-        `/form/categorias/${categoriaId}/perguntas/`,
+      const response = await axios.get(
+        `${API_URL}/categorias/${categoriaId}/perguntas/`,
         getAuthConfig()
       );
       setPerguntas(response.data);
@@ -172,8 +163,8 @@ export const useFormulario = () => {
       const user = JSON.parse(localStorage.getItem("user") || "{}");
       const clienteId = user.id;
 
-      const response = await api.get(
-        `/form/formularios/${formularioId}/clientes/${clienteId}/`,
+      const response = await axios.get(
+        `${API_URL}/formularios/${formularioId}/clientes/${clienteId}/`,
         getAuthConfig()
       );
   
@@ -219,7 +210,7 @@ export const useFormulario = () => {
       };
   
       const response = await axios.post(
-        `/form/formularios/${formularioId}/clientes/${clienteId}/`,
+        `${API_URL}/formularios/${formularioId}/clientes/${clienteId}/`,
         data,
         getAuthConfig()
       );
@@ -239,7 +230,7 @@ export const useFormulario = () => {
   const updateFormularioById = async (id: number, data: Partial<Formulario>) => {
     try {
       const response = await axios.patch(
-        `/form/formularios/${id}/`,
+        `${API_URL}/formularios/${id}/`,
         data,
         getAuthConfig()
       );
@@ -260,8 +251,8 @@ export const useFormulario = () => {
       setLoadingFormulariosEmAndamento(true);
       setErrorFormulariosEmAndamento(null);
       
-      const response = await api.get(
-        `/clientes/${clienteId}/formularios-em-andamento/`,
+      const response = await axios.get(
+        `${API_URL}/clientes/${clienteId}/formularios-em-andamento/`,
         getAuthConfig()
       );
 
@@ -293,21 +284,26 @@ export const useFormulario = () => {
     setErrorFormulariosEmAnalise(null);
 
     try {
-      const response = await api.get(
-        `/formularios-em-analise/`,
+      const response = await axios.get(
+        `${API_URL}/formularios-em-analise/`,
         getAuthConfig()
       );
 
       const data = response.data;
-      const formulariosArray: FormularioEmAnaliseExibicao[] = Object.entries(data as Record<string, FormularioData>).map(
-        ([id, formulario]) => ({
-          id_formulario_respondido: parseInt(id),
-          id_cliente: formulario.id_cliente,
-          nome_cliente: formulario.nome_cliente,
-          id_formulario: formulario.id_formulario,
-          nome_formulario: formulario.nome_formulario,
-        })
+      const formulariosArray: FormularioEmAnaliseExibicao[] = Object.entries(data).map(
+        ([id, formulario]) => {
+          const f = formulario as FormularioEmAnaliseExibicao;
+      
+          return {
+            id_formulario_respondido: parseInt(id),
+            id_cliente: f.id_cliente,
+            nome_cliente: f.nome_cliente,
+            id_formulario: f.id_formulario,
+            nome_formulario: f.nome_formulario,
+          };
+        }
       );
+      
 
       setFormulariosEmAnalise(formulariosArray);
       return formulariosArray;

@@ -21,16 +21,18 @@ interface AnaliseDetailProps {
   empresaId: string;
 }
 
-type SubcategoriaType = {
+interface Subcategoria {
   id: number;
   subcategoria: string;
   politica?: number;
   pratica?: number;
   objetivo: number;
-};
+}
+
+
 export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
   const [mostrarFormulario, setMostrarFormulario] = useState<string | null>(null);
-  const [subcategoria, setSubcategoria] = useState<Record<string, SubcategoriaType[]> | null>(null);
+  const [subcategoria, setSubcategoria] = useState<any>(null);
 
   const [formData, setFormData] = useState({
     nome: "",
@@ -48,7 +50,7 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
     observacoes: "",
   impacto: "",
   gravidade: "",
-    Meses: ""
+  Meses: "",
   });
 
   // Convertendo o ID para número (Next.js passa como string)
@@ -105,7 +107,7 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
       justificativa: "",
       observacoes: "",
       impacto: "",
-      gravidade: "",
+      gravidade: "",  
       Meses: "",
     });
     setMostrarFormulario(null);
@@ -242,15 +244,31 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
                     </tr>
                   </thead>
                   <tbody>
-                    {subcategorias.map((sub) => (
-                      <tr key={sub.id}>
-                        <td>{sub.id}</td>
-                        <td>{sub.subcategoria}</td>
-                        <td>{sub.politica?.toFixed(2) || '-'}</td>
-                        <td>{sub.pratica?.toFixed(2) || '-'}</td>
-                        <td>{sub.objetivo.toFixed(2)}</td>
-                      </tr>
-                    ))}
+                  {Object.entries(subcategoria).map(([sigla, subcategorias]) => {
+  const categoria = data.categorias.find(c => c.sigla === sigla);
+  if (!categoria) return null;
+
+  const lista = subcategorias as Subcategoria[];
+
+  return (
+    <div key={sigla} className={`${styles.card} mb-6`}>
+      ...
+      <tbody>
+        {lista.map((sub) => (
+          <tr key={sub.id}>
+            <td>{sub.id}</td>
+            <td>{sub.subcategoria}</td>
+            <td>{sub.politica?.toFixed(2) || '-'}</td>
+            <td>{sub.pratica?.toFixed(2) || '-'}</td>
+            <td>{sub.objetivo.toFixed(2)}</td>
+          </tr>
+        ))}
+      </tbody>
+      ...
+    </div>
+  );
+})}
+
                   </tbody>
                 </table>
                 <br /><br />

@@ -12,35 +12,42 @@ A estrutura do projeto será organizada da seguinte maneira:
 
 ```
 .
-│── backend/                  🖥️ Diretório do Backend (Django)
-│   ├── config/               ⚙️ Configurações do Django (settings, urls, wsgi, asgi)
-│   ├── core/                 🔑 Aplicação principal com autenticação e permissões
-│   ├── assessments/          📊 Módulo de avaliação de maturidade
-│   ├── reports/              📄 Módulo de geração de relatórios
-│   ├── compliance/           ✅ Módulo de conformidade e normas (NIST, ISO, LGPD, etc.)
-│   ├── users/                👥 Gerenciamento de usuários e permissões
-│   ├── api/                  🌐 Definição das APIs REST usando Django Rest Framework
-│   ├── tests/                🧪 Testes unitários e de integração
-│   ├── manage.py             🛠️ Arquivo de gerenciamento do Django
-│   ├── requirements.txt      📦 Dependências do backend
-│   ├── .env                  🔒 Variáveis de ambiente (Banco, API Keys, JWT Secret)
-├── app-frontend
-│   └── README.md              # 📄 Documentação do frontend (ainda será feita)
-├── database
-│   ├── migrations             # 🗃️ Scripts de migração do banco de dados (ainda serão criados)
-│   └── seed_data.py           # 🌱 Dados iniciais para a base de dados (ainda será definido)
-├── docs
-│   ├── API_Documentation.md   # 📑 Documentação da API (ainda será feita)
-│   ├── Compliance_Guide.md    # ✅ Guia de conformidade (ainda será feito)
-│   └── System_Architecture.md # 🏗️ Arquitetura do sistema (ainda será definida)
-├── infra
-│   ├── docker                 # 🐳 Configurações Docker (ainda serão feitas)
-│   ├── nginx                  # 🌐 Configuração do servidor Nginx (ainda será feita)
-│   └── scripts                # ⚙️ Scripts de infraestrutura (ainda serão criados)
-├── README.md                  # 📖 Documentação principal do projeto
-└── tests
-    ├── frontend_tests         # 🧪 Testes para o frontend (ainda serão definidos)
-    └── security_tests         # 🔒 Testes de segurança (ainda serão definidos)
+├── app-frontend/          🌐 Next.js Application
+│   ├── Dockerfile        🐳 Configuração Docker Dev
+│   ├── Dockerfile.prod   🏭 Configuração Docker Produção
+│   ├── nginx/           🔧 Configuração Nginx
+│   ├── src/             💻 Código Fonte
+│   │   ├── app/         🚪 Rotas da Aplicação
+│   │   │   ├── analista/ 👩‍💻 Painel Analista
+│   │   │   ├── cliente/  👤 Área Cliente
+│   │   │   ├── gestor/   👔 Dashboard Gerencial
+│   │   │   └── login/    🔐 Autenticação
+│   │   ├── components/  🧩 Componentes UI
+│   │   ├── hooks/       🎣 Custom Hooks
+│   │   ├── state/       🧠 Gerenciamento de Estado
+│   │   └── styles/      🎨 Estilos CSS
+│   └── test/           🧪 Testes Frontend
+├── backend/             🖥️ Django Application
+│   ├── api/            🌐 Endpoints API
+│   ├── assessments/    📊 Módulo Avaliações
+│   ├── compliance/     ✅ Conformidade
+│   ├── config/        ⚙️ Configurações
+│   ├── core/          🔑 Núcleo do Sistema
+│   ├── database/      🗃️ Migrações
+│   ├── form/          📝 Formulários
+│   ├── maturity_assessment/  📈 Cálculo Maturidade
+│   ├── recomendacoes/ 💡 Sistema de Recomendações
+│   ├── tests/         🧪 Testes Backend
+│   └── users/         👥 Gerenciamento de Usuários
+├── docker-compose.yml  🐳 Configuração Docker
+├── docker-compose.prod.yml 🏭 Docker Produção
+├── docs/               📚 Documentação
+│   ├── API_Documentation.md 📑 API Docs
+│   ├── Compliance_Guide.md ✅ Guia Conformidade
+│   └── System_Architecture.md 🏗️ Arquitetura
+└── tests/              🧪 Testes
+    ├── frontend_tests/ 🖥️ Testes Frontend
+    └── security_tests/ 🔒 Testes Segurança
 ```
 
 ### 1️⃣ Principais Módulos
@@ -68,11 +75,106 @@ O projeto seguirá um fluxo de trabalho baseado em **GitFlow** para garantir que
 
 ## 🚧 Progresso do Projeto
 
-O projeto ainda não foi iniciado. As funcionalidades, documentação e implementação serão desenvolvidas ao longo do tempo com base nos requisitos de segurança e escalabilidade.
+Atualmente, o projeto já possui:
+
+✅ Tela do cliente, com os formulários interativos para preenchimento das respostas relacionadas à avaliação de maturidade de segurança.
+
+✅ Tela do analista, com interface para analisar as respostas dos clientes, revisar e aprovar avaliações.
+
+✅ Sistema de login e autenticação, garantindo que apenas usuários autorizados tenham acesso aos módulos apropriados.
+
+🛠️ As demais funcionalidades (como dashboard gerencial, engine de cálculo de maturidade, geração de relatórios e integração com BI) ainda estão em fase de planejamento e serão implementadas nas próximas sprints.
 
 ## ▶️ Como rodar o projeto
 
-📌 Ainda não há um projeto para rodar. Assim que o desenvolvimento iniciar, esta seção será atualizada com instruções para rodar o backend e o frontend.
+📦 Requisitos
+Docker e Docker Compose instalados
+
+Node.js (para desenvolvimento local sem Docker - opcional)
+
+Python 3.11+ e pip (caso deseje rodar o backend localmente sem Docker)
+
+Claro! Aqui está uma sugestão para a seção **▶️ Como rodar o projeto** do seu `README.md`, explicando como usar os scripts:
+
+---
+
+## ▶️ Como rodar o projeto
+
+Este projeto utiliza Docker para facilitar o ambiente de desenvolvimento e execução. Abaixo estão os scripts disponíveis e suas respectivas funções:
+
+### 🔧 Primeira vez rodando o projeto (modo desenvolvimento)
+
+Este comando sobe os containers e executa as migrações, populando o banco com as questões do formulário:
+
+```bash
+npm run dev
+```
+
+### 🚀 Subir o projeto (sem rebuild)
+
+Se os containers já foram construídos anteriormente e você só quer iniciá-los novamente:
+
+```bash
+npm run start
+```
+
+### 🛑 Parar os containers
+
+Para derrubar todos os containers Docker do projeto:
+
+```bash
+npm run stop
+```
+
+### 🌐 Rodar somente o frontend em modo de desenvolvimento
+
+Este comando entra na pasta do frontend, instala as dependências e inicia o servidor local (Vite, Next, etc.):
+
+```bash
+npm run frontend:dev
+```
+
+### ⚙️ Rodar somente o backend em modo de desenvolvimento
+
+Este comando cria um ambiente virtual Python, instala os pacotes e inicia o servidor Django:
+
+```bash
+npm run backend:dev
+```
+
+> **Obs:** Em sistemas Unix/Linux ou com Git Bash, altere a ativação do ambiente virtual para:
+> ```bash
+> source .venv/bin/activate
+> ```
+
+### 🏗️ Rebuildar os containers
+
+Se houver alterações no Dockerfile ou nas dependências, você pode reconstruir os containers com:
+
+```bash
+npm run build
+```
+
+### 🧩 Rodar as migrações
+
+Para popular o banco de dados com as questões do formulário manualmente (sem subir os containers):
+
+```bash
+npm run migrations
+```
+
+### 📦 Rodar em produção
+
+Este comando sobe os containers usando o arquivo `docker-compose.prod.yml` e roda as migrações:
+
+```
+npm run prod
+```
+
+---
+
+
+
 
 ## 🧪 Testes
 
@@ -142,6 +244,59 @@ A aplicação possui um conjunto robusto de testes automatizados, garantindo a f
 
 Toda a documentação do projeto será armazenada no diretório `docs`. No momento, ainda está em desenvolvimento e será disponibilizada conforme o projeto avançar.
 
+# 📘 Documentação de API com Swagger (drf-yasg)
+
+Este projeto utiliza o **Swagger** (via `drf-yasg`) para gerar automaticamente a documentação interativa da API baseada no Django REST Framework.
+
+---
+
+## 🔍 O que é Swagger?
+
+**Swagger** é uma ferramenta que permite documentar e testar APIs RESTful de forma visual e interativa.
+
+Com ele, você pode:
+
+- 📖 Navegar pelos endpoints disponíveis da API.
+- 📦 Verificar os métodos HTTP usados (GET, POST, PUT, DELETE, etc.).
+- 🧾 Entender os parâmetros esperados e as respostas retornadas.
+- 🧪 Realizar testes diretamente pela interface web, sem precisar do Postman ou outras ferramentas externas.
+
+---
+
+## ⚙️ Como o Swagger é implementado neste projeto?
+
+Este projeto utiliza o pacote [`drf-yasg`](https://github.com/axnsan12/drf-yasg) para gerar automaticamente a especificação OpenAPI e criar a interface interativa da documentação da API.
+
+### Endpoints disponíveis para documentação:
+
+- `/swagger/` → Interface Swagger UI
+- `/swagger.json` → Documento OpenAPI no formato JSON
+- `/swagger.yaml` → Documento OpenAPI no formato YAML
+- `/redoc/` → Interface de documentação alternativa usando Redoc
+
+---
+
+## ✅ Vantagens de usar Swagger
+
+- 📚 Facilita o entendimento da estrutura da API para outros desenvolvedores.
+- 🧠 Ajuda na manutenção e atualização da API.
+- 🔁 Garante consistência entre a implementação e a documentação.
+- 🚀 Agiliza o desenvolvimento de frontends e testes de integração.
+
+---
+
+## ▶️ Como acessar
+
+Após iniciar o servidor local com:
+
+```bash
+python manage.py runserver
+**Acesse a documentação interativa via navegador:**
+**http://localhost:8000/swagger/**
+**http://localhost:8000/redoc/**
+
+
+
 ## 👨‍💻 Equipe de Desenvolvimento
 
 - 🏅 **[@gabiiwa](https://github.com/gabiiwa)** - Gabriele Iwashima (Instrutora)
@@ -150,4 +305,4 @@ Toda a documentação do projeto será armazenada no diretório `docs`. No momen
 - 👨‍💻 **[@Nakamura1997](https://github.com/Nakamura1997)** - João Victor Oliveira Nakamura
 - 👨‍💻 **[@coder-marllon](https://github.com/coder-marllon)** - Marllon Lima
 - 👩‍💻 **[@IanaCastellain](https://github.com/IanaCastellain)** - Iana Castellain
-# projeto-future
+```

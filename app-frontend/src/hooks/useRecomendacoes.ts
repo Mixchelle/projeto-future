@@ -1,5 +1,6 @@
 // src/hooks/useRecomendacoes.ts
 import { useState } from 'react';
+
 interface Recomendacao {
   id: string;
   nome: string;
