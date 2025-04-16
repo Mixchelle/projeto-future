@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Sidebar from "@/components/Sidebar";
 import { useRouter } from "next/navigation";
-import { FiHome, FiFileText, FiCheckCircle, FiClock, FiInstagram, FiYoutube, FiGlobe, FiFacebook, FiLinkedin } from "react-icons/fi";
+import { FiHome, FiFileText, FiClock, FiCheckCircle } from "react-icons/fi";
 import { useFormulario } from "@/hooks/useFormulario";
 import FloatingSocialMenu from "@/components/FloatingSocialMenu";
 
@@ -13,52 +13,72 @@ export default function Cliente() {
   const { formularios, getFormularioRespondido, getFormulariosEmAndamento } = useFormulario();
   const router = useRouter();
   const formularioId = 1;
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
-  const clienteId = user.tipo === 'subcliente' ? user.cliente?.id : user.id;
-  
+  const [user, setUser] = useState<any>(null);
+  const [clienteId, setClienteId] = useState<string | null>(null);
 
   useEffect(() => {
-    const respondidos = JSON.parse(localStorage.getItem('formulariosEmAndamento') || '{}');
-    setFormulariosRespondidos(respondidos);
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      setUser(user);
+      setClienteId(user.tipo === 'subcliente' ? user.cliente?.id : user.id);
+    }
   }, []);
 
-    useEffect(() => {
-      getFormularioRespondido(formularioId, clienteId);
-    }, [formularioId, clienteId]);
+  useEffect(() => {
+    if (clienteId) {
+      // Convertendo clienteId para número, se necessário
+      const clienteIdNum = Number(clienteId);
+      if (!isNaN(clienteIdNum)) {
+        getFormularioRespondido(formularioId, clienteIdNum);
+      } else {
+        console.error('clienteId não é um número válido');
+      }
+      const respondidos = JSON.parse(localStorage.getItem('formulariosEmAndamento') || '{}');
+      setFormulariosRespondidos(respondidos);
+    }
+  }, [clienteId]);
 
-    useEffect(() => {
+  useEffect(() => {
+    if (clienteId) {
       const fetchFormularios = async () => {
-        await getFormulariosEmAndamento(clienteId);
-        const respondidos = JSON.parse(localStorage.getItem('formulariosEmAndamento') || '{}');
-        setFormulariosRespondidos(respondidos);
+        // Convertendo clienteId para número, se necessário
+        const clienteIdNum = Number(clienteId);
+        if (!isNaN(clienteIdNum)) {
+          await getFormulariosEmAndamento(clienteIdNum);
+          const respondidos = JSON.parse(localStorage.getItem('formulariosEmAndamento') || '{}');
+          setFormulariosRespondidos(respondidos);
+        } else {
+          console.error('clienteId não é um número válido');
+        }
       };
     
       fetchFormularios();
-    }, [clienteId]);
-    
+    }
+  }, [clienteId]);
 
-    const handleFormularioClick = (formularios: Array<{ id: number; nome: string }>) => {
-      // Verifica se existe pelo menos um formulário
-      if (!formularios || formularios.length === 0) {
-        console.error('Nenhum formulário recebido');
-        return;
-      }
-    
-      const formulario = formularios[0]; // Pega o primeiro formulário do array
-    
-      try {
-        localStorage.setItem('selectedFormularioId', formulario.id.toString());
-        localStorage.setItem('nomeFormulario', formulario.nome);
-        
-        const nomeFormatado = formulario.nome.toLowerCase().split(" ")[0];
-        router.push(`/cliente/formulario/${nomeFormatado}`);
-      } catch (error) {
-        console.error('Erro ao processar formulário:', error);
-      }
-    };
+  const handleFormularioClick = (formularios: Array<{ id: number; nome: string }>) => {
+    if (!formularios || formularios.length === 0) {
+      console.error('Nenhum formulário recebido');
+      return;
+    }
 
+    const formulario = formularios[0];
 
-    
+    try {
+      localStorage.setItem('selectedFormularioId', formulario.id.toString());
+      localStorage.setItem('nomeFormulario', formulario.nome);
+      
+      const nomeFormatado = formulario.nome.toLowerCase().split(" ")[0];
+      router.push(`/cliente/formulario/${nomeFormatado}`);
+    } catch (error) {
+      console.error('Erro ao processar formulário:', error);
+    }
+  };
+
+  if (!user || !clienteId) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <div className="flex h-screen">
@@ -68,7 +88,6 @@ export default function Cliente() {
           { name: "Home", icon: <FiHome size={20} />, path: "/cliente" },
           { name: "Formulario", icon: <FiFileText size={20} />, path: "/cliente/formulario" }
         ]}
-  
       />
 
       {/* Conteúdo Principal */}
@@ -82,7 +101,7 @@ export default function Cliente() {
             
             {/* Card de Formulários Respondidos */}
             {Object.keys(formulariosRespondidos).length > 0 && (
-              <div className="card-cliente-form card mb-8"   onClick={() => handleFormularioClick(formulariosRespondidos)}>
+              <div className="card-cliente-form card mb-8" onClick={() => handleFormularioClick(formulariosRespondidos)}>
                 {Object.entries(formulariosRespondidos).map(([id, formulario]: [string, any]) => (
                   <div key={id} className="bg-white p-4 rounded-lg shadow-md mb-4 border-l-4 border-blue-500">
                     <div className="flex items-start">
@@ -93,15 +112,12 @@ export default function Cliente() {
                       )}
                       
                       <div>
-                        <h4 className="font-medium">{formulario.nome
-                        }</h4>
+                        <h4 className="font-medium">{formulario.nome}</h4>
                         <p className="text-sm text-gray-600">
                           Status: {formulario.status}
                         </p>
                         <p className="text-xs text-gray-500 mt-1">
-                         Atualizado em: {new Date(formulario.
-data
-).toLocaleDateString()}
+                          Atualizado em: {new Date(formulario.data).toLocaleDateString()}
                         </p>
                       </div>
                     </div>
@@ -111,7 +127,6 @@ data
             )}
           </div>
           <FloatingSocialMenu />
-
         </main>
       </div>
     </div>
