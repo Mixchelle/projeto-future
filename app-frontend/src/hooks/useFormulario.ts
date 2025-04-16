@@ -156,7 +156,7 @@ export const useFormulario = () => {
   const getQuestoesByCategoria = async (categoriaId: number) => {
     try {
       const response = await api.get(
-        `/categorias/${categoriaId}/perguntas/`,
+        `/form/categorias/${categoriaId}/perguntas/`,
         getAuthConfig()
       );
       setPerguntas(response.data);
