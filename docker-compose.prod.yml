@@ -14,6 +14,7 @@ services:
       - "80:80"
     environment:
       - NODE_ENV=production
+      - BACKEND_URL=http://future_backend:8000 
     depends_on:
       - backend
     restart: always
