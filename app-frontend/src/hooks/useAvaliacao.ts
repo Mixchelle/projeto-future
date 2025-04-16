@@ -1,5 +1,6 @@
 import { getDescricaoSubcategoria } from '@/util/subCategorias';
 import { useState, useEffect } from 'react';
+import api from '@/util/api'; 
 
 export interface Subcategoria {
   id: string;
@@ -36,22 +37,7 @@ interface AvaliacaoData {
   subcategorias: Record<string, Subcategoria[]>;
 }
 
-const CATEGORIAS_SIGLAS: Record<string, string> = {
-  "Governança": "GV",
-  "Identificar": "ID",
-  "Proteger": "PR",
-  "Detectar": "DE",
-  "Responder": "RS",
-  "Recuperar": "RC",
-};
 
-const corrigirSigla = (sigla: string): string => {
-  const siglasCorretas: Record<string, string> = {
-    "GO": "GV",
-    "RE": "RS",
-  };
-  return sigla;
-};
 
 const useAvaliacao = (formularioRespondidoId: number | null) => {
   const [data, setData] = useState<AvaliacaoData | null>(null);
@@ -77,8 +63,8 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
           throw new Error('Token de autenticação não encontrado');
         }
 
-        const response = await fetch(
-          `http://localhost:8000/api/maturity-results/maturity-results/${formularioRespondidoId}/`,
+        const response = await api.get(
+          `/api/maturity-results/maturity-results/${formularioRespondidoId}/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -120,7 +106,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
           // Processar as subcategorias (agora você vai mapear as perguntas de forma correta)
           funcao.categorias.forEach((cat) => {
             
-            const sigla = corrigirSigla(cat.sigla);  // Corrigir a sigla, se necessário
+            const sigla =cat.sigla;  // Corrigir a sigla, se necessário
             const descricaoSubcategoria = getDescricaoSubcategoria(sigla) || cat.sigla;
 
             // Verificar se a chave existe no objeto subcategoriasProcessadas

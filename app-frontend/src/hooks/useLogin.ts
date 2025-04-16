@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
-const API_URL = "http://127.0.0.1:8000/api/token/";
+import api from '@/util/api'; 
+const API_URL = "/api/token/";
 
 export function useLogin() {
   const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ export function useLogin() {
     setError(null);
     
     try {
-      const response = await axios.post(API_URL, {
+      const response = await api.post(API_URL, {
         email, 
         password,
       });

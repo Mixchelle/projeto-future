@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import api from '@/util/api'; 
 
 interface Formulario {
   id: number;
@@ -120,7 +121,7 @@ export const useFormulario = () => {
 
   async function getFormularios() {
     try {
-      const response = await axios.get(`${API_URL}/formularios/`, getAuthConfig());
+      const response = await api.get(`/form/formularios/`, getAuthConfig());
       setFormularios(response.data);
       
       response.data.forEach((formulario: { id: number; total: number }) => {
@@ -134,8 +135,8 @@ export const useFormulario = () => {
 
   const getCategoriasByFormulario = async (formularioId: number) => {
     try {
-      const response = await axios.get(
-        `${API_URL}/formularios/${formularioId}/categorias/`,
+      const response = await api.get(
+        `/form/formularios/${formularioId}/categorias/`,
         getAuthConfig()
       );
       setCategorias(response.data);
@@ -146,8 +147,8 @@ export const useFormulario = () => {
 
   const getQuestoesByCategoria = async (categoriaId: number) => {
     try {
-      const response = await axios.get(
-        `${API_URL}/categorias/${categoriaId}/perguntas/`,
+      const response = await api.get(
+        `/categorias/${categoriaId}/perguntas/`,
         getAuthConfig()
       );
       setPerguntas(response.data);
@@ -163,8 +164,8 @@ export const useFormulario = () => {
       const user = JSON.parse(localStorage.getItem("user") || "{}");
       const clienteId = user.id;
 
-      const response = await axios.get(
-        `${API_URL}/formularios/${formularioId}/clientes/${clienteId}/`,
+      const response = await api.get(
+        `/form/formularios/${formularioId}/clientes/${clienteId}/`,
         getAuthConfig()
       );
   
@@ -210,7 +211,7 @@ export const useFormulario = () => {
       };
   
       const response = await axios.post(
-        `${API_URL}/formularios/${formularioId}/clientes/${clienteId}/`,
+        `/form/formularios/${formularioId}/clientes/${clienteId}/`,
         data,
         getAuthConfig()
       );
@@ -230,7 +231,7 @@ export const useFormulario = () => {
   const updateFormularioById = async (id: number, data: Partial<Formulario>) => {
     try {
       const response = await axios.patch(
-        `${API_URL}/formularios/${id}/`,
+        `/form/formularios/${id}/`,
         data,
         getAuthConfig()
       );
@@ -251,8 +252,8 @@ export const useFormulario = () => {
       setLoadingFormulariosEmAndamento(true);
       setErrorFormulariosEmAndamento(null);
       
-      const response = await axios.get(
-        `${API_URL}/clientes/${clienteId}/formularios-em-andamento/`,
+      const response = await api.get(
+        `/clientes/${clienteId}/formularios-em-andamento/`,
         getAuthConfig()
       );
 
@@ -284,8 +285,8 @@ export const useFormulario = () => {
     setErrorFormulariosEmAnalise(null);
 
     try {
-      const response = await axios.get(
-        `${API_URL}/formularios-em-analise/`,
+      const response = await api.get(
+        `/formularios-em-analise/`,
         getAuthConfig()
       );
 
