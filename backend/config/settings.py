@@ -123,7 +123,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Adiciona a URL do frontend
+    "http://localhost:3000",
+    "http://ip172-18-0-24-cvvud2i91nsg00dfnr2g-3000.direct.labs.play-with-docker.com/login",
 ]
 
 ROOT_URLCONF = "config.urls"
