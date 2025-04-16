@@ -5,24 +5,23 @@ networks:
     driver: bridge
 
 services:
- frontend:
-  container_name: future_frontend
-  build:
-    context: ./app-frontend
-    dockerfile: Dockerfile
-  ports:
-    - "3000:3000"
-  volumes:
-    - ./app-frontend:/app
-    - /app/node_modules
-  environment:
-    - NODE_ENV=development
-    - BACKEND_URL=http://future_backend:8000  # URL do backend
-  command: npm run dev
-  restart: always
-  networks:
-    - future_network
-
+  frontend:
+    container_name: future_frontend
+    build:
+      context: ./app-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app-frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - BACKEND_URL=http://future_backend:8000  
+    command: npm run dev
+    restart: always
+    networks:
+      - future_network
 
   backend:
     container_name: future_backend
