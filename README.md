@@ -27,6 +27,9 @@ A estrutura do projeto será organizada da seguinte maneira:
 │   │   ├── state/       🧠 Gerenciamento de Estado
 │   │   └── styles/      🎨 Estilos CSS
 │   └── test/           🧪 Testes Frontend
+│ 
+│ 
+│ 
 ├── backend/             🖥️ Django Application
 │   ├── api/            🌐 Endpoints API
 │   ├── assessments/    📊 Módulo Avaliações
@@ -39,12 +42,18 @@ A estrutura do projeto será organizada da seguinte maneira:
 │   ├── recomendacoes/ 💡 Sistema de Recomendações
 │   ├── tests/         🧪 Testes Backend
 │   └── users/         👥 Gerenciamento de Usuários
+│ 
+│ 
 ├── docker-compose.yml  🐳 Configuração Docker
 ├── docker-compose.prod.yml 🏭 Docker Produção
+│ 
+│ 
 ├── docs/               📚 Documentação
 │   ├── API_Documentation.md 📑 API Docs
 │   ├── Compliance_Guide.md ✅ Guia Conformidade
 │   └── System_Architecture.md 🏗️ Arquitetura
+│ │
+│ 
 └── tests/              🧪 Testes
     ├── frontend_tests/ 🖥️ Testes Frontend
     └── security_tests/ 🔒 Testes Segurança
@@ -60,6 +69,8 @@ A estrutura do projeto será organizada da seguinte maneira:
 - Compliance & Segurança (garantindo LGPD, GDPR, ISO 27001)
 - Integração com Ferramentas de BI (para análises mais avançadas)<br><br>
 
+
+
 ## 🔄 Fluxo de Desenvolvimento
 
 O projeto seguirá um fluxo de trabalho baseado em **GitFlow** para garantir que as funcionalidades sejam desenvolvidas e testadas de forma organizada e controlada. O fluxo de branches será o seguinte:
@@ -67,23 +78,17 @@ O projeto seguirá um fluxo de trabalho baseado em **GitFlow** para garantir que
 - **Branch `desenvolvimento`**: Esta será a principal branch de desenvolvimento. Todas as novas funcionalidades e correções serão feitas aqui. Durante cada _sprint_, a branch `desenvolvimento` será revisada e testada.
 - **Branch `main`**: Apenas funcionalidades finalizadas e testadas serão adicionadas à branch `main`. A cada revisão de sprint, as mudanças aprovadas na branch `desenvolvimento` serão mescladas na `main`.
 
+
+
+
 ### 👥 Como contribuir
 
 1. **Criar uma branch de desenvolvimento**: Inicie um novo recurso ou correção a partir da branch `desenvolvimento`.
 2. **Realizar commit das mudanças**: Commite as alterações relacionadas à tarefa em andamento.
 3. **Revisão de sprint**: Ao final de cada sprint, as funcionalidades testadas serão revisadas e integradas à branch `main`.
 
-## 🚧 Progresso do Projeto
 
-Atualmente, o projeto já possui:
-
-✅ Tela do cliente, com os formulários interativos para preenchimento das respostas relacionadas à avaliação de maturidade de segurança.
-
-✅ Tela do analista, com interface para analisar as respostas dos clientes, revisar e aprovar avaliações.
-
-✅ Sistema de login e autenticação, garantindo que apenas usuários autorizados tenham acesso aos módulos apropriados.
-
-🛠️ As demais funcionalidades (como dashboard gerencial, engine de cálculo de maturidade, geração de relatórios e integração com BI) ainda estão em fase de planejamento e serão implementadas nas próximas sprints.
+---
 
 ## ▶️ Como rodar o projeto
 
@@ -98,7 +103,6 @@ Claro! Aqui está uma sugestão para a seção **▶️ Como rodar o projeto** d
 
 ---
 
-## ▶️ Como rodar o projeto
 
 Este projeto utiliza Docker para facilitar o ambiente de desenvolvimento e execução. Abaixo estão os scripts disponíveis e suas respectivas funções:
 
@@ -172,6 +176,37 @@ npm run prod
 ```
 
 ---
+
+
+
+
+## 🚧 Progresso do Projeto
+
+Atualmente, o projeto já possui:
+
+
+
+✅ Sistema de login e autenticação, garantindo que apenas usuários autorizados tenham acesso aos módulos apropriados.
+
+![image](https://github.com/user-attachments/assets/94cc4042-45bd-4c8a-8c6f-cc219a49d066)
+
+
+✅ Tela do cliente, com os formulários interativos para preenchimento das respostas relacionadas à avaliação de maturidade de segurança.
+
+
+![image](https://github.com/user-attachments/assets/69f13022-6de0-406f-b372-cb8224ab0354)
+
+
+✅ Tela do analista, com interface para analisar as respostas dos clientes, revisar e aprovar avaliações.
+
+
+![image](https://github.com/user-attachments/assets/b6b26070-11da-4afa-969a-53d545e73d76)
+![image](https://github.com/user-attachments/assets/0624e5ef-99cb-4f06-9a84-c024694daba3)
+
+
+
+🛠️ As demais funcionalidades (como dashboard gerencial, engine de cálculo de maturidade, geração de relatórios e integração com BI) ainda estão em fase de planejamento e serão implementadas nas próximas sprints.
+
 
 
 
@@ -295,7 +330,7 @@ python manage.py runserver
 **http://localhost:8000/swagger/**
 **http://localhost:8000/redoc/**
 
-
+```
 
 ## 👨‍💻 Equipe de Desenvolvimento
 

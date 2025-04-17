@@ -1,6 +1,6 @@
 
 
-// src/app/analista/analises/page.tsx
+// src/app/funcionario/analises/page.tsx
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -20,15 +20,6 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 interface AnaliseDetailProps {
   empresaId: string;
 }
-
-interface Subcategoria {
-  id: number;
-  subcategoria: string;
-  politica?: number;
-  pratica?: number;
-  objetivo: number;
-}
-
 
 export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
   const [mostrarFormulario, setMostrarFormulario] = useState<string | null>(null);
@@ -118,13 +109,13 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
       <div className="flex min-h-screen bg-gray-100 flex-1 flex main-content">
         <Sidebar 
           menuItems={[
-            { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
-            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
-            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
+            { name: "Home", icon: <FiHome size={20} />, path: "/funcionario" },
+            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/funcionario/analises" },
+            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/funcionario/relatorios" }
           ]}
         />
         <div className="flex justify-center items-center w-full h-full">
-          <LoadingSpinner />
+          <LoadingSpinner  />
         </div>
       </div>
     );
@@ -135,9 +126,9 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
       <div className="flex min-h-screen bg-gray-100 flex-1 flex main-content">
         <Sidebar 
           menuItems={[
-            { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
-            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
-            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
+            { name: "Home", icon: <FiHome size={20} />, path: "/funcionario" },
+            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/funcionario/analises" },
+            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/funcionario/relatorios" }
           ]}
         />
         <div className="flex justify-center items-center w-full h-full">
@@ -152,9 +143,9 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
       <div className="flex min-h-screen bg-gray-100 flex-1 flex main-content">
         <Sidebar 
           menuItems={[
-            { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
-            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
-            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
+            { name: "Home", icon: <FiHome size={20} />, path: "/funcionario" },
+            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/funcionario/analises" },
+            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/funcionario/relatorios" }
           ]}
         />
         <div className="flex justify-center items-center w-full h-full">
@@ -169,9 +160,9 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
     <div className="flex">
       <Sidebar 
         menuItems={[
-          { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
-          { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
-          { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
+          { name: "Home", icon: <FiHome size={20} />, path: "/funcionario" },
+          { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/funcionario/analises" },
+          { name: "Relatórios", icon: <FiFileText size={20} />, path: "/funcionario/relatorios" }
         ]}
       />
       <main className={` flex main-content ${isSidebarOpen ? "sidebar-open" : "sidebar-collapsed"}`}>
@@ -244,31 +235,15 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
                     </tr>
                   </thead>
                   <tbody>
-                  {Object.entries(subcategoria).map(([sigla, subcategorias]) => {
-  const categoria = data.categorias.find(c => c.sigla === sigla);
-  if (!categoria) return null;
-
-  const lista = subcategorias as Subcategoria[];
-
-  return (
-    <div key={sigla} className={`${styles.card} mb-6`}>
-      ...
-      <tbody>
-        {lista.map((sub) => (
-          <tr key={sub.id}>
-            <td>{sub.id}</td>
-            <td>{sub.subcategoria}</td>
-            <td>{sub.politica?.toFixed(2) || '-'}</td>
-            <td>{sub.pratica?.toFixed(2) || '-'}</td>
-            <td>{sub.objetivo.toFixed(2)}</td>
-          </tr>
-        ))}
-      </tbody>
-      ...
-    </div>
-  );
-})}
-
+                    {subcategorias.map((sub) => (
+                      <tr key={sub.id}>
+                        <td>{sub.id}</td>
+                        <td>{sub.subcategoria}</td>
+                        <td>{sub.politica?.toFixed(2) || '-'}</td>
+                        <td>{sub.pratica?.toFixed(2) || '-'}</td>
+                        <td>{sub.objetivo.toFixed(2)}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
                 <br /><br />
@@ -291,14 +266,12 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
                   </button>
 
                   {mostrarFormulario === sigla && (
-          <FormularioRecomendacao
-          formData={formData}
-          onChange={handleInputChange}
-          onSubmit={handleSubmit}
-          subcategorias={subcategoria}
-        />
-        
-          
+                  <FormularioRecomendacao
+                    formData={formData}
+                    onChange={handleInputChange}
+                    onSubmit={handleSubmit}
+                    subcategorias={subcategoria}
+                />
                   )}
                 </div>
               </div>

@@ -77,6 +77,7 @@ const subcategorias = {
       // Adiciona o item ao array da categoria correspondente
       resultado[categoria].push(item);
     });
+    console.log('resultado', resultado)
     return resultado;
   }
   

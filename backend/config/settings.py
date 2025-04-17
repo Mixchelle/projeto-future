@@ -122,7 +122,9 @@ MIDDLEWARE = [
     "axes.middleware.AxesMiddleware",  # Middleware do django-axes
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Adiciona a URL do frontend
+]
 
 ROOT_URLCONF = "config.urls"
 
