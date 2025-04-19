@@ -24,8 +24,18 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+# Copia as dependências instaladas da etapa de build
 COPY --from=builder /install /usr/local
+
+# Copia os arquivos do projeto novamente
 COPY ./backend /app
+
+# Copia o script de inicialização (entrypoint)
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Definir o script de inicialização como o entrypoint
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Comando padrão: usando gunicorn com seu app Django
 CMD ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8000"]
