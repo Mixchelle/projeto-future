@@ -55,7 +55,7 @@ const subcategorias = {
     return `${sigla}nao achei`; // Caso a sigla não seja encontrada
   }
 
-
+  const ordemCategorias = ["GV", "ID", "PR", "DE", "RS", "RC"];
 
 
   export function agruparPorCategoria(dados) {
@@ -77,10 +77,8 @@ const subcategorias = {
       // Adiciona o item ao array da categoria correspondente
       resultado[categoria].push(item);
     });
-    console.log('resultado', resultado)
+    
     return resultado;
   }
   
-  
-
   

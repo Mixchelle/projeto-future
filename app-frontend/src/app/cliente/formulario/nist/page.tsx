@@ -108,7 +108,6 @@ useEffect(() => {
   // Este useEffect será executado quando formularioRespondido mudar
   useEffect(() => {
     if (formularioRespondido) {
-      console.log('formularioRespondido atualizado', formularioRespondido);
       
       formularioRespondido.categorias.forEach((categoria) => {
         categoria.perguntas.forEach((pergunta) => {
@@ -385,8 +384,7 @@ useEffect(() => {
       [categoriaAtual.id]: categoriaCompleta,
       }));
 
-      console.log("Categoria Atual >>>>>>>>>>:", categoriaAtual.nome, 
-        "Completa:", categoriaCompleta);
+
       // Encntra o índice da categoria atual
       const currentCategoryIndex = categorias.findIndex(cat => cat.id === categoriaAtual.id);
       
@@ -522,7 +520,6 @@ useEffect(() => {
     const categoriaRespondida = formularioRespondido.categorias.find(
       cat => cat.id === categoriaId
     );
-      console.log("Categoria Respondida:", categoriaRespondida);
 
     if (!categoriaRespondida) {
       return false;
@@ -577,7 +574,6 @@ useEffect(() => {
 
               const completa = categoriasCompletas[categoria.id];
 
-              console.log("Categoria:", categoria.nome, "Completa:", completa);
               return (
                 <li key={categoria.id} className="section-item">
                   <button

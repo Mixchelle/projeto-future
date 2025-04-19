@@ -14,7 +14,6 @@ services:
       - "80:80"
     environment:
       - NODE_ENV=production
-      - BACKEND_URL=http://future_backend:8000 
     depends_on:
       - backend
     restart: always
@@ -25,7 +24,7 @@ services:
     container_name: future_backend_prod
     build:
       context: .
-      dockerfile: infra/docker/Dockerfile
+      dockerfile: infra/docker/Dockerfile.prod
     ports:
       - "8000:8000"
     command: >

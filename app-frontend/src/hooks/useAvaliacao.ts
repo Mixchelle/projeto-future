@@ -8,9 +8,11 @@ export interface Subcategoria {
   politica: number;
   pratica: number;
   objetivo: number;
+  perguntas?: string[];
 }
 
 export interface Categoria {
+  subcategorias: any[];
   categoria: string;
   sigla: string;
   media: number;
@@ -19,6 +21,7 @@ export interface Categoria {
   objetivo: number;
   status: string;
   tipo: "CATEGORIA";
+  subcateroria?: string[];
 }
 
 export interface Funcao {
@@ -35,34 +38,41 @@ export interface Funcao {
 interface AvaliacaoData {
   categorias: Categoria[];
   subcategorias: Record<string, Subcategoria[]>;
+  mediaEmpresa: {
+    mediaTotal: number;
+    mediaPolitica: number;
+    mediaPratica: number;
+  };
 }
 
-const CATEGORIAS_SIGLAS: Record<string, string> = {
-  "Governança": "GV",
-  "Identificar": "ID",
-  "Proteger": "PR",
-  "Detectar": "DE",
-  "Responder": "RS",
-  "Recuperar": "RC",
-};
-
-const corrigirSigla = (sigla: string): string => {
-  const siglasCorretas: Record<string, string> = {
-    "GO": "GV",
-    "RE": "RS",
-  };
-  return sigla;
-};
 
 const useAvaliacao = (formularioRespondidoId: number | null) => {
   const [data, setData] = useState<AvaliacaoData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+
+  const mediaEmpresaCalculo = (funcoes: Funcao[]) => {
+    return funcoes.reduce((acc, funcao) => {
+      // Acumula as somas das médias
+      acc.mediaTotal += ensureNumber(funcao.media);
+      acc.mediaPolitica += ensureNumber(funcao.politica);
+      acc.mediaPratica += ensureNumber(funcao.pratica);
+      return acc;
+    }, {
+      mediaTotal: 0,    
+      mediaPolitica: 0,
+      mediaPratica: 0,
+    });
+    };
+  
   const ensureNumber = (value: any, defaultValue: number = 0): number => {
     const num = Number(value);
     return isNaN(num) ? defaultValue : num;
   };
+
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,7 +87,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
         if (!token) {
           throw new Error('Token de autenticação não encontrado');
         }
-        const url = `${getBaseUrl()}/api/maturity-results/maturity-results/${formularioRespondidoId}/`
+        const url = `${getBaseUrl()}/maturity-results/maturity-results/${formularioRespondidoId}/`
 
         const response = await fetch(
           url,
@@ -95,7 +105,15 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
         const responseData = await response.json();
         console.log('responseData', responseData);
 
-       const cliente = responseData.formulario.cliente;
+
+        const formuarioEmAnaliseId = responseData.formulario.id;
+         console.log('formuarioEmAnaliseId', formuarioEmAnaliseId);
+          localStorage.setItem("formularioEmAnaliseId", formuarioEmAnaliseId);
+          const cliente = responseData.formulario.cliente;
+  
+          ;
+          localStorage.setItem("cliente_formulario_analise_id", cliente.id);
+          console.log('cliente', cliente);
         // Verificar se funcoes é um objeto e transformar em um array
         const funcoes = Object.values(responseData.funcoes);
         if (funcoes.length === 0) {
@@ -104,7 +122,8 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
 
         const categoriasProcessadas: Categoria[] = [];
         const subcategoriasProcessadas: Record<string, Subcategoria[]> = {};
-
+        
+        const  mediaEmpresa = mediaEmpresaCalculo(funcoes);
         funcoes.forEach((funcao: Funcao) => {
 
           // Adicionar a categoria
@@ -117,12 +136,13 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
             objetivo: ensureNumber(funcao.objetivo, 3.0),
             status: funcao.status || 'Não Avaliado',
             tipo: "CATEGORIA",
+            subcategorias: funcao.categorias || [],
           });
 
           // Processar as subcategorias (agora você vai mapear as perguntas de forma correta)
           funcao.categorias.forEach((cat) => {
             
-            const sigla = corrigirSigla(cat.sigla);  // Corrigir a sigla, se necessário
+            const sigla =cat.sigla;  // Corrigir a sigla, se necessário
             const descricaoSubcategoria = getDescricaoSubcategoria(sigla) || cat.sigla;
 
             // Verificar se a chave existe no objeto subcategoriasProcessadas
@@ -137,6 +157,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
               politica: ensureNumber(cat.politica),
               pratica: ensureNumber(cat.pratica),
               objetivo: ensureNumber(cat.objetivo, 3.0),
+              perguntas: cat.subcategorias || [],
             });
           });
         });
@@ -144,8 +165,14 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
         const processedData: AvaliacaoData = {
           categorias: categoriasProcessadas,
           subcategorias: subcategoriasProcessadas,
+          mediaEmpresa: {
+            mediaTotal: parseFloat((mediaEmpresa.mediaTotal / funcoes.length).toFixed(2)),
+            mediaPolitica: parseFloat((mediaEmpresa.mediaPolitica / funcoes.length).toFixed(2)),
+            mediaPratica: parseFloat((mediaEmpresa.mediaPratica / funcoes.length).toFixed(2)),
+          },
         };
 
+        console.log('processedData', processedData);
         setData(processedData);
       } catch (err) {
         console.error('Erro ao buscar dados:', err);
@@ -163,3 +190,5 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
 };
 
 export default useAvaliacao;
+
+

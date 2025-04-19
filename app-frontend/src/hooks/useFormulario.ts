@@ -159,7 +159,6 @@ export const useFormulario = () => {
 
   const getFormularioRespondido = async (formid: number, id: number) => {
     try {
-      console.log('atualizou o formalario respondido');
       const formularioId = localStorage.getItem("selectedFormularioId");
       const user = JSON.parse(localStorage.getItem("user") || "{}");
       const clienteId = user.id;

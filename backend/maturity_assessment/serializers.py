@@ -6,6 +6,7 @@ from form.serializers import FormularioCompletoSerializer
 
 class FormularioRespondidoSerializer(serializers.ModelSerializer):
     formulario_completo = serializers.SerializerMethodField()
+    cliente = serializers.SerializerMethodField()
 
     class Meta:
         model = FormularioRespondido
@@ -23,6 +24,12 @@ class FormularioRespondidoSerializer(serializers.ModelSerializer):
         ]
         depth = 1
 
+    def get_cliente(self, obj):
+        return {
+            "id": obj.cliente.id,
+            "nome": obj.cliente.nome
+        }
+
     def get_formulario_completo(self, obj):
         serializer = FormularioCompletoSerializer(
             obj.formulario,
@@ -32,7 +39,6 @@ class FormularioRespondidoSerializer(serializers.ModelSerializer):
             },
         )
         return serializer.data
-
 
 class SubcategoriaMaturitySerializer(serializers.ModelSerializer):
     id = serializers.CharField(source="pergunta.codigo", read_only=True)

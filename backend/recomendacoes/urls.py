@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RecomendacaoListCreateView, RecomendacaoDetailView
+from .views import RecomendacaoListCreateView, RecomendacaoRetrieveUpdateDestroyView
 
 urlpatterns = [
     path(
@@ -8,8 +8,8 @@ urlpatterns = [
         name="recomendacoes-list-create",
     ),
     path(
-        "recomendacao/<int:pk>/",
-        RecomendacaoDetailView.as_view(),
+        "recomendacoes/<int:pk>/",
+        RecomendacaoRetrieveUpdateDestroyView.as_view(),
         name="recomendacao-detail",
     ),
 ]

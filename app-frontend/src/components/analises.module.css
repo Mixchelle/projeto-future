@@ -333,3 +333,29 @@
     padding-top: 70px; /* Espaço para o header em mobile */
   }
 }
+
+.expandButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expandButton:hover {
+  background-color: #e5e7eb; /* bg-gray-200 */
+}
+
+.expandIcon {
+  color: #4b5563; /* text-gray-700 */
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.expandIcon.open {
+  transform: rotate(180deg);
+}

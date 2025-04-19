@@ -82,3 +82,30 @@
   padding: 2rem;
   font-size: 1rem;
 }
+
+
+.button-icone {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 1px;
+  font-size: 10px;
+  cursor: pointer;
+
+  width: 20px;
+  height: 20px;
+}
+
+.button-icone:hover {
+  background-color: #f0f0f0;
+  border-color: #888;
+  color: #e60cd3
+}
+
+.button-icone:active {
+  transform: scale(0.95);
+}
+
+.button-icone:focus {
+  outline: none;
+}

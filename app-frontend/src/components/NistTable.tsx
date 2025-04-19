@@ -13,18 +13,16 @@ const NistCsfTable: React.FC = () => {
 
   const getScoreClass = (value: number | undefined) => {
     if (value === undefined || value === null) return "";
-  
+
     if (value >= 5) return "score-excellent"; // Verde escuro: excelente
     if (value >= 4) return "score-good";      // Verde claro: esperado
     if (value >= 3) return "score-ok";        // Amarelo: aceitável
     if (value >= 2) return "score-low";       // Laranja: precisa melhorar
     return "score-critical";                  // Vermelho: crítico
   };
-  
 
   const renderSub = (sigla: string, id: string, nome: string, showCategoria = false, rowspan = 1) => {
     const sub = data.subcategorias[id]?.[0];
-
 
     return (
       <tr data-category={sigla}>
@@ -36,14 +34,16 @@ const NistCsfTable: React.FC = () => {
         <td>{nome}</td>
         <td className="text-center">{sub?.objetivo?.toFixed(2)}</td>
         <td className={`text-center ${getScoreClass(sub?.politica)}`}>
-        {sub?.politica?.toFixed(2) || "-"}
-      </td>
-      <td className={`text-center ${getScoreClass(sub?.pratica)}`}>
-        {sub?.pratica?.toFixed(2) || "-"}
-      </td>
+          {sub?.politica?.toFixed(2) || "-"}
+        </td>
+        <td className={`text-center ${getScoreClass(sub?.pratica)}`}>
+          {sub?.pratica?.toFixed(2) || "-"}
+        </td>
       </tr>
     );
   };
+
+
 
   return (
     <div className="nist-csf-container">
@@ -94,6 +94,17 @@ const NistCsfTable: React.FC = () => {
             {renderSub("RC", "RC.RP", "Execução do plano de recuperação de incidentes RC.RP", true, 2)}
             {renderSub("RC", "RC.CO", "Comunicação de recuperação de incidentes RC.CO")}
           </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan={3} className="text-center"><strong>Média Total</strong></td>
+              <td className="text-center">
+                <strong>{data.mediaEmpresa.mediaPolitica}</strong>
+              </td>
+              <td className="text-center">
+              <strong>{data.mediaEmpresa.mediaPratica}</strong>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>

@@ -1,1064 +1,10 @@
-ERROR 2025-04-06 00:17:31,094 log Internal Server Error: /form/formularios/1/completo/
+ERROR 2025-04-19 19:32:27,124 log Internal Server Error: /recommendations/recomendacoes/2/1/
 Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
     return self.cursor.execute(sql, params)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-psycopg2.errors.UndefinedTable: relation "form_formulariorespondido" does not exist
-LINE 1: INSERT INTO "form_formulariorespondido" ("cliente_id", "form...
-                    ^
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/form/views.py", line 83, in post
-    formulario_respondido = FormularioRespondido.objects.create(
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
-    obj.save(force_insert=True, using=self.db)
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
-    self.save_base(
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
-    updated = self._save_table(
-              ^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
-    results = self._do_insert(
-              ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
-    return manager._insert(
-           ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
-    return query.get_compiler(using=using).execute_sql(returning_fields)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
-    cursor.execute(sql, params)
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
-    return super().execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
-    return self._execute_with_wrappers(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
-    return executor(sql, params, many, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
-    with self.db.wrap_database_errors:
-  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
-    raise dj_exc_value.with_traceback(traceback) from exc_value
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-django.db.utils.ProgrammingError: relation "form_formulariorespondido" does not exist
-LINE 1: INSERT INTO "form_formulariorespondido" ("cliente_id", "form...
-                    ^
-
-ERROR 2025-04-06 00:18:39,119 log Internal Server Error: /form/formularios/1/completo/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-psycopg2.errors.UndefinedTable: relation "form_formulariorespondido" does not exist
-LINE 1: INSERT INTO "form_formulariorespondido" ("cliente_id", "form...
-                    ^
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/form/views.py", line 83, in post
-    formulario_respondido = FormularioRespondido.objects.create(
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
-    obj.save(force_insert=True, using=self.db)
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
-    self.save_base(
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
-    updated = self._save_table(
-              ^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
-    results = self._do_insert(
-              ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
-    return manager._insert(
-           ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
-    return query.get_compiler(using=using).execute_sql(returning_fields)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
-    cursor.execute(sql, params)
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
-    return super().execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
-    return self._execute_with_wrappers(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
-    return executor(sql, params, many, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
-    with self.db.wrap_database_errors:
-  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
-    raise dj_exc_value.with_traceback(traceback) from exc_value
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-django.db.utils.ProgrammingError: relation "form_formulariorespondido" does not exist
-LINE 1: INSERT INTO "form_formulariorespondido" ("cliente_id", "form...
-                    ^
-
-ERROR 2025-04-06 00:18:54,945 log Internal Server Error: /form/formularios/1/completo/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-psycopg2.errors.UndefinedTable: relation "form_formulariorespondido" does not exist
-LINE 1: INSERT INTO "form_formulariorespondido" ("cliente_id", "form...
-                    ^
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/form/views.py", line 83, in post
-    formulario_respondido = FormularioRespondido.objects.create(
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
-    obj.save(force_insert=True, using=self.db)
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
-    self.save_base(
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
-    updated = self._save_table(
-              ^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
-    results = self._do_insert(
-              ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
-    return manager._insert(
-           ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
-    return query.get_compiler(using=using).execute_sql(returning_fields)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
-    cursor.execute(sql, params)
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
-    return super().execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
-    return self._execute_with_wrappers(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
-    return executor(sql, params, many, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
-    with self.db.wrap_database_errors:
-  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
-    raise dj_exc_value.with_traceback(traceback) from exc_value
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-django.db.utils.ProgrammingError: relation "form_formulariorespondido" does not exist
-LINE 1: INSERT INTO "form_formulariorespondido" ("cliente_id", "form...
-                    ^
-
-ERROR 2025-04-06 00:22:33,040 log Internal Server Error: /form/formularios/1/completo/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/form/views.py", line 58, in get
-    return Response(serializer.data)
-                    ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
-    ret = super().data
-          ^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
-    self._data = self.to_representation(self.instance)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 713, in to_representation
-    return [
-           ^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
-    self.child.to_representation(item) for item in iterable
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 713, in to_representation
-    return [
-           ^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
-    self.child.to_representation(item) for item in iterable
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 523, in to_representation
-    for field in fields:
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
-    for field in self.fields.values():
-                 ^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/utils/functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 372, in fields
-    for key, value in self.get_fields().items():
-                      ^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 1103, in get_fields
-    field_class, field_kwargs = self.build_field(
-                                ^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 1249, in build_field
-    return self.build_unknown_field(field_name, model_class)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
-    raise ImproperlyConfigured(
-django.core.exceptions.ImproperlyConfigured: Field name `texto` is not valid for model `Pergunta` in `form.serializers.PerguntaSerializer`.
-ERROR 2025-04-06 00:31:37,463 log Internal Server Error: /form/formularios/1/completo/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2123, in get_prep_value
-    return int(value)
-           ^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/contrib/auth/models.py", line 438, in __int__
-    raise TypeError(
-TypeError: Cannot cast AnonymousUser to int. Are you trying to use it in place of User?
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/form/views.py", line 93, in post
-    formulario_respondido, created = FormularioRespondido.objects.get_or_create(
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 948, in get_or_create
-    return self.get(**kwargs), False
-           ^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 635, in get
-    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
-                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1476, in filter
-    return self._filter_or_exclude(False, args, kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
-    clone._filter_or_exclude_inplace(negate, args, kwargs)
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
-    self._query.add_q(Q(*args, **kwargs))
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1609, in add_q
-    clause, _ = self._add_q(q_object, self.used_aliases)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
-    child_clause, needed_inner = self.build_filter(
-                                 ^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1555, in build_filter
-    condition = self.build_lookup(lookups, col, value)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1385, in build_lookup
-    lookup = lookup_class(lhs, rhs)
-             ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/lookups.py", line 30, in __init__
-    self.rhs = self.get_prep_lookup()
-               ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/related_lookups.py", line 156, in get_prep_lookup
-    self.rhs = target_field.get_prep_value(self.rhs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2125, in get_prep_value
-    raise e.__class__(
-TypeError: Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x7ff7f050dd10>.
-ERROR 2025-04-06 00:32:43,672 log Internal Server Error: /form/formularios/1/completo/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2123, in get_prep_value
-    return int(value)
-           ^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/contrib/auth/models.py", line 438, in __int__
-    raise TypeError(
-TypeError: Cannot cast AnonymousUser to int. Are you trying to use it in place of User?
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/form/views.py", line 93, in post
-    formulario_respondido, created = FormularioRespondido.objects.get_or_create(
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 948, in get_or_create
-    return self.get(**kwargs), False
-           ^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 635, in get
-    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
-                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1476, in filter
-    return self._filter_or_exclude(False, args, kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
-    clone._filter_or_exclude_inplace(negate, args, kwargs)
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
-    self._query.add_q(Q(*args, **kwargs))
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1609, in add_q
-    clause, _ = self._add_q(q_object, self.used_aliases)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
-    child_clause, needed_inner = self.build_filter(
-                                 ^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1555, in build_filter
-    condition = self.build_lookup(lookups, col, value)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1385, in build_lookup
-    lookup = lookup_class(lhs, rhs)
-             ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/lookups.py", line 30, in __init__
-    self.rhs = self.get_prep_lookup()
-               ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/related_lookups.py", line 156, in get_prep_lookup
-    self.rhs = target_field.get_prep_value(self.rhs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2125, in get_prep_value
-    raise e.__class__(
-TypeError: Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x7fc571ab9a10>.
-ERROR 2025-04-06 00:32:52,029 log Internal Server Error: /form/formularios/1/completo/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2123, in get_prep_value
-    return int(value)
-           ^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/contrib/auth/models.py", line 438, in __int__
-    raise TypeError(
-TypeError: Cannot cast AnonymousUser to int. Are you trying to use it in place of User?
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/form/views.py", line 61, in get
-    formulario_respondido = FormularioRespondido.objects.filter(
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1476, in filter
-    return self._filter_or_exclude(False, args, kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
-    clone._filter_or_exclude_inplace(negate, args, kwargs)
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
-    self._query.add_q(Q(*args, **kwargs))
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1609, in add_q
-    clause, _ = self._add_q(q_object, self.used_aliases)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
-    child_clause, needed_inner = self.build_filter(
-                                 ^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1555, in build_filter
-    condition = self.build_lookup(lookups, col, value)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1385, in build_lookup
-    lookup = lookup_class(lhs, rhs)
-             ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/lookups.py", line 30, in __init__
-    self.rhs = self.get_prep_lookup()
-               ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/related_lookups.py", line 156, in get_prep_lookup
-    self.rhs = target_field.get_prep_value(self.rhs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2125, in get_prep_value
-    raise e.__class__(
-TypeError: Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x7fc571b42690>.
-ERROR 2025-04-06 00:44:32,852 log Internal Server Error: /form/formularios/1/completo/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2123, in get_prep_value
-    return int(value)
-           ^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/contrib/auth/models.py", line 438, in __int__
-    raise TypeError(
-TypeError: Cannot cast AnonymousUser to int. Are you trying to use it in place of User?
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/form/views.py", line 65, in get
-    formulario_respondido = FormularioRespondido.objects.filter(
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1476, in filter
-    return self._filter_or_exclude(False, args, kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
-    clone._filter_or_exclude_inplace(negate, args, kwargs)
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
-    self._query.add_q(Q(*args, **kwargs))
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1609, in add_q
-    clause, _ = self._add_q(q_object, self.used_aliases)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
-    child_clause, needed_inner = self.build_filter(
-                                 ^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1555, in build_filter
-    condition = self.build_lookup(lookups, col, value)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1385, in build_lookup
-    lookup = lookup_class(lhs, rhs)
-             ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/lookups.py", line 30, in __init__
-    self.rhs = self.get_prep_lookup()
-               ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/related_lookups.py", line 156, in get_prep_lookup
-    self.rhs = target_field.get_prep_value(self.rhs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2125, in get_prep_value
-    raise e.__class__(
-TypeError: Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x7f32b890c410>.
-ERROR 2025-04-06 00:49:42,417 log Internal Server Error: /form/formularios/1/completo/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/form/views.py", line 90, in post
-    formulario=formulario,
-               ^^^^^^^^^^
-NameError: name 'formulario' is not defined
-ERROR 2025-04-11 11:15:15,540 log Internal Server Error: /swagger/
-Traceback (most recent call last):
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\views.py", line 112, in get
-    schema = generator.get_schema(request, self.public)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\generators.py", line 276, in get_schema
-    paths, prefix = self.get_paths(endpoints, components, request, public)
-                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\generators.py", line 482, in get_paths
-    operation = self.get_operation(view, path, prefix, method, components, request)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\generators.py", line 524, in get_operation
-    operation = view_inspector.get_operation(operation_keys)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\view.py", line 45, in get_operation
-    responses = self.get_responses()
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\view.py", line 180, in get_responses
-    response_serializers = self.get_response_serializers()
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\view.py", line 235, in get_response_serializers
-    responses = self.get_default_responses()
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\view.py", line 211, in get_default_responses
-    default_schema = self.serializer_to_schema(default_schema) or ''
-                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\base.py", line 438, in serializer_to_schema
-    return self.probe_inspectors(
-           ~~~~~~~~~~~~~~~~~~~~~^
-        self.field_inspectors, 'get_schema', serializer, {'field_inspectors': self.field_inspectors}
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\base.py", line 110, in probe_inspectors
-    result = method(obj, **kwargs)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\field.py", line 49, in get_schema
-    return self.probe_field_inspectors(serializer, openapi.Schema, self.use_definitions)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\base.py", line 228, in probe_field_inspectors
-    return self.probe_inspectors(
-           ~~~~~~~~~~~~~~~~~~~~~^
-        self.field_inspectors, 'field_to_swagger_object', field, {'field_inspectors': self.field_inspectors},
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        swagger_object_type=swagger_object_type, use_references=use_references, **kwargs
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\base.py", line 110, in probe_inspectors
-    result = method(obj, **kwargs)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\field.py", line 148, in field_to_swagger_object
-    raise SwaggerGenerationError(
-    ...<2 lines>...
-        % (actual_serializer, this_serializer))
-drf_yasg.errors.SwaggerGenerationError: Schema for <class 'assessments.serializers.ControlAssessmentSerializer'> would override distinct serializer <class 'core.serializers.ControlAssessmentSerializer'> because they implicitly share the same ref_name; explicitly set the ref_name attribute on both serializers' Meta classes
-ERROR 2025-04-11 11:16:51,498 log Internal Server Error: /swagger/
-Traceback (most recent call last):
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\views.py", line 112, in get
-    schema = generator.get_schema(request, self.public)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\generators.py", line 276, in get_schema
-    paths, prefix = self.get_paths(endpoints, components, request, public)
-                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\generators.py", line 482, in get_paths
-    operation = self.get_operation(view, path, prefix, method, components, request)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\generators.py", line 524, in get_operation
-    operation = view_inspector.get_operation(operation_keys)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\view.py", line 45, in get_operation
-    responses = self.get_responses()
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\view.py", line 180, in get_responses
-    response_serializers = self.get_response_serializers()
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\view.py", line 235, in get_response_serializers
-    responses = self.get_default_responses()
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\view.py", line 211, in get_default_responses
-    default_schema = self.serializer_to_schema(default_schema) or ''
-                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\base.py", line 438, in serializer_to_schema
-    return self.probe_inspectors(
-           ~~~~~~~~~~~~~~~~~~~~~^
-        self.field_inspectors, 'get_schema', serializer, {'field_inspectors': self.field_inspectors}
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\base.py", line 110, in probe_inspectors
-    result = method(obj, **kwargs)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\field.py", line 49, in get_schema
-    return self.probe_field_inspectors(serializer, openapi.Schema, self.use_definitions)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\base.py", line 228, in probe_field_inspectors
-    return self.probe_inspectors(
-           ~~~~~~~~~~~~~~~~~~~~~^
-        self.field_inspectors, 'field_to_swagger_object', field, {'field_inspectors': self.field_inspectors},
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        swagger_object_type=swagger_object_type, use_references=use_references, **kwargs
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\base.py", line 110, in probe_inspectors
-    result = method(obj, **kwargs)
-  File "C:\Users\ResTIC16\Desktop\Projeto do Grupo\2024_2_Future_Projeto_Avaliacao_Maturidade_Seguranca_PPSI\backend\.venv\Lib\site-packages\drf_yasg\inspectors\field.py", line 148, in field_to_swagger_object
-    raise SwaggerGenerationError(
-    ...<2 lines>...
-        % (actual_serializer, this_serializer))
-drf_yasg.errors.SwaggerGenerationError: Schema for <class 'assessments.serializers.ControlAssessmentSerializer'> would override distinct serializer <class 'core.serializers.ControlAssessmentSerializer'> because they implicitly share the same ref_name; explicitly set the ref_name attribute on both serializers' Meta classes
-ERROR 2025-04-14 00:09:38,317 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-psycopg2.errors.UndefinedFunction: function avg(text) does not exist
-LINE 1: SELECT AVG("form_resposta"."politica") AS "politica__avg" FR...
-               ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 21, in get
-    maturity_data = calculate_maturity(formulario_respondido.id)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/services.py", line 27, in calculate_maturity
-    respostas_categoria.aggregate(Avg("politica"))["politica__avg"] or 0
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 604, in aggregate
-    return self.query.chain().get_aggregation(self.db, kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 616, in get_aggregation
-    result = compiler.execute_sql(SINGLE)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1574, in execute_sql
-    cursor.execute(sql, params)
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
-    return super().execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
-    return self._execute_with_wrappers(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
-    return executor(sql, params, many, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
-    with self.db.wrap_database_errors:
-  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
-    raise dj_exc_value.with_traceback(traceback) from exc_value
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-django.db.utils.ProgrammingError: function avg(text) does not exist
-LINE 1: SELECT AVG("form_resposta"."politica") AS "politica__avg" FR...
-               ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
-
-ERROR 2025-04-14 00:09:41,586 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "maturity_assessment_maturityassess_formulario_respondido_id_key"
-DETAIL:  Key (formulario_respondido_id)=(1) already exists.
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 21, in get
-    maturity_data = calculate_maturity(formulario_respondido.id)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/services.py", line 16, in calculate_maturity
-    maturity_assessment = MaturityAssessment.objects.create(
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
-    obj.save(force_insert=True, using=self.db)
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
-    self.save_base(
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
-    updated = self._save_table(
-              ^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
-    results = self._do_insert(
-              ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
-    return manager._insert(
-           ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
-    return query.get_compiler(using=using).execute_sql(returning_fields)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
-    cursor.execute(sql, params)
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
-    return super().execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
-    return self._execute_with_wrappers(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
-    return executor(sql, params, many, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
-    with self.db.wrap_database_errors:
-  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
-    raise dj_exc_value.with_traceback(traceback) from exc_value
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-django.db.utils.IntegrityError: duplicate key value violates unique constraint "maturity_assessment_maturityassess_formulario_respondido_id_key"
-DETAIL:  Key (formulario_respondido_id)=(1) already exists.
-
-ERROR 2025-04-14 00:11:15,352 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "maturity_assessment_maturityassess_formulario_respondido_id_key"
-DETAIL:  Key (formulario_respondido_id)=(1) already exists.
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 21, in get
-    maturity_data = calculate_maturity(formulario_respondido.id)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/services.py", line 16, in calculate_maturity
-    maturity_assessment = MaturityAssessment.objects.create(
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
-    obj.save(force_insert=True, using=self.db)
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
-    self.save_base(
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
-    updated = self._save_table(
-              ^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
-    results = self._do_insert(
-              ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
-    return manager._insert(
-           ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
-    return query.get_compiler(using=using).execute_sql(returning_fields)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
-    cursor.execute(sql, params)
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
-    return super().execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
-    return self._execute_with_wrappers(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
-    return executor(sql, params, many, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
-    with self.db.wrap_database_errors:
-  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
-    raise dj_exc_value.with_traceback(traceback) from exc_value
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-django.db.utils.IntegrityError: duplicate key value violates unique constraint "maturity_assessment_maturityassess_formulario_respondido_id_key"
-DETAIL:  Key (formulario_respondido_id)=(1) already exists.
-
-ERROR 2025-04-14 23:15:51,882 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    "categorias": maturity_assessment.get("categorias", []),
-                  ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'MaturityAssessment' object has no attribute 'get'
-ERROR 2025-04-14 23:15:51,923 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    "categorias": maturity_assessment.get("categorias", []),
-                  ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'MaturityAssessment' object has no attribute 'get'
-ERROR 2025-04-15 12:24:44,740 log Internal Server Error: /form/formularios/1/categorias/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
-    return self.cursor.execute(sql, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-psycopg2.errors.UndefinedColumn: column form_categoria.sigla does not exist
-LINE 1: ...T "form_categoria"."id", "form_categoria"."nome", "form_cate...
+psycopg2.errors.UndefinedColumn: column "analista_id" of relation "recomendacoes_recomendacao" does not exist
+LINE 1: ...dacao" ("cliente_id", "formulario_respondido_id", "analista_...
                                                              ^
 
 
@@ -1087,7 +33,201 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
     response = handler(request, *args, **kwargs)
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 203, in get
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/recomendacoes/views.py", line 60, in perform_create
+    serializer.save(
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/recomendacoes/serializers.py", line 64, in create
+    return super().create(validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/recomendacoes/models.py", line 111, in save
+    super().save(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column "analista_id" of relation "recomendacoes_recomendacao" does not exist
+LINE 1: ...dacao" ("cliente_id", "formulario_respondido_id", "analista_...
+                                                             ^
+
+ERROR 2025-04-19 19:32:28,992 log Internal Server Error: /recommendations/recomendacoes/2/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column "analista_id" of relation "recomendacoes_recomendacao" does not exist
+LINE 1: ...dacao" ("cliente_id", "formulario_respondido_id", "analista_...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/recomendacoes/views.py", line 60, in perform_create
+    serializer.save(
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/recomendacoes/serializers.py", line 64, in create
+    return super().create(validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/recomendacoes/models.py", line 111, in save
+    super().save(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column "analista_id" of relation "recomendacoes_recomendacao" does not exist
+LINE 1: ...dacao" ("cliente_id", "formulario_respondido_id", "analista_...
+                                                             ^
+
+ERROR 2025-04-19 19:32:39,164 log Internal Server Error: /recommendations/recomendacoes/2/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column recomendacoes_recomendacao.analista_id does not exist
+LINE 1: ...ndacoes_recomendacao"."formulario_respondido_id", "recomenda...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 243, in get
     return self.list(request, *args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 46, in list
@@ -1128,17 +268,17 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
     return self.cursor.execute(sql, params)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-django.db.utils.ProgrammingError: column form_categoria.sigla does not exist
-LINE 1: ...T "form_categoria"."id", "form_categoria"."nome", "form_cate...
+django.db.utils.ProgrammingError: column recomendacoes_recomendacao.analista_id does not exist
+LINE 1: ...ndacoes_recomendacao"."formulario_respondido_id", "recomenda...
                                                              ^
 
-ERROR 2025-04-15 12:24:44,774 log Internal Server Error: /form/formularios/1/categorias/
+ERROR 2025-04-19 19:33:12,300 log Internal Server Error: /recommendations/recomendacoes/2/1/
 Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
     return self.cursor.execute(sql, params)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-psycopg2.errors.UndefinedColumn: column form_categoria.sigla does not exist
-LINE 1: ...T "form_categoria"."id", "form_categoria"."nome", "form_cate...
+psycopg2.errors.UndefinedColumn: column "analista_id" of relation "recomendacoes_recomendacao" does not exist
+LINE 1: ...dacao" ("cliente_id", "formulario_respondido_id", "analista_...
                                                              ^
 
 
@@ -1167,7 +307,492 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
     response = handler(request, *args, **kwargs)
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 203, in get
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/recomendacoes/views.py", line 60, in perform_create
+    serializer.save(
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/recomendacoes/serializers.py", line 64, in create
+    return super().create(validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/recomendacoes/models.py", line 111, in save
+    super().save(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column "analista_id" of relation "recomendacoes_recomendacao" does not exist
+LINE 1: ...dacao" ("cliente_id", "formulario_respondido_id", "analista_...
+                                                             ^
+
+ERROR 2025-04-19 19:33:19,890 log Internal Server Error: /recommendations/recomendacoes/2/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column "analista_id" of relation "recomendacoes_recomendacao" does not exist
+LINE 1: ...dacao" ("cliente_id", "formulario_respondido_id", "analista_...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/recomendacoes/views.py", line 60, in perform_create
+    serializer.save(
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/recomendacoes/serializers.py", line 64, in create
+    return super().create(validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/recomendacoes/models.py", line 111, in save
+    super().save(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column "analista_id" of relation "recomendacoes_recomendacao" does not exist
+LINE 1: ...dacao" ("cliente_id", "formulario_respondido_id", "analista_...
+                                                             ^
+
+ERROR 2025-04-19 19:39:26,031 log Internal Server Error: /recommendations/recomendacoes/2/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "recomendacoes_recomendacao" does not exist
+LINE 1: INSERT INTO "recomendacoes_recomendacao" ("cliente_id", "for...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/recomendacoes/views.py", line 60, in perform_create
+    serializer.save(
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/recomendacoes/serializers.py", line 64, in create
+    return super().create(validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/recomendacoes/models.py", line 111, in save
+    super().save(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "recomendacoes_recomendacao" does not exist
+LINE 1: INSERT INTO "recomendacoes_recomendacao" ("cliente_id", "for...
+                    ^
+
+ERROR 2025-04-19 19:39:26,853 log Internal Server Error: /recommendations/recomendacoes/2/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "recomendacoes_recomendacao" does not exist
+LINE 1: INSERT INTO "recomendacoes_recomendacao" ("cliente_id", "for...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/recomendacoes/views.py", line 60, in perform_create
+    serializer.save(
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/recomendacoes/serializers.py", line 64, in create
+    return super().create(validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/recomendacoes/models.py", line 111, in save
+    super().save(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "recomendacoes_recomendacao" does not exist
+LINE 1: INSERT INTO "recomendacoes_recomendacao" ("cliente_id", "for...
+                    ^
+
+ERROR 2025-04-19 19:39:34,656 log Internal Server Error: /recommendations/recomendacoes/2/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "recomendacoes_recomendacao" does not exist
+LINE 1: INSERT INTO "recomendacoes_recomendacao" ("cliente_id", "for...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/recomendacoes/views.py", line 60, in perform_create
+    serializer.save(
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/recomendacoes/serializers.py", line 64, in create
+    return super().create(validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/recomendacoes/models.py", line 111, in save
+    super().save(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "recomendacoes_recomendacao" does not exist
+LINE 1: INSERT INTO "recomendacoes_recomendacao" ("cliente_id", "for...
+                    ^
+
+ERROR 2025-04-19 19:43:19,625 log Internal Server Error: /recommendations/recomendacoes/2/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "recomendacoes_recomendacao" does not exist
+LINE 1: ..."recomendacoes_recomendacao"."atualizado_em" FROM "recomenda...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 243, in get
     return self.list(request, *args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 46, in list
@@ -1208,11 +833,22 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
     return self.cursor.execute(sql, params)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-django.db.utils.ProgrammingError: column form_categoria.sigla does not exist
-LINE 1: ...T "form_categoria"."id", "form_categoria"."nome", "form_cate...
+django.db.utils.ProgrammingError: relation "recomendacoes_recomendacao" does not exist
+LINE 1: ..."recomendacoes_recomendacao"."atualizado_em" FROM "recomenda...
                                                              ^
 
-ERROR 2025-04-15 13:46:23,575 log Internal Server Error: /api/maturity-results/maturity-results/1/
+ERROR 2025-04-19 19:43:19,710 log Internal Server Error: /recommendations/recomendacoes/2/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "recomendacoes_recomendacao" does not exist
+LINE 1: ..."recomendacoes_recomendacao"."atualizado_em" FROM "recomenda...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
@@ -1236,26 +872,63 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
     response = handler(request, *args, **kwargs)
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 243, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 46, in list
     return Response(serializer.data)
                     ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 795, in data
     ret = super().data
           ^^^^^^^^^^^^
   File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
     self._data = self.to_representation(self.instance)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/fields.py", line 1870, in to_representation
-    return method(value)
-           ^^^^^^^^^^^^^
-  File "/app/maturity_assessment/serializers.py", line 84, in get_categorias
-    categorias = obj.categorias_maturity.all()
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'categorias_maturity'
-ERROR 2025-04-15 13:46:23,685 log Internal Server Error: /api/maturity-results/maturity-results/1/
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 400, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "recomendacoes_recomendacao" does not exist
+LINE 1: ..."recomendacoes_recomendacao"."atualizado_em" FROM "recomenda...
+                                                             ^
+
+ERROR 2025-04-19 19:43:59,946 log Internal Server Error: /recommendations/recomendacoes/2/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "recomendacoes_recomendacao" does not exist
+LINE 1: INSERT INTO "recomendacoes_recomendacao" ("cliente_id", "for...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
@@ -1279,26 +952,80 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
     response = handler(request, *args, **kwargs)
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    return Response(serializer.data)
-                    ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
-    ret = super().data
-          ^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
-    self._data = self.to_representation(self.instance)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/fields.py", line 1870, in to_representation
-    return method(value)
-           ^^^^^^^^^^^^^
-  File "/app/maturity_assessment/serializers.py", line 84, in get_categorias
-    categorias = obj.categorias_maturity.all()
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'categorias_maturity'
-ERROR 2025-04-15 13:46:44,756 log Internal Server Error: /api/maturity-results/maturity-results/1/
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/recomendacoes/views.py", line 60, in perform_create
+    serializer.save(
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/recomendacoes/serializers.py", line 64, in create
+    return super().create(validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/recomendacoes/models.py", line 111, in save
+    super().save(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "recomendacoes_recomendacao" does not exist
+LINE 1: INSERT INTO "recomendacoes_recomendacao" ("cliente_id", "for...
+                    ^
+
+ERROR 2025-04-19 19:44:07,180 log Internal Server Error: /recommendations/recomendacoes/2/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "recomendacoes_recomendacao" does not exist
+LINE 1: INSERT INTO "recomendacoes_recomendacao" ("cliente_id", "for...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
@@ -1322,323 +1049,65 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
     response = handler(request, *args, **kwargs)
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    return Response(serializer.data)
-                    ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
-    ret = super().data
-          ^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
-    self._data = self.to_representation(self.instance)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/fields.py", line 1870, in to_representation
-    return method(value)
-           ^^^^^^^^^^^^^
-  File "/app/maturity_assessment/serializers.py", line 84, in get_categorias
-    categorias = obj.categorias_maturity.all()
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'categorias_maturity'
-ERROR 2025-04-15 13:46:44,839 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    return Response(serializer.data)
-                    ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
-    ret = super().data
-          ^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
-    self._data = self.to_representation(self.instance)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/fields.py", line 1870, in to_representation
-    return method(value)
-           ^^^^^^^^^^^^^
-  File "/app/maturity_assessment/serializers.py", line 84, in get_categorias
-    categorias = obj.categorias_maturity.all()
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'categorias_maturity'
-ERROR 2025-04-15 13:47:42,815 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    return Response(serializer.data)
-                    ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
-    ret = super().data
-          ^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
-    self._data = self.to_representation(self.instance)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/fields.py", line 1870, in to_representation
-    return method(value)
-           ^^^^^^^^^^^^^
-  File "/app/maturity_assessment/serializers.py", line 84, in get_categorias
-    categorias = obj.categorias_maturity.all()
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'categorias_maturity'
-ERROR 2025-04-15 13:47:42,934 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    return Response(serializer.data)
-                    ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
-    ret = super().data
-          ^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
-    self._data = self.to_representation(self.instance)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/fields.py", line 1870, in to_representation
-    return method(value)
-           ^^^^^^^^^^^^^
-  File "/app/maturity_assessment/serializers.py", line 84, in get_categorias
-    categorias = obj.categorias_maturity.all()
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'categorias_maturity'
-ERROR 2025-04-15 13:48:38,973 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    return Response(serializer.data)
-                    ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
-    ret = super().data
-          ^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
-    self._data = self.to_representation(self.instance)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/fields.py", line 1870, in to_representation
-    return method(value)
-           ^^^^^^^^^^^^^
-  File "/app/maturity_assessment/serializers.py", line 84, in get_categorias
-    categorias = obj.categorias_maturity.all()
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'categorias_maturity'
-ERROR 2025-04-15 13:48:39,096 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    return Response(serializer.data)
-                    ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
-    ret = super().data
-          ^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
-    self._data = self.to_representation(self.instance)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/fields.py", line 1870, in to_representation
-    return method(value)
-           ^^^^^^^^^^^^^
-  File "/app/maturity_assessment/serializers.py", line 84, in get_categorias
-    categorias = obj.categorias_maturity.all()
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'categorias_maturity'
-ERROR 2025-04-15 13:51:53,610 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    return Response(serializer.data)
-                    ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
-    ret = super().data
-          ^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
-    self._data = self.to_representation(self.instance)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/fields.py", line 1870, in to_representation
-    return method(value)
-           ^^^^^^^^^^^^^
-  File "/app/maturity_assessment/serializers.py", line 84, in get_categorias
-    categorias = obj.categorias_maturity.all()
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'categorias_maturity'
-ERROR 2025-04-15 13:51:53,738 log Internal Server Error: /api/maturity-results/maturity-results/1/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/maturity_assessment/views.py", line 34, in get
-    return Response(serializer.data)
-                    ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 571, in data
-    ret = super().data
-          ^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 249, in data
-    self._data = self.to_representation(self.instance)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 538, in to_representation
-    ret[field.field_name] = field.to_representation(attribute)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/rest_framework/fields.py", line 1870, in to_representation
-    return method(value)
-           ^^^^^^^^^^^^^
-  File "/app/maturity_assessment/serializers.py", line 84, in get_categorias
-    categorias = obj.categorias_maturity.all()
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'categorias_maturity'
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/recomendacoes/views.py", line 60, in perform_create
+    serializer.save(
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/recomendacoes/serializers.py", line 64, in create
+    return super().create(validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/recomendacoes/models.py", line 111, in save
+    super().save(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "recomendacoes_recomendacao" does not exist
+LINE 1: INSERT INTO "recomendacoes_recomendacao" ("cliente_id", "for...
+                    ^
+

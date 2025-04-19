@@ -1,5 +1,3 @@
-
-
 // src/app/funcionario/analises/page.tsx
 "use client";
 
@@ -15,7 +13,9 @@ import { agruparPorCategoria } from '@/util/subCategorias';
 import FormularioRecomendacao from './FormularioRecomendacao';
 import ErrorMessage from '@/components/ErrorMessage';
 import LoadingSpinner from '@/components/LoadingSpinner';
-
+import React from 'react';
+import { MdExpandMore, MdExpandLess } from 'react-icons/md';
+import { Tooltip } from '@mui/material';
 
 interface AnaliseDetailProps {
   empresaId: string;
@@ -24,6 +24,8 @@ interface AnaliseDetailProps {
 export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
   const [mostrarFormulario, setMostrarFormulario] = useState<string | null>(null);
   const [subcategoria, setSubcategoria] = useState<any>(null);
+  const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
+
 
   const [formData, setFormData] = useState({
     nome: "",
@@ -32,16 +34,16 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
     nist: "",
     prioridade: "",
     responsavel: "",
-    dataInicio: "",
-    dataFim: "",
+    data_inicio: "",
+    data_fim: "",
     detalhes: "",
     investimentos: "",
     riscos: "",
     justificativa: "",
     observacoes: "",
-  impacto: "",
-  gravidade: "",
-  Meses: "",
+    impacto: "",
+    gravidade: "",
+    meses: "1",
   });
 
   // Convertendo o ID para número (Next.js passa como string)
@@ -49,9 +51,17 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
   const { data, loading, error } = useAvaliacao(formularioRespondidoId);
   const { recomendacoes, adicionarRecomendacao, removerRecomendacao } = useRecomendacoes();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const ordemCategorias = ["GV", "ID", "PR", "DE", "RS", "RC"];
 
-  console.log("Dados da avaliação:", data);
-  console.log('subcategorias:', data?.subcategorias);
+
+  const toggleRow = (id: string) => {
+    setExpandedRows(prev => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+  
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -60,10 +70,8 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
   useEffect(() => {
     if (data?.subcategorias) {
       const subcategoriasAgrupadas = agruparPorCategoria(data.subcategorias);
-      console.log("Subcategorias agrupadas:", subcategoriasAgrupadas);
       setSubcategoria(subcategoriasAgrupadas);
     } else {
-      console.log("Subcategorias não encontradas:", data);
       setSubcategoria({});
     }
   }, [data]);
@@ -80,28 +88,45 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
   }, [empresaId]);
   
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    adicionarRecomendacao(formData);
-    setFormData({
-      nome: "",
-      categoria: "",
-      tecnologia: "",
-      nist: "",
-      prioridade: "",
-      responsavel: "",
-      dataInicio: "",
-      dataFim: "",
-      detalhes: "",
-      investimentos: "",
-      riscos: "",
-      justificativa: "",
-      observacoes: "",
-      impacto: "",
-      gravidade: "",  
-      Meses: "",
-    });
-    setMostrarFormulario(null);
+    
+    // Verifica campos obrigatórios
+    if (!formData.nome || !formData.categoria || !formData.nist) {
+      alert('Preencha os campos obrigatórios: Nome, Categoria e NIST');
+      return;
+    }
+  
+    try {
+      await adicionarRecomendacao({
+        ...formData,
+        meses: formData.meses // Garante compatibilidade com o nome do campo
+      });
+      
+      // Reset do formulário
+      setFormData({
+        nome: "",
+        categoria: "",
+        tecnologia: "",
+        nist: "",
+        prioridade: "",
+        responsavel: "",
+        data_inicio: "",
+        data_fim: "",
+        detalhes: "",
+        investimentos: "",
+        riscos: "",
+        justificativa: "",
+        observacoes: "",
+        impacto: "",
+        gravidade: "",
+        meses: "1",
+      });
+      setMostrarFormulario(null);
+    } catch (error) {
+      console.error("Erro ao enviar recomendação:", error);
+      // Mostrar erro para o usuário
+    }
   };
 
   if (loading) {
@@ -109,9 +134,9 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
       <div className="flex min-h-screen bg-gray-100 flex-1 flex main-content">
         <Sidebar 
           menuItems={[
-            { name: "Home", icon: <FiHome size={20} />, path: "/funcionario" },
-            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/funcionario/analises" },
-            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/funcionario/relatorios" }
+            { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
+            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
+            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
           ]}
         />
         <div className="flex justify-center items-center w-full h-full">
@@ -126,9 +151,9 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
       <div className="flex min-h-screen bg-gray-100 flex-1 flex main-content">
         <Sidebar 
           menuItems={[
-            { name: "Home", icon: <FiHome size={20} />, path: "/funcionario" },
-            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/funcionario/analises" },
-            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/funcionario/relatorios" }
+            { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
+            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
+            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
           ]}
         />
         <div className="flex justify-center items-center w-full h-full">
@@ -142,11 +167,11 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
     return (
       <div className="flex min-h-screen bg-gray-100 flex-1 flex main-content">
         <Sidebar 
-          menuItems={[
-            { name: "Home", icon: <FiHome size={20} />, path: "/funcionario" },
-            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/funcionario/analises" },
-            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/funcionario/relatorios" }
-          ]}
+                   menuItems={[
+                    { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
+                    { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
+                    { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
+                  ]}
         />
         <div className="flex justify-center items-center w-full h-full">
           <ErrorMessage message="Nenhum dado disponível" type="info" />
@@ -159,11 +184,11 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
   return (
     <div className="flex">
       <Sidebar 
-        menuItems={[
-          { name: "Home", icon: <FiHome size={20} />, path: "/funcionario" },
-          { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/funcionario/analises" },
-          { name: "Relatórios", icon: <FiFileText size={20} />, path: "/funcionario/relatorios" }
-        ]}
+          menuItems={[
+            { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
+            { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
+            { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
+          ]}
       />
       <main className={` flex main-content ${isSidebarOpen ? "sidebar-open" : "sidebar-collapsed"}`}>
         
@@ -215,68 +240,109 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
             </table>
           </div>
 
-          {Object.entries(subcategoria).map(([sigla, subcategorias]) => {
-            const categoria = data.categorias.find(c => c.sigla === sigla);
-            if (!categoria) return null;
+{Object.entries(subcategoria).sort(([siglaA], [siglaB]) => {
+  const indexA = ordemCategorias.indexOf(siglaA);
+  const indexB = ordemCategorias.indexOf(siglaB);
+  return indexA - indexB;
+}).map(([sigla, subcategorias]) => {
+  const categoria = data.categorias.find(c => c.sigla === sigla);
+  if (!categoria) return null;
 
-            return (
-              <div key={sigla} className={`${styles.card} mb-6`}>
-                <h4 className={styles.tituloSecao}>{categoria.categoria} ({sigla})</h4>
-                <h4 className="mb-4">Avaliação detalhada das subcategorias</h4>
+  return (
+    <div key={sigla} className={`${styles.card} mb-6`}>
+      <h4 className={styles.tituloSecao}>{categoria.categoria} ({sigla})</h4>
+      <h4 className="mb-4">Avaliação detalhada das subcategorias</h4>
 
-                <table className={styles.tabelaestilo}>
-                  <thead>
-                    <tr>
-                      <td>ID</td>
-                      <td>Subcategoria</td>
-                      <td>Política</td>
-                      <td>Prática</td>
-                      <td>Objetivo</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {subcategorias.map((sub) => (
-                      <tr key={sub.id}>
-                        <td>{sub.id}</td>
-                        <td>{sub.subcategoria}</td>
-                        <td>{sub.politica?.toFixed(2) || '-'}</td>
-                        <td>{sub.pratica?.toFixed(2) || '-'}</td>
-                        <td>{sub.objetivo.toFixed(2)}</td>
+      <table className={styles.tabelaestilo}>
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Subcategoria</td>
+            <td>Política</td>
+            <td>Prática</td>
+            <td>Objetivo</td>
+          </tr>
+        </thead>
+        <tbody>
+        {subcategorias.map((sub) => (
+          <React.Fragment key={sub.id}>
+            <tr className="cursor-pointer" onClick={() => toggleRow(sub.id)}>
+              <td>
+                <button className='button-icone' title={expandedRows[sub.id] ? 'Recolher' : 'Expandir'}>
+                  {expandedRows[sub.id] ? '➖' : '➕'}
+                </button> 
+                {sub.id}
+              </td>
+              <td>{sub.subcategoria}</td>
+              <td>{sub.politica?.toFixed(2) || '-'}</td>
+              <td>{sub.pratica?.toFixed(2) || '-'}</td>
+              <td>{sub.objetivo?.toFixed(2) || '-'}</td>
+            </tr>
+
+            {expandedRows[sub.id] && (
+              <tr>
+                <td colSpan={5}>
+                  <table className={`${styles.tabelaestilo} w-full mt-2`}>
+                    <thead>
+                      <tr>
+                        <td>ID</td>
+                        <td>Pergunta</td>
+                        <td>Política</td>
+                        <td>Prática</td>
+                        <td>Objetivo</td>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <br /><br />
-                <div className={styles.containerForm}>
-                  <h2 className="mb-4">Recomendações para {categoria.categoria} ({sigla})</h2>
+                    </thead>
+                    <tbody>
+                      {sub.perguntas?.map((p) => (
+                        <tr key={p.id}>
+                          <td>{p.id}</td>
+                          <td>{p.subcategoria}</td>
+                          <td>{p.politica}</td>
+                          <td>{p.pratica}</td>
+                          <td>{p.objetivo}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            )}
+          </React.Fragment>
+        ))}
+        </tbody>
+      </table>
+      <br /><br />
+      <div className={styles.containerForm}>
+        <h2 className="mb-4">Recomendações para {categoria.categoria} ({sigla})</h2>
 
-                  <button
-                    className={styles.toggleBtn}
-                    onClick={() => setMostrarFormulario(mostrarFormulario === sigla ? null : sigla)}
-                  >
-                    {mostrarFormulario === sigla ? (
-                      <>
-                        <FiX className="inline mr-2" /> Cancelar
-                      </>
-                    ) : (
-                      <>
-                        <FiPlus className="inline mr-2" /> Adicionar Recomendação
-                      </>
-                    )}
-                  </button>
+        <button
+          className={styles.toggleBtn}
+          onClick={() => setMostrarFormulario(mostrarFormulario === sigla ? null : sigla)}
+        >
+          {mostrarFormulario === sigla ? (
+            <>
+              <FiX className="inline mr-2" /> Cancelar
+            </>
+          ) : (
+            <>
+              <FiPlus className="inline mr-2" /> Adicionar Recomendação
+            </>
+          )}
+        </button>
 
-                  {mostrarFormulario === sigla && (
-                  <FormularioRecomendacao
-                    formData={formData}
-                    onChange={handleInputChange}
-                    onSubmit={handleSubmit}
-                    subcategorias={subcategoria}
-                />
-                  )}
-                </div>
-              </div>
-            );
-          })}
+        {mostrarFormulario === sigla && (
+          <FormularioRecomendacao
+            formData={formData}
+            onChange={handleInputChange}
+            onSubmit={handleSubmit}
+            subcategorias={subcategoria}
+          />
+        )}
+      </div>
+    </div>
+  );
+})}
+
         </div>
       </main>
     </div>

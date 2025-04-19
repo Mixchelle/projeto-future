@@ -71,7 +71,20 @@ INSTALLED_APPS = [
     "form",
     "drf_yasg",  # Swagger
     "maturity_assessment",
+    "recomendacoes",
 ]
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization',
+            'description': 'Ex: Token <seu_token> ou Bearer <seu_token>',
+        }
+    },
+    'USE_SESSION_AUTH': False,
+}
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
@@ -122,7 +135,9 @@ MIDDLEWARE = [
     "axes.middleware.AxesMiddleware",  # Middleware do django-axes
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Adiciona a URL do frontend
+]
 
 ROOT_URLCONF = "config.urls"
 

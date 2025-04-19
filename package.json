@@ -15,9 +15,8 @@
     "backend:dev": "cd backend && python -m venv .venv && .venv\\Scripts\\activate.ps1 && pip install -r requirements.txt && python manage.py runserver",
     "build": "docker-compose build",
     "migrations": "node run-migrations.js",
-    "prod": "docker-compose -f docker-compose.prod.yml up --build -d && npm run migrations"
-
-},
+    "prod": "docker-compose -f docker-compose.prod.yml up --build -d && npm run migrations",
+    "backend:deploy": "docker-compose -f docker-compose.prod.yml up -d backend && npm run migrations"},
 
   "author": "",
   "license": "ISC",

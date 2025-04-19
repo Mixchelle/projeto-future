@@ -1,8 +1,8 @@
-from decimal import Decimal
-from form.models import FormularioRespondido, Resposta
-from .models import MaturityAssessment, CategoriaMaturity, SubcategoriaMaturity
+from decimal import Decimal, InvalidOperation
 from django.db import transaction
 from collections import defaultdict
+from form.models import FormularioRespondido, Resposta
+from .models import MaturityAssessment, CategoriaMaturity, SubcategoriaMaturity
 
 # Mapeamento de funções e categorias conforme NIST CSF 2.0
 FUNCOES_CATEGORIAS = {
@@ -63,8 +63,9 @@ FUNCOES_CATEGORIAS = {
 }
 
 def texto_para_numero(texto):
+    """Converte texto de maturidade para valor numérico"""
     if not texto:
-        return None
+        return Decimal("0.0")
 
     mapeamento = {
         "Inicial": Decimal("1.0"),
@@ -80,10 +81,11 @@ def texto_para_numero(texto):
 
     try:
         return Decimal(str(texto))
-    except:
-        return None
+    except (InvalidOperation, TypeError):
+        return Decimal("0.0")
 
 def calcular_status(media, objetivo):
+    """Determina o status com base na média e objetivo"""
     if media >= objetivo * Decimal("1.2"):
         return "Excelente"
     elif media >= objetivo * Decimal("0.9"):
@@ -97,6 +99,9 @@ def calcular_status(media, objetivo):
 
 def extract_function_category(codigo_pergunta):
     """Extrai função e categoria do código da pergunta (ex: GV.OC-01 -> GV, OC)"""
+    if not codigo_pergunta:
+        return None, None
+        
     parts = codigo_pergunta.split(".")
     if len(parts) < 2:
         return None, None
@@ -106,6 +111,7 @@ def extract_function_category(codigo_pergunta):
     return function, category_part
 
 def calculate_maturity(formulario_respondido_id: int):
+    """Calcula a maturidade com base nas respostas do formulário"""
     try:
         formulario_respondido = FormularioRespondido.objects.get(
             id=formulario_respondido_id
@@ -135,6 +141,10 @@ def calculate_maturity(formulario_respondido_id: int):
                 }
             )
 
+            # Listas para armazenar todas as políticas e práticas
+            todas_politicas = []
+            todas_praticas = []
+
             # Coleta todas as respostas de uma vez
             respostas = Resposta.objects.filter(
                 formulario_respondido=formulario_respondido
@@ -142,6 +152,9 @@ def calculate_maturity(formulario_respondido_id: int):
 
             # Processa cada resposta
             for resposta in respostas:
+                if not resposta.pergunta or not resposta.pergunta.codigo:
+                    continue
+                    
                 pergunta = resposta.pergunta
                 function_id, category_id = extract_function_category(pergunta.codigo)
                 
@@ -149,8 +162,8 @@ def calculate_maturity(formulario_respondido_id: int):
                     continue
                 
                 # Converte as respostas para valores numéricos
-                politica = texto_para_numero(resposta.politica) or Decimal("0.0")
-                pratica = texto_para_numero(resposta.pratica) or Decimal("0.0")
+                politica = texto_para_numero(resposta.politica)
+                pratica = texto_para_numero(resposta.pratica)
                 
                 # Armazena os dados
                 function_data[function_id]['categorias'][category_id]['politica'].append(politica)
@@ -159,73 +172,100 @@ def calculate_maturity(formulario_respondido_id: int):
                 
                 function_data[function_id]['politica'].append(politica)
                 function_data[function_id]['pratica'].append(pratica)
+                
+                # Adiciona às listas totais
+                todas_politicas.append(politica)
+                todas_praticas.append(pratica)
 
             # Calcula as médias e salva no banco de dados
             for function_id, f_data in function_data.items():
                 # Calcula médias para cada categoria
                 for category_id, c_data in f_data['categorias'].items():
                     if c_data['politica'] and c_data['pratica']:
-                        # Médias da categoria
-                        media_politica = sum(c_data['politica']) / len(c_data['politica'])
-                        media_pratica = sum(c_data['pratica']) / len(c_data['pratica'])
+                        try:
+                            # Médias da categoria
+                            media_politica = sum(c_data['politica']) / len(c_data['politica'])
+                            media_pratica = sum(c_data['pratica']) / len(c_data['pratica'])
+                            media_total = (media_politica + media_pratica) / Decimal("2.0")
+                            
+                            # Obtém o nome da categoria
+                            category_name = FUNCOES_CATEGORIAS.get(function_id, {}).get('categorias', {}).get(category_id, f"{function_id}.{category_id}")
+                            
+                            # Cria a categoria de maturidade
+                            categoria_maturity = CategoriaMaturity.objects.create(
+                                maturity_assessment=maturity_assessment,
+                                categoria=None,
+                                nome=category_name,
+                                sigla=f"{function_id}.{category_id}",
+                                media_politica=media_politica.quantize(Decimal("0.1")),
+                                media_pratica=media_pratica.quantize(Decimal("0.1")),
+                                media_total=media_total.quantize(Decimal("0.1")),
+                                objetivo=Decimal("3.0"),
+                                status=calcular_status(media_total, Decimal("3.0")),
+                                tipo='CATEGORIA'
+                            )
+                            
+                            # Cria as subcategorias (perguntas individuais)
+                            for pergunta in c_data['perguntas']:
+                                resposta = next((r for r in respostas if r.pergunta == pergunta), None)
+                                if resposta:
+                                    politica = texto_para_numero(resposta.politica)
+                                    pratica = texto_para_numero(resposta.pratica)
+                                    
+                                    SubcategoriaMaturity.objects.create(
+                                        categoria_maturity=categoria_maturity,
+                                        pergunta=pergunta,
+                                        politica=politica,
+                                        pratica=pratica,
+                                        objetivo=Decimal("3.0"),
+                                        descricao=pergunta.questao[:100] if pergunta.questao else "",
+                                        tipo='PERGUNTA'
+                                    )
+                        except Exception as e:
+                            continue
+
+                # Calcula médias para a função
+                if f_data['politica'] and f_data['pratica']:
+                    try:
+                        media_politica = sum(f_data['politica']) / len(f_data['politica'])
+                        media_pratica = sum(f_data['pratica']) / len(f_data['pratica'])
                         media_total = (media_politica + media_pratica) / Decimal("2.0")
                         
-                        # Obtém o nome da categoria
-                        category_name = FUNCOES_CATEGORIAS.get(function_id, {}).get('categorias', {}).get(category_id, f"{function_id}.{category_id}")
-                        
-                        # Cria a categoria de maturidade
-                        categoria_maturity = CategoriaMaturity.objects.create(
+                        # Cria registro para a função
+                        CategoriaMaturity.objects.create(
                             maturity_assessment=maturity_assessment,
-                            categoria=None,  # Não vinculado ao modelo Categoria original
-                            nome=category_name,
-                            sigla=f"{function_id}.{category_id}",
+                            categoria=None,
+                            nome=FUNCOES_CATEGORIAS.get(function_id, {}).get('nome', function_id),
+                            sigla=function_id,
                             media_politica=media_politica.quantize(Decimal("0.1")),
                             media_pratica=media_pratica.quantize(Decimal("0.1")),
                             media_total=media_total.quantize(Decimal("0.1")),
                             objetivo=Decimal("3.0"),
                             status=calcular_status(media_total, Decimal("3.0")),
-                            tipo='CATEGORIA'
+                            tipo='FUNCAO'
                         )
-                        
-                        # Cria as subcategorias (perguntas individuais)
-                        for pergunta in c_data['perguntas']:
-                            resposta = next((r for r in respostas if r.pergunta == pergunta), None)
-                            if resposta:
-                                politica = texto_para_numero(resposta.politica) or Decimal("0.0")
-                                pratica = texto_para_numero(resposta.pratica) or Decimal("0.0")
-                                
-                                SubcategoriaMaturity.objects.create(
-                                    categoria_maturity=categoria_maturity,
-                                    pergunta=pergunta,
-                                    politica=politica,
-                                    pratica=pratica,
-                                    objetivo=Decimal("3.0"),
-                                    descricao=pergunta.questao[:100],  # Descrição resumida
-                                    tipo='PERGUNTA'
-                                )
+                    except Exception as e:
+                        continue
 
-                # Calcula médias para a função (opcional)
-                if f_data['politica'] and f_data['pratica']:
-                    media_politica = sum(f_data['politica']) / len(f_data['politica'])
-                    media_pratica = sum(f_data['pratica']) / len(f_data['pratica'])
-                    media_total = (media_politica + media_pratica) / Decimal("2.0")
+            # Calcula as médias totais gerais
+            if todas_politicas and todas_praticas:
+                try:
+                    media_total_politica = sum(todas_politicas) / len(todas_politicas)
+                    media_total_pratica = sum(todas_praticas) / len(todas_praticas)
+                    media_total_geral = (media_total_politica + media_total_pratica) / Decimal("2.0")
                     
-                    # Cria registro para a função
-                    CategoriaMaturity.objects.create(
-                        maturity_assessment=maturity_assessment,
-                        categoria=None,
-                        nome=FUNCOES_CATEGORIAS.get(function_id, {}).get('nome', function_id),
-                        sigla=function_id,
-                        media_politica=media_politica.quantize(Decimal("0.1")),
-                        media_pratica=media_pratica.quantize(Decimal("0.1")),
-                        media_total=media_total.quantize(Decimal("0.1")),
-                        objetivo=Decimal("3.0"),
-                        status=calcular_status(media_total, Decimal("3.0")),
-                        tipo='FUNCAO'
-                    )
+                    # Atualiza a avaliação com as médias totais
+                    maturity_assessment.media_total_politica = media_total_politica.quantize(Decimal("0.1"))
+                    maturity_assessment.media_total_pratica = media_total_pratica.quantize(Decimal("0.1"))
+                    maturity_assessment.media_total_geral = media_total_geral.quantize(Decimal("0.1"))
+                    maturity_assessment.save()
+                except Exception as e:
+                    pass
 
             return maturity_assessment
 
+    except FormularioRespondido.DoesNotExist:
+        return type("ErrorObject", (), {"error": "Formulário respondido não encontrado."})
     except Exception as e:
         error_msg = f"Erro ao calcular maturidade: {str(e)}"
         return type("ErrorObject", (), {"error": error_msg})

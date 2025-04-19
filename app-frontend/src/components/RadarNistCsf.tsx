@@ -25,7 +25,7 @@ const categoriaCoresClaras: Record<string, string> = {
 const RadarNistCsf: React.FC = () => {
   const formularioId = localStorage.getItem("formularioRespondidoId");
   const { data, loading, error } = useAvaliacao(Number(formularioId));
-
+  
   if (loading || error || !data) return null;
 
   // Map table data into radar chart data format
@@ -35,9 +35,16 @@ const RadarNistCsf: React.FC = () => {
       nome: sub.subcategoria,
       politica: sub.politica ?? 0,
       pratica: sub.pratica ?? 0,
-      objetivo: sub.objetivo ?? 0,  // Update this to get the real objective value
+      objetivo: sub.objetivo ?? 0,
     }))
   );
+
+  // Agrupar subcategorias por categoria principal
+  const categoriasPrincipais = data.categorias.map(cat => ({
+    sigla: cat.sigla,
+    nome: cat.categoria,
+    subcategorias: data.subcategorias[cat.sigla] || []
+  }));
 
   return (
     <div className="radar-nist-container p-4 bg-white shadow rounded-md max-w-4xl mx-auto">
@@ -52,45 +59,44 @@ const RadarNistCsf: React.FC = () => {
           />
           <PolarRadiusAxis angle={90} domain={[0, 5]} tickCount={6} />
 
-          {/* Áreas de fundo por categoria */}
-          {Object.entries(data.subcategorias).map(([categoria, subs], indexCategoria) => {
-            const numSubcategorias = Object.values(data.subcategorias).flat().length;
-            const startIndex = Object.values(data.subcategorias)
-              .slice(0, indexCategoria)
-              .flat()
-              .length;
-
-            return subs.map((sub, indexSubcategoria) => {
-              const angleStart = -Math.PI / 2 + (2 * Math.PI * (startIndex + indexSubcategoria)) / numSubcategorias;
-              const angleEnd = -Math.PI / 2 + (2 * Math.PI * (startIndex + indexSubcategoria + 1)) / numSubcategorias;
-              const outerRadius = 180;
-              const innerRadius = 0;
-
-              return (
-                <Sector
-                  key={`sector-${categoria}-${sub.id}`}
-                  cx={200}
-                  cy={200}
-                  innerRadius={innerRadius}
-                  outerRadius={outerRadius}
-                  startAngle={angleStart * (180 / Math.PI)}
-                  endAngle={angleEnd * (180 / Math.PI)}
-                  fill={categoriaCoresClaras[categoria]}
-                  opacity={0.3}
-                />
-              );
-            });
+          {/* Áreas de fundo por categoria principal */}
+          {categoriasPrincipais.map((categoria, index) => {
+            const totalSubcategorias = radarData.length;
+            const subcategoriasNaCategoria = categoria.subcategorias.length;
+            
+            // Encontrar o índice da primeira subcategoria desta categoria
+            let startIndex = 0;
+            for (let i = 0; i < index; i++) {
+              startIndex += categoriasPrincipais[i].subcategorias.length;
+            }
+            
+            const startAngle = -90 + (360 * startIndex / totalSubcategorias);
+            const endAngle = -90 + (360 * (startIndex + subcategoriasNaCategoria) / totalSubcategorias);
+            
+            return (
+              <Sector
+                key={`sector-${categoria.sigla}`}
+                cx="50%"
+                cy="50%"
+                innerRadius={0}
+                outerRadius={180}
+                startAngle={startAngle}
+                endAngle={endAngle}
+                fill={categoriaCoresClaras[categoria.sigla]}
+                opacity={0.3}
+              />
+            );
           })}
 
           {/* Gráfico real com cores personalizadas */}
-          <Radar name="Política" dataKey="politica" stroke="#2980b9" fill="#2980b9" fillOpacity={0.3} />
-          <Radar name="Prática" dataKey="pratica" stroke="#2ecc71" fill="#2ecc71" fillOpacity={0.3} />
+          <Radar name="Política" dataKey="politica" stroke="#1f77b4" fill="#1f77b4" fillOpacity={0.2} />
+          <Radar name="Prática" dataKey="pratica" stroke="#8e44ad" fill="#8e44ad" fillOpacity={0.2} />
           <Radar
             name="Objetivo"
             dataKey="objetivo"
-            stroke="#ffcc80"
-            fill="#ffcc80"
-            fillOpacity={0.3}
+            stroke="#2ca02c"
+            fill="#2ca02c"
+            fillOpacity={0.1}
             strokeWidth={2}
           />
 
