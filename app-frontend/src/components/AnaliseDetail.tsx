@@ -240,7 +240,7 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
             </table>
           </div>
 
-{Object.entries(subcategoria).sort(([siglaA], [siglaB]) => {
+{Object.entries(subcategoria ).sort(([siglaA], [siglaB]) => {
   const indexA = ordemCategorias.indexOf(siglaA);
   const indexB = ordemCategorias.indexOf(siglaB);
   return indexA - indexB;
@@ -264,84 +264,37 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
           </tr>
         </thead>
         <tbody>
-        {subcategorias.map((sub) => (
-          <React.Fragment key={sub.id}>
-            <tr className="cursor-pointer" onClick={() => toggleRow(sub.id)}>
-              <td>
-                <button className='button-icone' title={expandedRows[sub.id] ? 'Recolher' : 'Expandir'}>
-                  {expandedRows[sub.id] ? '➖' : '➕'}
-                </button> 
-                {sub.id}
-              </td>
-              <td>{sub.subcategoria}</td>
-              <td>{sub.politica?.toFixed(2) || '-'}</td>
-              <td>{sub.pratica?.toFixed(2) || '-'}</td>
-              <td>{sub.objetivo?.toFixed(2) || '-'}</td>
-            </tr>
-
-            {expandedRows[sub.id] && (
-              <tr>
-                <td colSpan={5}>
-                  <table className={`${styles.tabelaestilo} w-full mt-2`}>
-                    <thead>
-                      <tr>
-                        <td>ID</td>
-                        <td>Pergunta</td>
-                        <td>Política</td>
-                        <td>Prática</td>
-                        <td>Objetivo</td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {sub.perguntas?.map((p) => (
-                        <tr key={p.id}>
-                          <td>{p.id}</td>
-                          <td>{p.subcategoria}</td>
-                          <td>{p.politica}</td>
-                          <td>{p.pratica}</td>
-                          <td>{p.objetivo}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </td>
+          {Array.isArray(subcategorias) && subcategorias.map((sub) => (
+            <React.Fragment key={sub.id}>
+              <tr className="cursor-pointer" onClick={() => toggleRow(sub.id)}>
+                <td>{sub.id}</td>
+                <td>{sub.nome}</td>
+                <td>{sub.politica.toFixed(2)}</td>
+                <td>{sub.pratica.toFixed(2)}</td>
+                <td>{sub.objetivo.toFixed(2)}</td>
               </tr>
-            )}
-          </React.Fragment>
-        ))}
+              {expandedRows[sub.id] && (
+                <tr>
+                  <td colSpan={5}>
+                  <FormularioRecomendacao
+  formData={formData}
+  onChange={handleInputChange}
+  onSubmit={handleSubmit}
+  subcategorias={subcategorias}
+/>
+
+
+                  </td>
+                </tr>
+              )}
+            </React.Fragment>
+          ))}
         </tbody>
       </table>
-      <br /><br />
-      <div className={styles.containerForm}>
-        <h2 className="mb-4">Recomendações para {categoria.categoria} ({sigla})</h2>
-
-        <button
-          className={styles.toggleBtn}
-          onClick={() => setMostrarFormulario(mostrarFormulario === sigla ? null : sigla)}
-        >
-          {mostrarFormulario === sigla ? (
-            <>
-              <FiX className="inline mr-2" /> Cancelar
-            </>
-          ) : (
-            <>
-              <FiPlus className="inline mr-2" /> Adicionar Recomendação
-            </>
-          )}
-        </button>
-
-        {mostrarFormulario === sigla && (
-          <FormularioRecomendacao
-            formData={formData}
-            onChange={handleInputChange}
-            onSubmit={handleSubmit}
-            subcategorias={subcategoria}
-          />
-        )}
-      </div>
     </div>
   );
 })}
+
 
         </div>
       </main>

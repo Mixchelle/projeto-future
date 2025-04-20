@@ -59,34 +59,9 @@ const RadarNistCsf: React.FC = () => {
           />
           <PolarRadiusAxis angle={90} domain={[0, 5]} tickCount={6} />
 
-          {/* Áreas de fundo por categoria principal */}
-          {categoriasPrincipais.map((categoria, index) => {
-            const totalSubcategorias = radarData.length;
-            const subcategoriasNaCategoria = categoria.subcategorias.length;
+  
             
-            // Encontrar o índice da primeira subcategoria desta categoria
-            let startIndex = 0;
-            for (let i = 0; i < index; i++) {
-              startIndex += categoriasPrincipais[i].subcategorias.length;
-            }
-            
-            const startAngle = -90 + (360 * startIndex / totalSubcategorias);
-            const endAngle = -90 + (360 * (startIndex + subcategoriasNaCategoria) / totalSubcategorias);
-            
-            return (
-              <Sector
-                key={`sector-${categoria.sigla}`}
-                cx="50%"
-                cy="50%"
-                innerRadius={0}
-                outerRadius={180}
-                startAngle={startAngle}
-                endAngle={endAngle}
-                fill={categoriaCoresClaras[categoria.sigla]}
-                opacity={0.3}
-              />
-            );
-          })}
+ 
 
           {/* Gráfico real com cores personalizadas */}
           <Radar name="Política" dataKey="politica" stroke="#1f77b4" fill="#1f77b4" fillOpacity={0.2} />

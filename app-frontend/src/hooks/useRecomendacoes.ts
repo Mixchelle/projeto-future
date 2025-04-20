@@ -16,7 +16,7 @@ interface Recomendacao {
   prioridade_display?: string;
   data_inicio: string;
   data_fim: string;
-  meses: number;
+  meses: string;
   detalhes: string;
   investimentos: string;
   riscos: string;
@@ -39,7 +39,7 @@ interface FormData {
   prioridade: string;
   data_inicio: string;
   data_fim: string;
-  meses: number;
+  meses: string;
   detalhes: string;
   investimentos: string;
   riscos: string;

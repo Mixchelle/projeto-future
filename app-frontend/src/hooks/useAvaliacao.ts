@@ -115,7 +115,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
           localStorage.setItem("cliente_formulario_analise_id", cliente.id);
           console.log('cliente', cliente);
         // Verificar se funcoes é um objeto e transformar em um array
-        const funcoes = Object.values(responseData.funcoes);
+        const funcoes: Funcao[] = Object.values(responseData.funcoes);
         if (funcoes.length === 0) {
           throw new Error('Nenhuma função encontrada ou formato inválido');
         }
