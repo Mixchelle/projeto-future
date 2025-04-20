@@ -48,6 +48,7 @@
     "test:watch": "vitest watch",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
+    "preview": "npm run build && npm run start",
     "export": "next export",
     "deploy": "cross-env GITHUB_PAGES=true npm run build && npm run export && gh-pages -d out"
   }
