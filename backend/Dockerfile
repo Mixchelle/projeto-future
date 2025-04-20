@@ -15,7 +15,6 @@ RUN apt-get update && apt-get install -y \
 # Copia os arquivos do projeto
 COPY . /app
 
-
 # Instala dependências Python
 RUN pip install --upgrade pip
 RUN pip install --prefix=/install -r requirements.txt
@@ -26,7 +25,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 COPY --from=builder /install /usr/local
-COPY ./backend /app
+COPY . /app
 
 # Comando padrão: usando gunicorn com seu app Django
 CMD ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8000"]
