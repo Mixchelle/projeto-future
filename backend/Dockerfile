@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copia os arquivos do projeto
-COPY . .
+COPY . /app
+
 
 # Instala dependências Python
 RUN pip install --upgrade pip
