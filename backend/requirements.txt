@@ -17,3 +17,4 @@ matplotlib==3.10.1
 cryptography==44.0.2
 drf-yasg==1.21.7
 python-dotenv==1.0.1
+gunicorn
