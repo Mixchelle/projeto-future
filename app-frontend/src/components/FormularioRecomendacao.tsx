@@ -1,4 +1,3 @@
-import { Categoria } from "@/hooks/useAvaliacao";
 import React from "react";
 
 interface FormData {
@@ -24,8 +23,9 @@ interface Props {
   formData: FormData;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
-  subcategorias?: Categoria[];
+  subcategorias?: Record<string, any[]>;
 }
+
 const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit, subcategorias }) => {
   const opcoesCategoria = ["Governança", "Identificação", "Proteção", "Detecção", "Resposta", "Recuperação"];
   const impactoGravidadeOpcoes = ["1", "2", "3", "4", "5"];

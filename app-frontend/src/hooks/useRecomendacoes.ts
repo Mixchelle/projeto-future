@@ -49,8 +49,6 @@ interface FormData {
   gravidade: string;
 }
 
-const API_URL = `${getBaseUrl()}/recommendations/recomendacoes/`; // Ajuste conforme sua URL base
-
 const getAuthConfig = () => {
   const token = localStorage.getItem("token");
   return {
@@ -65,42 +63,18 @@ const useRecomendacoes = () => {
   const [recomendacoes, setRecomendacoes] = useState<Recomendacao[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
-  const analista = JSON.parse(localStorage.getItem("user") || "{}"); 
 
+  const cliente = localStorage.getItem("cliente_formulario_analise_id");
   const formularioId = localStorage.getItem("formularioEmAnaliseId");
-  const cliente = JSON.parse(localStorage.getItem("cliente_formulario_analise_id") || "{}");
 
-  const formatPayload = (formData: FormData) => ({
-    nome: formData.nome,
-    categoria: formData.categoria,
-    tecnologia: formData.tecnologia,
-    nist: formData.nist,
-    prioridade: formData.prioridade,
-    data_inicio: formData.data_inicio,
-    data_fim: formData.data_fim,
-    meses: formData.meses,
-    detalhes: formData.detalhes,
-    investimentos: formData.investimentos,
-    riscos: formData.riscos,
-    justificativa: formData.justificativa,
-    observacoes: formData.observacoes,
-    impacto: formData.impacto,
-    gravidade: formData.gravidade,
-    cliente: cliente,
-    formulario_respondido: Number(formularioId),
-    analista: analista.id,
-  });
+  const API_URL = `${getBaseUrl()}/recommendations/${cliente}/${formularioId}/`;
 
   const fetchRecomendacoes = async () => {
     if (!cliente || !formularioId) return;
-    
+
     setLoading(true);
     try {
-      const response = await axios.get(
-        `${API_URL}${cliente}/${formularioId}/`,
-        getAuthConfig()
-      );
+      const response = await axios.get(API_URL, getAuthConfig());
       setRecomendacoes(response.data);
       setError(null);
     } catch (err: any) {
@@ -114,23 +88,14 @@ const useRecomendacoes = () => {
   const adicionarRecomendacao = async (formData: FormData) => {
     try {
       setLoading(true);
-      alert('Ainda nao implemntado no backend')
-      return;
-      const payload = formatPayload(formData);
-      console.log('Payload para adicionar recomendação:', payload);
-      const response = await axios.post(
-        `${API_URL}${cliente}/${formularioId}/`,
-        payload,
-        getAuthConfig()
-      );
-      
+      const response = await axios.post(API_URL, formData, getAuthConfig());
       setRecomendacoes(prev => [...prev, response.data]);
       return response.data;
     } catch (err: any) {
       console.error('Erro ao adicionar recomendação:', err);
-      const errorMessage = err.response?.data?.detail || 
-                         Object.values(err.response?.data || {}).join('\n') || 
-                         'Erro ao adicionar recomendação';
+      const errorMessage = err.response?.data?.detail ||
+        Object.values(err.response?.data || {}).join('\n') ||
+        'Erro ao adicionar recomendação';
       setError(errorMessage);
       throw new Error(errorMessage);
     } finally {
@@ -141,21 +106,14 @@ const useRecomendacoes = () => {
   const atualizarRecomendacao = async (id: number, formData: Partial<FormData>) => {
     try {
       setLoading(true);
-      const response = await axios.patch(
-        `${API_URL}${id}/`,
-        formData,
-        getAuthConfig()
-      );
-      
-      setRecomendacoes(prev => 
-        prev.map(r => r.id === id ? response.data : r)
-      );
+      const response = await axios.patch(`${getBaseUrl()}/recommendations/recomendacoes/${id}/`, formData, getAuthConfig());
+      setRecomendacoes(prev => prev.map(r => r.id === id ? response.data : r));
       return response.data;
     } catch (err: any) {
       console.error('Erro ao atualizar recomendação:', err);
-      const errorMessage = err.response?.data?.detail || 
-                         Object.values(err.response?.data || {}).join('\n') || 
-                         'Erro ao atualizar recomendação';
+      const errorMessage = err.response?.data?.detail ||
+        Object.values(err.response?.data || {}).join('\n') ||
+        'Erro ao atualizar recomendação';
       setError(errorMessage);
       throw new Error(errorMessage);
     } finally {
@@ -166,7 +124,7 @@ const useRecomendacoes = () => {
   const removerRecomendacao = async (id: number) => {
     try {
       setLoading(true);
-      await axios.delete(`${API_URL}${id}/`, getAuthConfig());
+      await axios.delete(`${getBaseUrl()}/recommendations/recomendacoes/${id}/`, getAuthConfig());
       setRecomendacoes(prev => prev.filter(r => r.id !== id));
     } catch (err: any) {
       console.error('Erro ao remover recomendação:', err);
@@ -195,14 +153,12 @@ const useRecomendacoes = () => {
       };
 
       const response = await axios.patch(
-        `${API_URL}${id}/`,
+        `${getBaseUrl()}/recommendations/recomendacoes/${id}/`,
         formData,
         config
       );
-      
-      setRecomendacoes(prev => 
-        prev.map(r => r.id === id ? response.data : r)
-      );
+
+      setRecomendacoes(prev => prev.map(r => r.id === id ? response.data : r));
       return response.data;
     } catch (err: any) {
       console.error('Erro ao marcar como concluída:', err);

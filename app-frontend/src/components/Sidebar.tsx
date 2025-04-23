@@ -58,10 +58,14 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
 
         {!isCollapsed && (
           <div className="user-section">
-            <Image src={logo} alt="Logo da Empresa" className="user-avatar" width={60} height={60} />
-            <p className="user-name">{user.name}</p>
-            <p className="user-type">{user.type}</p>
-          </div>
+  <Image src={logo} alt="Logo da Empresa" className="user-avatar" width={60} height={60} />
+  <p className="user-name" data-testid="user-name">
+    {user.name || "Usuário"}
+  </p>
+  <p className="user-type" data-testid="user-type">
+    {user.type || "Tipo não definido"}
+  </p>
+</div>
         )}
 
         <nav className="menu-items">

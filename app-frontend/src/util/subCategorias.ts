@@ -1,4 +1,4 @@
-const subcategorias = {
+export const subcategorias = {
     "GV": [
       { id: "GV.OC", subcategoria: "Contexto organizacional GV.OC" },
       { id: "GV.RM", subcategoria: "Estratégia de gerenciamento de riscos GV.RM" },
@@ -64,20 +64,21 @@ const subcategorias = {
     // Percorre cada chave do objeto
     Object.keys(dados).forEach(chave => {
       const itemArray = dados[chave];
-      const item = itemArray[0]; // A estrutura tem sempre um único item por chave
   
       // Extrai a categoria (parte antes do ponto no ID)
-      const categoria = item.id.split('.')[0];
+      itemArray.forEach(item => {
+        const categoria = item.id.split('.')[0];
   
-      // Se a categoria ainda não existe no resultado, cria um array vazio para ela
-      if (!resultado[categoria]) {
-        resultado[categoria] = [];
-      }
+        // Se a categoria ainda não existe no resultado, cria um array vazio para ela
+        if (!resultado[categoria]) {
+          resultado[categoria] = [];
+        }
   
-      // Adiciona o item ao array da categoria correspondente
-      resultado[categoria].push(item);
+        // Adiciona o item ao array da categoria correspondente
+        resultado[categoria].push(item);
+      });
     });
-    
+  
     return resultado;
   }
   

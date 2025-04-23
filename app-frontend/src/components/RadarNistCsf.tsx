@@ -58,11 +58,6 @@ const RadarNistCsf: React.FC = () => {
             stroke="#333"
           />
           <PolarRadiusAxis angle={90} domain={[0, 5]} tickCount={6} />
-
-  
-            
- 
-
           {/* Gráfico real com cores personalizadas */}
           <Radar name="Política" dataKey="politica" stroke="#1f77b4" fill="#1f77b4" fillOpacity={0.2} />
           <Radar name="Prática" dataKey="pratica" stroke="#8e44ad" fill="#8e44ad" fillOpacity={0.2} />
