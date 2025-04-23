@@ -61,10 +61,6 @@
   margin-left: 0px;
 }
 
-.system-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
 
 /* Sessão, Timer e Nome da Página */
 .session-info {
@@ -117,9 +113,16 @@
   font-size: 12px;
 }
 
-.titulo-1{
-  justify-content: left;
-  margin-left: -80%;
-  font-size: 6px;
+
+.titulo-1 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+}
+.system-name {
+  color: #474747; 
+  font-size: 1rem;
+}
+.orange {
+  color: orange;
 }
