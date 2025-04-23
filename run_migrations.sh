@@ -3,7 +3,7 @@
 echo "Dropando Formulario, Categoria e Pergunta antes de rodar as migrações..."
 
 # Define o nome do container
-CONTAINER_NAME="future_backend"
+CONTAINER_NAME="future_backend_prod"
 
 # Aguarda até que o container esteja rodando (máx. 30s)
 contador=0
