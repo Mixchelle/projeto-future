@@ -27,8 +27,14 @@ interface Props {
 }
 
 const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit, subcategorias }) => {
-  const opcoesCategoria = ["Governança", "Identificação", "Proteção", "Detecção", "Resposta", "Recuperação"];
-  const impactoGravidadeOpcoes = ["1", "2", "3", "4", "5"];
+  const opcoesCategoria = [
+    "Governar (GV)", 
+    "Identificar (ID)", 
+    "Proteger (PR)", 
+    "Detectar (DE)", 
+    "Responder (RS)", 
+    "Recuperar (RC)"
+  ];  const impactoGravidadeOpcoes = ["1", "2", "3", "4", "5"];
 
   const nistOpcoes = formData.categoria && subcategorias?.[formData.categoria]
     ? subcategorias[formData.categoria].map((sub) => sub.sigla || sub.id)

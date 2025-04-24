@@ -67,7 +67,7 @@ const useRecomendacoes = () => {
   const cliente = localStorage.getItem("cliente_formulario_analise_id");
   const formularioId = localStorage.getItem("formularioEmAnaliseId");
 
-  const API_URL = `${getBaseUrl()}/recommendations/${cliente}/${formularioId}/`;
+  const API_URL = `${getBaseUrl()}/recommendations/recomendacoes/${cliente}/${formularioId}/`;
 
   const fetchRecomendacoes = async () => {
     if (!cliente || !formularioId) return;
@@ -75,6 +75,7 @@ const useRecomendacoes = () => {
     setLoading(true);
     try {
       const response = await axios.get(API_URL, getAuthConfig());
+      console.log('recoendaçoes vindo do back', response)
       setRecomendacoes(response.data);
       setError(null);
     } catch (err: any) {
@@ -90,6 +91,7 @@ const useRecomendacoes = () => {
       setLoading(true);
       const response = await axios.post(API_URL, formData, getAuthConfig());
       setRecomendacoes(prev => [...prev, response.data]);
+      console.log('response', response)
       return response.data;
     } catch (err: any) {
       console.error('Erro ao adicionar recomendação:', err);
@@ -169,6 +171,32 @@ const useRecomendacoes = () => {
     }
   };
 
+
+  // Adicione esta função no final do arquivo, antes do export
+  const agruparRecomendacoesPorCategoria = (recomendacoes: Recomendacao[]) => {
+    console.log('recomendacoes', recomendacoes);
+  
+    const agrupada = recomendacoes.reduce((acc, recomendacao) => {
+      // Extrai o nome base da categoria (remove a sigla entre parênteses se existir)
+      let categoria = recomendacao.categoria;
+      if (categoria.includes('(')) {
+        categoria = categoria.split('(')[0].trim();
+      }
+      
+      if (!acc[categoria]) {
+        acc[categoria] = [];
+      }
+      acc[categoria].push(recomendacao);
+      return acc;
+    }, {} as Record<string, Recomendacao[]>);
+    
+    console.log('agrupada', agrupada);
+    return agrupada;
+  };
+
+// Modifique o retorno do hook para incluir a função de agrupamento
+
+
   useEffect(() => {
     fetchRecomendacoes();
   }, [cliente, formularioId]);
@@ -177,6 +205,7 @@ const useRecomendacoes = () => {
     recomendacoes,
     loading,
     error,
+    recomendacoesPorCategoria: agruparRecomendacoesPorCategoria(recomendacoes),
     fetchRecomendacoes,
     adicionarRecomendacao,
     atualizarRecomendacao,

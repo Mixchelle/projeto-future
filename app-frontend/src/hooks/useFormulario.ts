@@ -242,6 +242,20 @@ export const useFormulario = () => {
     }
   };
 
+
+  const colocarEmPendencia = async (formularioId: number, categorias: string[], observacoes: string) => {
+    try {
+      const response = await axios.post(
+        `${API_URL}/formularios/${formularioId}/pendencia/`,
+        { observacoes },
+        getAuthConfig()
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Erro ao colocar formulário em pendência:", error);
+      throw error;
+    }
+  };
   useEffect(() => {
     getFormularios();
   }, []);
@@ -329,6 +343,7 @@ export const useFormulario = () => {
     formulariosEmAnalise,
     loadingFormulariosEmAnalise,
     errorFormulariosEmAnalise,
+    formulariosEmAndamento,
     getFormularios,
     getCategoriasByFormulario,
     getQuestoesByCategoria,
@@ -336,7 +351,7 @@ export const useFormulario = () => {
     saveFormularioRespondido,
     updateFormularioById,
     getFormulariosEmAndamento,
-
+    colocarEmPendencia,
     buscarFormulariosEmAnalise,
   };
 };

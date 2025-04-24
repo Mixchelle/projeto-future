@@ -26,6 +26,7 @@ export default function NistPage() {
     categorias,
     perguntas,
     formularioRespondido,
+    formulariosEmAndamento,
     getFormularios,
     getCategoriasByFormulario,
     getQuestoesByCategoria,
@@ -33,6 +34,8 @@ export default function NistPage() {
     saveFormularioRespondido,
     updateFormularioById,
    } = useFormulario();
+
+
   const [showSnackbar, setShowSnackbar] = useState<boolean>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string>("");
   const [atualizarCategorias, setAtualizarCategorias] = useState<boolean>(false);
@@ -42,7 +45,23 @@ export default function NistPage() {
     const router = useRouter();
     const [showQuestionMap, setShowQuestionMap] = useState<boolean>(true);
     const [categoriasCompletas, setCategoriasCompletas] = useState<{ [key: number]: boolean }>({});
+    const [isFormDisabled, setIsFormDisabled] = useState<boolean>(true);
 
+
+
+    useEffect(() => {
+      console.log('formulariosEmAndamento', formulariosEmAndamento);
+      
+      const status = localStorage.getItem('statusFormulario');
+      
+      if (status === 'em_analise' || status === 'concluido') {
+        setIsFormDisabled(true);
+      }
+    
+      // Atualizar algo quando o status mudar, se necessário
+    }, [formularioRespondido]);
+    
+    
 useEffect(() => {
   const novasCompletas: { [key: number]: boolean } = {};
 
@@ -674,6 +693,7 @@ useEffect(() => {
                     Política
                   </label>
                   <select
+                    disabled={isFormDisabled}
                     value={respostas[perguntas[currentQuestionIndex].id]?.politica || ""}
                     onChange={(e) => handlePoliticaChange(perguntas[currentQuestionIndex].id, e.target.value)}
                     className="selector-input w-full p-2 border-2 border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -698,6 +718,7 @@ useEffect(() => {
                     Prática
                   </label>
                   <select
+                    disabled={isFormDisabled}
                     value={respostas[perguntas[currentQuestionIndex].id]?.pratica || ""}
                     onChange={(e) => handlePraticaChange(perguntas[currentQuestionIndex].id, e.target.value)}
                     className="selector-input w-full p-2 border-2 border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -727,6 +748,7 @@ useEffect(() => {
                 <div className="flex items-center space-x-2">
        
                   <textarea
+                   disabled={isFormDisabled}
                     placeholder="Comece a digitar sua mensagem..."
                     rows={3}
                     value={respostas[perguntas[currentQuestionIndex].id]?.informacoesAdicionais || ""}
@@ -738,6 +760,7 @@ useEffect(() => {
                 </div>
                 <label className="cursor-pointer file">
                     <input
+                      disabled={isFormDisabled}
                       type="file"
                       className="hidden"
                       onChange={(e) => handleAnexoChange(perguntas[currentQuestionIndex].id, e.target.files?.[0] || null)}
@@ -759,6 +782,7 @@ useEffect(() => {
     
       </div>
       <button
+       disabled={isFormDisabled}
         className="anexo-remover"
         onClick={() => handleAnexoChange(perguntas[currentQuestionIndex].id, null)}
         title="Remover arquivo"
@@ -811,15 +835,26 @@ useEffect(() => {
           <br />
           
           {/* Botão de enviar */}
-          <button 
-            onClick={handleEnviarFormulario}
-            className={`btn px-4 py-2 rounded-lg ${todasQuestoesRespondidas() ? 
-              "bg-blue-500 text-white hover:bg-blue-600" : 
-              "bg-gray-300 text-gray-500 cursor-not-allowed"}`}
-            data-testid="enviar-formulario-button"
-          >
-            Enviar Formulárioss
-          </button>
+          {isFormDisabled ? (
+  <p className="text-red-500 mb-2">
+    Este formulário está em análise e não pode ser editado.
+  </p>
+) : (
+  <button 
+    disabled={isFormDisabled}
+    onClick={handleEnviarFormulario}
+    className={`btn px-4 py-2 rounded-lg ${
+      todasQuestoesRespondidas() 
+        ? "bg-blue-500 text-white hover:bg-blue-600" 
+        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+    }`}
+    data-testid="enviar-formulario-button"
+  >
+    Enviar Formulário
+  </button>
+)}
+
+
         </div>
       </div>
 

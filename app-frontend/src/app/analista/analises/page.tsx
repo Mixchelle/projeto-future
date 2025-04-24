@@ -45,6 +45,7 @@ export default function AnalisesList() {
                   className="analise-card"
                   onClick={() => {
                     localStorage.setItem("formularioRespondidoId", form.id_formulario_respondido.toString());
+                    localStorage.setItem("formularioAnaliseCompleto", JSON.stringify(form));
                     window.location.href = `/analista/analises/analiseDetalhada/${form.id_formulario_respondido}`;
                   }}
                 >

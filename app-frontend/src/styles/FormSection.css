@@ -318,6 +318,8 @@
     margin-top: 0.5rem;
     text-align: center;
 }
+
+
 .footer_question{
 
   /* Estilo para o botão de navegação */
@@ -373,55 +375,57 @@ button {
   margin-left: 97%;
 }
 
-
+.form-container{
+  .btn {
+    padding: 1rem 2rem;
+    font-weight: 700;
+    background: rgb(255, 255, 255);
+    color: rgb(238, 146, 8);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border-bottom: 2px solid rgb(245, 108, 10);
+    border-right: 2px solid rgb(226, 131, 43);
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    transition-duration: 1s;
+    transition-property: border-top, border-left, border-bottom, border-right,
+      box-shadow;
+      text-align: center;
+      margin-left: 36%;
+  }
+  
+  .btn:hover {
+    border-top: 2px solid rgb(226, 165, 43);
+    border-left: 2px solid rgb(226, 147, 43);
+    border-bottom: 2px solid rgb(238, 204, 103);
+    border-right: 2px solid rgb(238, 195, 103);
+    box-shadow: rgba(240, 133, 46, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px,
+      rgba(240, 46, 170, 0.2) 15px 15px;
+  }
+  
+  .snackbar {
+    position: fixed;
+    bottom: 20px;
+    left: 63%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #FF6D00 0%, #FF9500 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.3s ease-out;
+    z-index: 1000;
+    max-width: 90%;
+    width: auto;
+    min-width: 300px;
+  }
+  
+}
 /* From Uiverse.io by alexreyes091 */ 
-.btn {
-  padding: 1rem 2rem;
-  font-weight: 700;
-  background: rgb(255, 255, 255);
-  color: rgb(238, 146, 8);
-  cursor: pointer;
-  border-radius: 0.5rem;
-  border-bottom: 2px solid rgb(245, 108, 10);
-  border-right: 2px solid rgb(226, 131, 43);
-  border-top: 2px solid white;
-  border-left: 2px solid white;
-  transition-duration: 1s;
-  transition-property: border-top, border-left, border-bottom, border-right,
-    box-shadow;
-    text-align: center;
-    margin-left: 36%;
-}
-
-.btn:hover {
-  border-top: 2px solid rgb(226, 165, 43);
-  border-left: 2px solid rgb(226, 147, 43);
-  border-bottom: 2px solid rgb(238, 204, 103);
-  border-right: 2px solid rgb(238, 195, 103);
-  box-shadow: rgba(240, 133, 46, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px,
-    rgba(240, 46, 170, 0.2) 15px 15px;
-}
-
-.snackbar {
-  position: fixed;
-  bottom: 20px;
-  left: 63%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #FF6D00 0%, #FF9500 100%);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: fadeIn 0.3s ease-out;
-  z-index: 1000;
-  max-width: 90%;
-  width: auto;
-  min-width: 300px;
-}
 
 .snackbar-content {
   display: flex;
@@ -784,4 +788,13 @@ color: #6c757d;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   color: #495057;
   background-color: #f8f9fa;
+}
+
+.text-red-500 {
+  color: #f56565; 
+  text-align: center;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem; /* Margin bottom of 0.5rem */
 }

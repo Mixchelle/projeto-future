@@ -50,7 +50,7 @@ export default function Cliente() {
     }
   }, [clienteId]);
 
-    const handleFormularioClick = (formularios: Array<{ id: number; nome: string }>) => {
+    const handleFormularioClick = (formularios: Array<{ id: number; nome: string; status: string}>) => {
       // Verifica se existe pelo menos um formulário
       if (!formularios || formularios.length === 0) {
         console.error('Nenhum formulário recebido');
@@ -62,7 +62,7 @@ export default function Cliente() {
       try {
         localStorage.setItem('selectedFormularioId', formulario.id.toString());
         localStorage.setItem('nomeFormulario', formulario.nome);
-        
+        localStorage.setItem('statusFormulario', formulario.status);
         const nomeFormatado = formulario.nome.toLowerCase().split(" ")[0];
         router.push(`/cliente/formulario/${nomeFormatado}`);
       } catch (error) {
