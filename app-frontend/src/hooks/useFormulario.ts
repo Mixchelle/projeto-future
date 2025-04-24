@@ -245,15 +245,10 @@ export const useFormulario = () => {
 
   const colocarEmPendencia = async (formularioId: number, categorias: string[], observacoes: string) => {
     try {
-      const response = await axios.post(
-        `${API_URL}/formularios/${formularioId}/pendencia/`,
-        { observacoes },
-        getAuthConfig()
-      );
-      return response.data;
+     alert('Não implementado back')
     } catch (error) {
-      console.error("Erro ao colocar formulário em pendência:", error);
-      throw error;
+      alert('Não implementado no back')
+
     }
   };
   useEffect(() => {
