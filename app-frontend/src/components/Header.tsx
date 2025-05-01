@@ -80,7 +80,10 @@ const Header: React.FC<HeaderProps> = ({className }) => {
         <div className="logo-container">
           <Image src={logo} alt="Logo" width={50} height={50} />
           <div className="titulo">
- 
+         <div className="titulo-1">
+          <span >FS
+          <span className="orange">3</span>  
+            M</span>
             </div>
           <span className="system-subname">Future Security Maturity Monitoring & Management</span>
           </div>
