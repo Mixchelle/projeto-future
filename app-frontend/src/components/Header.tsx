@@ -11,7 +11,7 @@ interface HeaderProps {
   
 }
 
-const Header: React.FC<HeaderProps> = ({ className }) => {
+const Header: React.FC<HeaderProps> = ({className }) => {
   const [pageTitle, setPageTitle] = useState("Home");
   const [timeLeft, setTimeLeft] = useState(45 * 60);
     const router = useRouter();

@@ -25,7 +25,6 @@
   left: 0;         /* FORÇA a posição inicial para a esquerda */
   width: 100%;     /* FORÇA a largura total */
   margin-left: 0; 
-  background-color:#d81b1b7d;
 
 }
 /* Quando o sidebar estiver recolhido */
@@ -100,8 +99,10 @@
   }
 
   .system-name {
-    font-size: 1rem;
+    font-size: 1rem !important;
+    font-family: 'Courier New', Courier, monospace !important;
   }
+  
 
   .page-title {
     font-size: 1.2rem;
