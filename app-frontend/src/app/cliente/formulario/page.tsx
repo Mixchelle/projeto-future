@@ -16,12 +16,11 @@ export default function FormularioPage() {
     getFormularios();
   }, []);
 
-  const handleFormularioClick = (formulario: { id: number; nome: string ; status: string}) => {
+  const handleFormularioClick = (formulario: { id: number; nome: string ;}) => {
     // Salva o ID do formulário no localStorage
     localStorage.setItem('selectedFormularioId', formulario.id.toString());
     localStorage.setItem('nomefomulario', formulario.nome.toString());
 
-    localStorage.setItem('statusFormulario', formulario.status);
 
     const nomeFormatado = formulario.nome.toLowerCase().split(" ")[0]; 
     router.push(`/cliente/formulario/${nomeFormatado}`);

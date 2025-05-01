@@ -349,7 +349,7 @@ const { colocarEmPendencia } = useFormulario();
         <button 
           onClick={() => {
             setMostrarModalPendencia(false);
-            setCategoriaPendente("");
+            setCategoriaPendente([]);
             setObservacoesPendencia("");
           }}
           className="btn btn-cancel"
