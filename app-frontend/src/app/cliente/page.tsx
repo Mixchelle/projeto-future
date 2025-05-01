@@ -157,11 +157,12 @@ data
         &times;
       </button>
       <h2 className="modal-title">Nota Técnica – NIST CSF 2.0</h2>
-      <iframe
-        src="/NotaTecnica.pdf"
-        className="modal-pdf"
-        title="PDF NIST"
-      />
+<iframe
+  src="/assets/NotaTecnica.pdf"
+  className="modal-pdf"
+  title="PDF NIST"
+/>
+
 
     </div>
   </div>
