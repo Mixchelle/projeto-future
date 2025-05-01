@@ -14,7 +14,7 @@ interface RespostaPergunta {
 }
 
 export default function NistPage() {
-  const [menuAberto, setMenuAberto] = useState<boolean>(true);
+ // Começa fechado no mobile, aberto no desktop
   const [activeSection, setActiveSection] = useState<string>("GV. Governança");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [respostas, setRespostas] = useState<{ [key: number]: RespostaPergunta }>({});
@@ -45,21 +45,51 @@ export default function NistPage() {
     const router = useRouter();
     const [showQuestionMap, setShowQuestionMap] = useState<boolean>(true);
     const [categoriasCompletas, setCategoriasCompletas] = useState<{ [key: number]: boolean }>({});
-    const [isFormDisabled, setIsFormDisabled] = useState<boolean>(true);
-
+    const [isFormDisabled, setIsFormDisabled] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [menuAberto, setMenuAberto] = useState<boolean>(!isMobile);
 
 
     useEffect(() => {
       console.log('formulariosEmAndamento', formulariosEmAndamento);
-      
+    
       const status = localStorage.getItem('statusFormulario');
-      
-      if (status === 'em_analise' || status === 'concluido') {
-        setIsFormDisabled(true);
+      console.log('status', status);
+    
+      // Se não houver status direto no localStorage
+      if (!status) {
+        const formulariosRaw = localStorage.getItem('formulariosEmAndamento');
+    
+        if (formulariosRaw) {
+          try {
+            const formularios: any[] = JSON.parse(formulariosRaw);
+    
+            const formulario = formularios.find(
+              (f) => f.id === formularioRespondido?.id
+            );
+    
+            if (formulario?.status) {
+              // Salva o status encontrado no localStorage
+              localStorage.setItem('statusFormulario', formulario.status);
+    
+              if (formulario.status === 'em_analise' || formulario.status === 'concluido') {
+                setIsFormDisabled(true);
+              }
+            }
+    
+          } catch (error) {
+            console.error('Erro ao parsear formulariosEmAndamento', error);
+          }
+        }
+      } else {
+        // Se o status existir diretamente no localStorage
+        if (status === 'em_analise' || status === 'concluido') {
+          setIsFormDisabled(true);
+        }
       }
     
-      // Atualizar algo quando o status mudar, se necessário
     }, [formularioRespondido]);
+    
     
     
 useEffect(() => {
@@ -71,6 +101,19 @@ useEffect(() => {
 
   setCategoriasCompletas(novasCompletas);
 }, [respostas, formularioRespondido, perguntas, categorias]);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768); // você pode ajustar o breakpoint
+    setMenuAberto(!isMobile); // Fecha o menu no mobile
+  };
+
+  handleResize(); // chama na primeira renderização
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
 
 
 
@@ -554,7 +597,19 @@ useEffect(() => {
     });
   };
 
+  const className = isMobile
+  ? "form-mobile" 
+  :  "main-content flex"; 
 
+  const classCategorias = isMobile
+  ? "categorias-mobile"
+  : `section-sidebar ${menuAberto ? "normal" : "collapse"} fixed`;
+
+  const classQuestion = isMobile
+  ? "question-mobile"
+  : `${menuAberto ? "normal-form" : "collapse-form"} fixed`;
+
+  
   return (
     <div className="form-container flex min-h-screen bg-gray-100" data-testid="nist-page">
       <Sidebar
@@ -563,75 +618,108 @@ useEffect(() => {
           { name: "Formulario", icon: <FiFileText size={20} />, path: "/cliente/formulario" },
         ]}
       />
-      <div className="main-content flex">
-        <div className={`section-sidebar ${menuAberto ? "normal" : "collapse"} fixed`}>
-          <button
-            className="fixed-btn menu-button mb-4"
-            onClick={toggleMenu}
-            aria-label={menuAberto ? "Recolher menu" : "Expandir menu"}
-            aria-expanded={menuAberto}
-            data-testid="menu-toggle-button"
-          >
-            <FiMenu size={24} color="orange" aria-hidden="true" />
-          </button>
+      <div className={`${className}`}>
+      <div className={`${classCategorias}`}>
+      {isMobile ? (
+         null
+      ) :     
+        <button
+      className="fixed-btn menu-button mb-4"
+      onClick={toggleMenu}
+      aria-label={menuAberto ? "Recolher menu" : "Expandir menu"}
+      aria-expanded={menuAberto}
+      data-testid="menu-toggle-button"
+    >
+      <FiMenu size={24} color="orange" aria-hidden="true" />
+    </button>}
 
        <div className="section-list-container">
-          <ul className="section-list">
-            <div className="categorias">
-            {categorias.map((categoria) => {
-              let sigla, nome;
+       {isMobile ? (
+  <div className="mobile-nav-siglas">
+  {categorias.map((categoria) => {
+    let sigla;
+    const match = categoria.nome.match(/\(([^)]+)\)/);
+    if (match) {
+      sigla = match[1];
+    } else {
+      const parts = categoria.nome.split(' ');
+      sigla = parts[0];
+    }
 
-              const match = categoria.nome.match(/\(([^)]+)\)/);
-              if (match) {
-                sigla = match[1];
-                nome = categoria.nome.replace(/\([^)]+\)/, '').trim();
-              } else {
-                const parts = categoria.nome.split(' ');
-                sigla = parts[0];
-                nome = parts.slice(1).join(' ');
-              }
+    return (
+      <button
+        key={categoria.id}
+        className={`sigla-button ${activeSection === categoria.nome ? "active" : ""}`}
+        onClick={() => handleSectionClick(categoria.nome)}
+      >
+        {sigla}
+      </button>
+    );
+  })}
+</div>
+) :  
+ <ul className="section-list">
 
-              const completa = categoriasCompletas[categoria.id];
+<div className="categorias">
+{categorias.map((categoria) => {
+  let sigla, nome;
 
-              return (
-                <li key={categoria.id} className="section-item">
-                  <button
-                    className={`section-button ${activeSection === categoria.nome ? "active" : ""} ${
-                      completa ? "completed" : ""
-                    }`}
-                    onClick={() => handleSectionClick(categoria.nome)}
-                    data-testid={`section-button-${categoria.id}`}
-                  >
-                    <span className="section-sigla">{sigla}</span>
-                    {menuAberto && (
-                      <>
-                        <span className="section-text">{nome}</span>
-                        {completa ? (
-                          <FiCheckCircle className="ml-2" />
-                        ) : (
-                          <FiCircle className="ml-2 text-gray-400" />
-                        )}
-                      </>
-                    )}
-                  </button>
-                </li>
-              );
-            })}
-            </div>
-            <div className="fixed-question">
-            {menuAberto && (
-              <>
-                <br /><hr />
-                <QuestionMap 
-                  perguntas={perguntas} 
-                  respostas={respostas} 
-                  currentQuestionIndex={currentQuestionIndex} 
-                  setCurrentQuestionIndex={setCurrentQuestionIndex} 
-                />
-              </>
+  const match = categoria.nome.match(/\(([^)]+)\)/);
+  if (match) {
+    sigla = match[1];
+    nome = categoria.nome.replace(/\([^)]+\)/, '').trim();
+  } else {
+    const parts = categoria.nome.split(' ');
+    sigla = parts[0];
+    nome = parts.slice(1).join(' ');
+  }
+
+  const completa = categoriasCompletas[categoria.id];
+
+  return (
+    <li key={categoria.id} className="section-item">
+      <button
+        className={`section-button ${activeSection === categoria.nome ? "active" : ""} ${
+          completa ? "completed" : ""
+        }`}
+        onClick={() => handleSectionClick(categoria.nome)}
+        data-testid={`section-button-${categoria.id}`}
+      >
+        <span className="section-sigla">{sigla}</span>
+        {menuAberto && (
+          <>
+            <span className="section-text">{nome}</span>
+            {completa ? (
+              <FiCheckCircle className="ml-2" />
+            ) : (
+              <FiCircle className="ml-2 text-gray-400" />
             )}
-          </div>
-          </ul>
+          </>
+        )}
+      </button>
+    </li>
+  );
+})}
+</div>
+
+<div className="fixed-question">
+{menuAberto && (
+  <>
+    <br /><hr />
+    <QuestionMap 
+      perguntas={perguntas} 
+      respostas={respostas} 
+      currentQuestionIndex={currentQuestionIndex} 
+      setCurrentQuestionIndex={setCurrentQuestionIndex} 
+    />
+  </>
+)}
+</div>
+</ul>
+
+}
+        
+
         </div>
 
         </div>
@@ -639,7 +727,7 @@ useEffect(() => {
 
         {/* Formulário */}
           {/* Barra de Progresso da Categoria Atual */}
-          <div className={`${menuAberto ? "normal-form" : "collapse-form"} fixed`}>
+          <div className={`${classQuestion } `}>
 
           {/* Barra de Progresso da Categoria Atual */}
           <div className="progresso-container mb-6 flex items-center justify-between">

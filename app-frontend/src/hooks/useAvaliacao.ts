@@ -78,6 +78,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
     const fetchData = async () => {
       try {
         setLoading(true);
+        setError(null);
 
         if (!formularioRespondidoId) {
           throw new Error('ID do formulário não fornecido');

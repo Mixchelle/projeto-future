@@ -19,18 +19,20 @@
   width: calc(100% - 80px);
 }
 
+/* Quando for mobile o header deve ocupar toda a largura */
+
+.isMobile{
+  left: 0;         /* FORÇA a posição inicial para a esquerda */
+  width: 100%;     /* FORÇA a largura total */
+  margin-left: 0; 
+  background-color:#d81b1b7d;
+
+}
 /* Quando o sidebar estiver recolhido */
 
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .header {
-    left: 80px;
-    width: calc(100% - 80px);
-  }
-}
 
-/* Container do conteúdo */
+
 .header-content {
   width: 100%;
   max-width: 1200px;
@@ -121,3 +123,4 @@
   justify-content: left;
   margin-left: -80%;
 }
+

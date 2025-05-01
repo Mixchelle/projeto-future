@@ -15,40 +15,21 @@ const ErrorMessage: FC<ErrorMessageProps> = ({
   className = '',
   onRetry 
 }) => {
-  const typeClasses = {
-    error: 'bg-red-50 text-red-700',
-    warning: 'bg-yellow-50 text-yellow-700',
-    info: 'bg-blue-50 text-blue-700'
-  };
-
-  const iconClasses = {
-    error: 'text-red-400',
-    warning: 'text-yellow-400',
-    info: 'text-blue-400'
-  };
-
   return (
-    <div className={`rounded-md p-4 ${typeClasses[type]} ${className}`}>
-      <div className="flex">
-        <div className="flex-shrink-0">
-          <FiAlertTriangle className={`h-5 w-5 ${iconClasses[type]}`} aria-hidden="true" />
+    <div data-testid="error-message-container" className={`error-message ${type} ${className}`}>
+      <div data-testid="error-message-content" className="flex">
+        <div data-testid="error-message-icon-container" className="icon-container">
+          <FiAlertTriangle data-testid="error-message-icon" className="icon" aria-hidden="true" />
         </div>
-        <div className="ml-3 flex-1">
-          <p className="text-sm font-medium">{message}</p>
+        <div data-testid="error-message-text-container" className="message">
+          <p data-testid="error-message-text" className="message-text">{message}</p>
           {onRetry && (
-            <div className="mt-2">
+            <div data-testid="error-message-retry-container" className="retry-button">
               <button
+                data-testid="error-message-retry-button"
                 type="button"
                 onClick={onRetry}
-                className={`rounded-md px-2 py-1 text-sm font-medium ${
-                  type === 'error' ? 'text-red-800 hover:bg-red-100' :
-                  type === 'warning' ? 'text-yellow-800 hover:bg-yellow-100' :
-                  'text-blue-800 hover:bg-blue-100'
-                } focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                  type === 'error' ? 'focus:ring-red-500' :
-                  type === 'warning' ? 'focus:ring-yellow-500' :
-                  'focus:ring-blue-500'
-                }`}
+                className={`retry-button ${type}`}
               >
                 Tentar novamente
               </button>

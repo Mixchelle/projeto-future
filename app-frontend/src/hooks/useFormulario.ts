@@ -119,6 +119,9 @@ export const useFormulario = () => {
     };
   };
 
+
+  
+
   async function getFormularios() {
     try {
       const response = await axios.get(`${API_URL}/formularios/`, getAuthConfig());
@@ -245,10 +248,15 @@ export const useFormulario = () => {
 
   const colocarEmPendencia = async (formularioId: number, categorias: string[], observacoes: string) => {
     try {
-     alert('Não implementado back')
+      const response = await axios.post(
+        `${API_URL}/formularios/${formularioId}/pendencia/`,
+        { observacoes },
+        getAuthConfig()
+      );
+      return response.data;
     } catch (error) {
-      alert('Não implementado no back')
-
+      console.error("Erro ao colocar formulário em pendência:", error);
+      throw error;
     }
   };
   useEffect(() => {
@@ -259,25 +267,25 @@ export const useFormulario = () => {
     try {
       setLoadingFormulariosEmAndamento(true);
       setErrorFormulariosEmAndamento(null);
-      
+  
       const response = await axios.get(
         `${API_URL}/clientes/${clienteId}/formularios-em-andamento/`,
         getAuthConfig()
       );
-
-      setFormulariosEmAndamento(response.data);
-      
-      // Atualiza também no localStorage se necessário
-      const emAndamento = response.data.map((form: FormularioEmAndamento) => ({
+  
+      const emAndamento = response.data ? response.data.map((form: FormularioEmAndamento) => ({
         id: form.id,
         nome: form.formulario_nome,
         status: form.status,
         data: form.atualizado_em,
         progresso: form.progresso
-      }));
+      })) : [];
+  
+      setFormulariosEmAndamento(emAndamento);
       
+      // Atualiza também no localStorage se necessário
       localStorage.setItem('formulariosEmAndamento', JSON.stringify(emAndamento));
-      
+  
       return response.data;
     } catch (error) {
       console.error("Erro ao buscar formulários em andamento:", error);
@@ -287,7 +295,7 @@ export const useFormulario = () => {
       setLoadingFormulariosEmAndamento(false);
     }
   };
-
+  
   const buscarFormulariosEmAnalise = async () => {
     setLoadingFormulariosEmAnalise(true);
     setErrorFormulariosEmAnalise(null);

@@ -8,6 +8,7 @@ import logo from "@/assets/f3smlogo.png";
 
 interface HeaderProps {
   className?: string;
+  
 }
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
@@ -73,7 +74,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   };
 
   return (
-    <header className={`header ${className || ""}`} role="banner">
+    <header data-testid="header" className={`header ${className || ""}`} role="banner">
       <div className="header-content">
         {/* Logo e Nome do Sistema */}
         <div className="logo-container">

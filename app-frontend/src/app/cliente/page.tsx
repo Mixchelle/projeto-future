@@ -14,6 +14,8 @@ export default function Cliente() {
   const router = useRouter();
   const formularioId = 1;
   const [clienteId, setClienteId] = useState<number | null>(null);
+  const [showPdfModal, setShowPdfModal] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -26,6 +28,18 @@ export default function Cliente() {
     }
   }, []);
   
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // você pode ajustar o breakpoint
+  
+    };
+  
+    handleResize(); // chama na primeira renderização
+    window.addEventListener("resize", handleResize);
+  
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
 
   useEffect(() => {
     const respondidos = JSON.parse(localStorage.getItem('formulariosEmAndamento') || '{}');
@@ -71,7 +85,11 @@ export default function Cliente() {
     };
 
 
-    
+    const className = isMobile
+    ? "sidebar-mobile" 
+    : isSidebarOpen    
+      ? "main-content fundo flex-1 flex flex-col transition-all duration-300 "  
+      : "collapsed main-content fundo flex-1 flex flex-col transition-all duration-300 "; 
 
   return (
     <div className="flex h-screen">
@@ -85,12 +103,12 @@ export default function Cliente() {
       />
 
       {/* Conteúdo Principal */}
-      <div className={`fundo flex-1 flex flex-col transition-all duration-300 main-content ${isSidebarOpen ? "" : "collapsed"}`}>
+      <div className={` ${className }`}>
         {/* Conteúdo da página */}
         <main className="p-6 flex-1">
-          <div className={`transition-all duration-300 ${isSidebarOpen ? "ml-[220px]" : "ml-[80px]"}`} >
-            <div className="titulo bg-white p-6 rounded-lg shadow-sm">
-              <h3> Aqui você pode acompanhar seus formulários.</h3>
+          <div className={`transition-all duration-300 ${className ? "ml-[220px]" : "ml-[80px]"}`} >
+          <div className="titulo-cfor-cliente">
+          <h3> Aqui você pode acompanhar seus formulários.</h3>
             </div>
             
             {/* Card de Formulários Respondidos */}
@@ -122,6 +140,33 @@ data
                 ))}
               </div>
             )}
+<div className="pdf">
+<button className="botao-nist" onClick={() => setShowPdfModal(true)}>
+  Sobre o NIST CSF
+</button>
+{isMobile && (
+  <h3 className="aviso-desktop-only">
+    Obs: esta ferramenta foi desenvolvida para uso exclusivo na versão desktop, conforme acordado com o cliente.
+  </h3>
+)}
+
+{showPdfModal && (
+  <div className="modal-overlay">
+  <div className="modal-content">
+      <button className="modal-close" onClick={() => setShowPdfModal(false)}>
+        &times;
+      </button>
+      <h2 className="modal-title">Nota Técnica – NIST CSF 2.0</h2>
+      <iframe
+        src="/NotaTecnica.pdf"
+        className="modal-pdf"
+        title="PDF NIST"
+      />
+
+    </div>
+  </div>
+)}
+</div>
           </div>
           <FloatingSocialMenu />
 

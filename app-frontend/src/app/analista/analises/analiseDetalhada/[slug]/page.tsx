@@ -23,6 +23,7 @@ export default function AnaliseDetailPage() {
   if (formularioRespondidoId === null) return 
   <div className="flex min-h-screen bg-gray-100 flex-1 flex main-content">
   <Sidebar 
+ 
     menuItems={[
       { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
       { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },

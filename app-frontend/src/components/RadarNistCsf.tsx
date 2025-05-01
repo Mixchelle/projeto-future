@@ -40,7 +40,7 @@ const RadarNistCsf: React.FC = () => {
   );
 
   // Agrupar subcategorias por categoria principal
-  const categoriasPrincipais = data.categorias.map(cat => ({
+  const categoriasPrincipais = data?.categorias?.map(cat => ({
     sigla: cat.sigla,
     nome: cat.categoria,
     subcategorias: data.subcategorias[cat.sigla] || []

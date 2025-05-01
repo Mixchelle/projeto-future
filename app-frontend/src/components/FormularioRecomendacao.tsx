@@ -41,7 +41,7 @@ const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit,
     : [];
 
   return (
-    <form onSubmit={onSubmit} className="form-recomendacao">
+    <form  data-testid="form-recomendacao" onSubmit={onSubmit} className="form-recomendacao">
       <h1 className="form-titulo">Nome do Projeto</h1>
       <input
         type="text"
@@ -243,6 +243,7 @@ const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit,
       <button
         type="submit"
         className="form-botao"
+        id="form-botao-recomendacao"
       >
         Salvar Recomendação
       </button>

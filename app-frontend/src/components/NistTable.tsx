@@ -22,7 +22,7 @@ const NistCsfTable: React.FC = () => {
   };
 
   const renderSub = (sigla: string, id: string, nome: string, showCategoria = false, rowspan = 1) => {
-    const sub = data.subcategorias[id]?.[0];
+    const sub = data?.subcategorias[id]?.[0];
 
     return (
       <tr data-category={sigla}>
@@ -98,10 +98,10 @@ const NistCsfTable: React.FC = () => {
             <tr>
               <td colSpan={3} className="text-center"><strong>Média Total</strong></td>
               <td className="text-center">
-                <strong>{data.mediaEmpresa.mediaPolitica}</strong>
+                <strong>{data?.mediaEmpresa?.mediaPolitica}</strong>
               </td>
               <td className="text-center">
-              <strong>{data.mediaEmpresa.mediaPratica}</strong>
+              <strong>{data?.mediaEmpresa?.mediaPratica}</strong>
               </td>
             </tr>
           </tfoot>

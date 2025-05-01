@@ -1,4 +1,4 @@
-// src/app/funcionario/analises/page.tsx
+// src/components/AnaliseDetail.tsx
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -268,7 +268,7 @@ const { colocarEmPendencia } = useFormulario();
   }
 
   return (
-    <div className="flex analise">
+    <div  className="flex analise">
       <Sidebar 
         menuItems={[
           { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
@@ -280,7 +280,8 @@ const { colocarEmPendencia } = useFormulario();
         <div className="container-avaliacao">
         <div className={styles.tituloPagina}>
         <div className="header-actions">
-  <h3>Análise de Cybersegurança - {clienteName}</h3>
+  <h3>Análise de Cybersegurança 
+    <span> {clienteName}</span></h3>
   <div className="flex btns" >
     <button 
       onClick={() => setMostrarModalPendencia(true)}
@@ -348,7 +349,7 @@ const { colocarEmPendencia } = useFormulario();
         <button 
           onClick={() => {
             setMostrarModalPendencia(false);
-            setCategoriaPendente([""]);
+            setCategoriaPendente("");
             setObservacoesPendencia("");
           }}
           className="btn btn-cancel"
@@ -395,14 +396,14 @@ const { colocarEmPendencia } = useFormulario();
                 </tr>
               </thead>
               <tbody>
-                {data.categorias.map((cat) => (
-                  <tr key={cat.sigla}>
-                    <td>{cat.categoria} ({cat.sigla})</td>
-                    <td>{cat.media.toFixed(2)}</td>
-                    <td>{cat.politica.toFixed(2)}</td>
-                    <td>{cat.pratica.toFixed(2)}</td>
-                    <td>{cat.objetivo.toFixed(2)}</td>
-                    <td>{cat.status}</td>
+              {data?.categorias?.map((cat) => (
+                  <tr key={cat?.sigla}>
+                    <td>{cat?.categoria} ({cat?.sigla})</td>
+                    <td>{cat?.media?.toFixed(2)}</td>
+                    <td>{cat?.politica?.toFixed(2)}</td>
+                    <td>{cat?.pratica?.toFixed(2)}</td>
+                    <td>{cat?.objetivo?.toFixed(2)}</td>
+                    <td>{cat?.status}</td>
                   </tr>
                 ))}
               </tbody>

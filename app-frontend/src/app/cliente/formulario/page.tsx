@@ -10,22 +10,44 @@ export default function FormularioPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const router = useRouter();
   const { formularios, getFormularios } = useFormulario();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     getFormularios();
   }, []);
 
-  const handleFormularioClick = (formulario: { id: number; nome: string }) => {
+  const handleFormularioClick = (formulario: { id: number; nome: string ; status: strings}) => {
     // Salva o ID do formulário no localStorage
     localStorage.setItem('selectedFormularioId', formulario.id.toString());
     localStorage.setItem('nomefomulario', formulario.nome.toString());
+
+    localStorage.setItem('statusFormulario', formulario.status);
 
     const nomeFormatado = formulario.nome.toLowerCase().split(" ")[0]; 
     router.push(`/cliente/formulario/${nomeFormatado}`);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // você pode ajustar o breakpoint
+  
+    };
+  
+    handleResize(); // chama na primeira renderização
+    window.addEventListener("resize", handleResize);
+  
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
+  const className = isMobile
+    ? "content-mobile" 
+    : isSidebarOpen    
+      ? "main-content fundo flex-1 flex flex-col transition-all duration-300 "  
+      : "collapsed main-content fundo flex-1 flex flex-col transition-all duration-300 "; 
+
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       {/* Sidebar */}
       <Sidebar
         menuItems={[
@@ -35,14 +57,14 @@ export default function FormularioPage() {
       />
 
       {/* Conteúdo Principal */}
-      <div className={`fundo flex-1 flex flex-col transition-all duration-300 main-content ${isSidebarOpen ? "" : "collapsed"}`}>
+      <div className={`${className}`}>
         {/* Conteúdo da página */}
-        <main className="flex-1 p-6 overflow-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <main className="">
+          <div className="cards-list">
             {formularios.map((formulario) => (
               <div
                 key={formulario.id}
-                className="cardForm bg-orange-500 text-white p-4 rounded-lg shadow-md cursor-pointer hover:bg-orange-600 transition"
+                className="cardForm "
                 onClick={() => handleFormularioClick(formulario)}
                 
               >
@@ -50,6 +72,7 @@ export default function FormularioPage() {
               </div>
             ))}
           </div>
+       
         </main>
       </div>
     </div>

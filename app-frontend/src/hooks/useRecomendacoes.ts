@@ -140,26 +140,21 @@ const useRecomendacoes = () => {
   const marcarComoConcluida = async (id: number, comprovante?: File) => {
     try {
       setLoading(true);
-      const formData = new FormData();
-      formData.append('cumprida', 'true');
-      formData.append('data_cumprimento', new Date().toISOString());
-      if (comprovante) {
-        formData.append('comprovante', comprovante);
-      }
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-          'Content-Type': 'multipart/form-data'
-        }
+      const data = {
+        cumprida: true,
+        data_cumprimento: new Date().toISOString(),
       };
-
+  
+      if (comprovante) {
+        data['comprovante'] = comprovante;
+      }
+  
       const response = await axios.patch(
         `${getBaseUrl()}/recommendations/recomendacoes/${id}/`,
-        formData,
-        config
+        data, 
+        getAuthConfig()
       );
-
+  
       setRecomendacoes(prev => prev.map(r => r.id === id ? response.data : r));
       return response.data;
     } catch (err: any) {
@@ -170,7 +165,7 @@ const useRecomendacoes = () => {
       setLoading(false);
     }
   };
-
+  
 
   // Adicione esta função no final do arquivo, antes do export
   const agruparRecomendacoesPorCategoria = (recomendacoes: Recomendacao[]) => {
