@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import axios from "axios";
 import { getBaseUrl } from "@/util/baseUrl";
 
@@ -333,11 +333,13 @@ export const useFormulario = () => {
           const f = formulario as FormularioEmAnaliseExibicao;
       
           return {
+            ...f,
             id_formulario_respondido: parseInt(id),
             id_cliente: f.id_cliente,
             nome_cliente: f.nome_cliente,
             id_formulario: f.id_formulario,
             nome_formulario: f.nome_formulario,
+             prioridade: f.prioridade || "baixa",
           };
         }
       );

@@ -32,7 +32,7 @@ interface Recomendacao {
   perguntaId: string;
 }
 
-interface FormData {
+export interface FormData {
   nome: string;
   categoria: string;
   tecnologia: string;
@@ -107,7 +107,7 @@ const useRecomendacoes = () => {
     }
   };
 
-  const atualizarRecomendacao = async (id: number, formData: Partial<FormData>) => {
+  const atualizarRecomendacao = async (id: number, formData: Partial<FormData>, FormData?: { new(form?: HTMLFormElement, submitter?: HTMLElement | null): globalThis.FormData; prototype: globalThis.FormData; }) => {
     try {
       setLoading(true);
       const response = await axios.patch(`${getBaseUrl()}/recommendations/recomendacoes/${id}/`, formData, getAuthConfig());

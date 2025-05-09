@@ -19,7 +19,7 @@ interface SubcategoryDetailTableProps {
   onToggleRow: (id: string) => void;
   onFilterLowScoresOnlyChange: (subcategoryId: string, filterState: boolean) => void;
   onHandleEditarRecomendacao: (recomendacao: any) => void;
-  onRemoverRecomendacao: (id: string) => void;
+onRemoverRecomendacao: (id: string | number) => void;
   onSetMostrarFormulario: (perguntaId: string | null) => void;
   onSubmitForm: (e: React.FormEvent) => Promise<void>;
   onInputChangeForm: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;

@@ -18,6 +18,24 @@ import React from 'react';
 import { useSidebarCollapsed } from "@/hooks/useSidebarCollapsed";
 import { filterPerguntasByScore } from '@/util/filterPerguntas'; // Importe a função de utilidade
 
+export interface FormDataType {
+  nome: string;
+  categoria: string;
+  tecnologia: string;
+  nist: string;
+  prioridade: string;
+  data_inicio: string;
+  data_fim: string;
+  meses: string;
+  detalhes: string;
+  investimentos: string;
+  riscos: string;
+  justificativa: string;
+  observacoes: string;
+  urgencia: string;
+  gravidade: string;
+  perguntaId: string;
+}
 // Importar o novo componente da tabela detalhada
 import SubcategoryDetailTable from './SubcategoryDetailTable';
 
@@ -73,10 +91,10 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
     riscos: "",
     justificativa: "",
     observacoes: "",
-    impacto: "",
+    urgencia: "",
     gravidade: "",
     meses: "1",
-    perguntaId: "" // Campo para associar a pergunta específica
+    perguntaId: "" ,
   });
   const[ progressoTotal, setProgressoTotal] = useState(20);
   const [formularioRespondidoId, setFormularioRespondidoId] = useState<number>(Number(empresaId));
@@ -169,7 +187,7 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
       riscos: recomendacao.riscos,
       justificativa: recomendacao.justificativa,
       observacoes: recomendacao.observacoes,
-      impacto: recomendacao.impacto,
+      urgencia: recomendacao.impacto,
       gravidade: recomendacao.gravidade,
       meses: recomendacao.meses.toString(),
       perguntaId: recomendacao.perguntaId || ""
@@ -186,7 +204,7 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
            nome: "", categoria: "", tecnologia: "", nist: "", prioridade: "",
            responsavel: "", data_inicio: "", data_fim: "", detalhes: "",
            investimentos: "", riscos: "", justificativa: "", observacoes: "",
-           impacto: "", gravidade: "", meses: "1", perguntaId: ""
+           urgencia: "", gravidade: "", meses: "1", perguntaId: ""
        });
    };
 
@@ -234,7 +252,7 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
 
     try {
       if (editandoRecomendacao) {
-        await actualizarRecomendacao(editandoRecomendacao.id, formData);
+        await atualizarRecomendacao(editandoRecomendacao.id, formData);
         setEditandoRecomendacao(null);
       } else {
         await adicionarRecomendacao(formData);
@@ -245,7 +263,7 @@ export default function AnaliseDetail({ empresaId }: AnaliseDetailProps) {
         nome: "", categoria: "", tecnologia: "", nist: "", prioridade: "",
         responsavel: "", data_inicio: "", data_fim: "", detalhes: "",
         investimentos: "", riscos: "", justificativa: "", observacoes: "",
-        impacto: "", gravidade: "", meses: "1", perguntaId: ""
+        urgencia: "", gravidade: "", meses: "1", perguntaId: ""
       });
       setMostrarFormulario(null);
     } catch (error) {

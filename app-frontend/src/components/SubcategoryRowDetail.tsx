@@ -103,7 +103,11 @@ const SubcategoryRowDetail: React.FC<SubcategoryRowDetailProps> = ({
                 onInputChangeForm={onInputChangeForm}
                 onCancelForm={onCancelForm}
                 onSetFormData={onSetFormData} // Passa a função para atualizar formData
-              />
+                onViewRecomendacao={function (recomendacao: any): void {
+                  throw new Error('Function not implemented.');
+                } } onViewAnexos={function (perguntaId: string, anexos:  undefined): void {
+                  throw new Error('Function not implemented.');
+                } }              />
             );
           })}
 
