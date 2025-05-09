@@ -148,3 +148,47 @@ h3.aviso-desktop-only {
   text-align: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
+
+/* styles/forms.module.css */
+
+.formTitle {
+  font-weight: medium; /* Mantém o peso da fonte */
+}
+
+.formTitleRascunho {
+  color: #6b7280; /* cinza */
+}
+
+.formTitleAnalise {
+  color: #f59e0b; /* amarelo */
+}
+
+.formTitlePendente {
+  color: #dc2626; /* vermelho */
+}
+
+.formTitleConcluido {
+  color: #10b981; /* verde */
+}
+
+.pendenciaDestaque {
+  font-weight: bold;
+  color: #dc2626; /* vermelho para a pendência destacada */
+}
+
+/* Estilos para os ícones se quiser cores diferentes por status */
+.iconAnalise {
+  color: #f59e0b; /* amarelo */
+}
+
+.iconConcluido {
+  color: #10b981; /* verde */
+}
+
+.iconPendente {
+  color: #dc2626; /* vermelho */
+}
+
+.iconRascunho {
+   color: #6b7280; /* cinza */
+}

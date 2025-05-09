@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
-import { FiHome } from "react-icons/fi";
+import { FiBarChart2, FiFileText, FiHome } from "react-icons/fi";
 import FloatingSocialMenu from "@/components/FloatingSocialMenu";
 
 export default function Gestor() {
@@ -29,7 +29,9 @@ export default function Gestor() {
       {/* Sidebar */}
       <Sidebar 
         menuItems={[
-          { name: "Home", icon: <FiHome size={20} />, path: "/gestor" }
+         { name: "Home", icon: <FiHome size={20} />, path: "/gestor" },
+                  { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/gestor/analises" },
+                  { name: "Relatórios", icon: <FiFileText size={20} />, path: "/gestor/relatorios" },
         ]}
       />
 

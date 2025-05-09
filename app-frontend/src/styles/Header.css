@@ -1,14 +1,13 @@
 .header {
   width: calc(100% - 160px); /* Largura total menos a largura do sidebar */
   height: 50px;
-  background-color:#ededed7d;
   color: rgb(15, 19, 22);
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
   top: 0;
-  left: 160px; /* Alinhar corretamente */
+  left: 160px; 
   z-index: 1100;
   box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
   transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
@@ -19,22 +18,18 @@
   width: calc(100% - 80px);
 }
 
-/* Quando for mobile o header deve ocupar toda a largura */
 
 .isMobile{
-  left: 0;         /* FORÇA a posição inicial para a esquerda */
-  width: 100%;     /* FORÇA a largura total */
+  left: 0;        
+  width: 100%;    
   margin-left: 0; 
+  background-color:#d81b1b7d;
 
 }
-/* Quando o sidebar estiver recolhido */
-
-
 
 
 .header-content {
   width: 100%;
-  max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -99,10 +94,8 @@
   }
 
   .system-name {
-    font-size: 1rem !important;
-    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 1rem;
   }
-  
 
   .page-title {
     font-size: 1.2rem;

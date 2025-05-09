@@ -104,7 +104,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
         }
 
         const responseData = await response.json();
-        console.log('responseData', responseData);
+        console.log('responseData ------------------------------->', responseData);
 
 
         const formuarioEmAnaliseId = responseData.formulario.id;
@@ -117,6 +117,12 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
           console.log('cliente', cliente);
         // Verificar se funcoes é um objeto e transformar em um array
         const funcoes: Funcao[] = Object.values(responseData.funcoes);
+
+       const formulario = responseData.formulario.formulario_completo;
+
+       console.log('formulario', formulario);
+        console.log('funcoes', funcoes[0]);
+
         if (funcoes.length === 0) {
           throw new Error('Nenhuma função encontrada ou formato inválido');
         }
@@ -125,6 +131,8 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
         const subcategoriasProcessadas: Record<string, Subcategoria[]> = {};
         
         const  mediaEmpresa = mediaEmpresaCalculo(funcoes);
+        const formularioCompleto = responseData.formulario.formulario_completo;
+
         funcoes.forEach((funcao: Funcao) => {
 
           // Adicionar a categoria
@@ -135,6 +143,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
             politica: ensureNumber(funcao.politica),
             pratica: ensureNumber(funcao.pratica),
             objetivo: ensureNumber(funcao.objetivo, 3.0),
+            
             status: funcao.status || 'Não Avaliado',
             tipo: "CATEGORIA",
             subcategorias: funcao.categorias || [],
@@ -142,7 +151,6 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
 
           // Processar as subcategorias (agora você vai mapear as perguntas de forma correta)
           funcao.categorias.forEach((cat) => {
-            
             const sigla =cat.sigla;  // Corrigir a sigla, se necessário
             const descricaoSubcategoria = getDescricaoSubcategoria(sigla) || cat.sigla;
 
@@ -151,6 +159,31 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
               subcategoriasProcessadas[sigla] = [];
             }
 
+            const perguntasComInfo = cat.subcategorias.map((pergunta: any) => {
+              // Encontrar info_complementar com base no id da pergunta
+              const perguntaFormulario = formularioCompleto.categorias
+              .find((c: any) => {
+                const siglaCategoria = c.nome.match(/\(([^)]+)\)/)?.[1]; // Ex: 'RS'
+                const siglaComparar = cat.sigla.split('.')[0];           // Ex: 'RS.MI' → 'RS'
+            
+                return siglaCategoria === siglaComparar;
+              })?.perguntas
+              .find((p: any) => {
+                return p.codigo === pergunta.id;
+              });
+            
+        
+              const infoComplementar = perguntaFormulario?.resposta?.info_complementar
+              || '';
+              return {
+                ...pergunta,
+                info_complementar: infoComplementar
+              };
+            });     
+
+            console.log('perguntasComInfo', perguntasComInfo);
+            
+            
             // Adicionar a subcategoria à lista da chave correta
             subcategoriasProcessadas[sigla].push({
               id: cat.sigla,
@@ -158,7 +191,7 @@ const useAvaliacao = (formularioRespondidoId: number | null) => {
               politica: ensureNumber(cat.politica),
               pratica: ensureNumber(cat.pratica),
               objetivo: ensureNumber(cat.objetivo, 3.0),
-              perguntas: cat.subcategorias || [],
+              perguntas: perguntasComInfo,
             });
           });
         });

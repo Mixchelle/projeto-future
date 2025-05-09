@@ -507,3 +507,900 @@
 .btn-primary:hover {
   background-color: #2563eb; /* azul blue-600 */
 }
+
+
+
+.nota-baixa {
+  background-color: #ffebee;
+  color: #c62828;
+  font-weight: bold;
+}
+
+.nota-baixa-card{
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+
+
+
+
+.sem-recomendacoes {
+  font-size: 0.9rem;
+  color: #757575;
+  font-style: italic;
+}
+
+.formulario-recomendacao-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.nota-baixa {
+  color: #d32f2f;
+  font-weight: bold;
+}
+/* Seu CSS existente */
+/* ... (mantenha seus estilos como .analises-section, .section-title, etc.) ... */
+
+
+/* --- Ajustes para o Layout Geral e Cards Principais --- */
+
+/* Container principal da avaliação */
+.container-avaliacao {
+  width: 100%;
+}
+
+/* Título da página e botões de ação */
+/* Ajustes no container geral */
+.tituloPagina {
+  background-color: #464242; /* Um tom um pouco diferente de cinza escuro, similar à imagem */
+  color: #ffffff; /* Texto principal branco para alto contraste */
+  padding: 1rem 2rem; /* Ajuste o padding horizontal para mais espaço nas laterais */
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra um pouco mais forte */
+  display: flex; /* Garante que o conteúdo interno use flexbox */
+  align-items: center; /* Centraliza verticalmente o conteúdo */
+
+}
+
+/* Ajustes no container de ações (título e botões) */
+.header-actions {
+  display: flex;
+  justify-content: space-between; /* Espaça o título dos botões */
+  align-items: center; /* Alinha verticalmente título e botões */
+  flex-wrap: wrap; /* Permite quebra em telas menores */
+  width: 100%; /* Garante que o flexbox ocupe toda a largura */
+  gap: 1.5rem; /* Aumenta um pouco o espaço entre o título e os botões */
+}
+
+/* Estilo do título principal */
+.header-actions h3 {
+  margin: 0; /* Remove margem padrão */
+  font-size: 1.8rem; /* Tamanho maior para o título */
+  color: inherit; /* Herda a cor do pai (.tituloPagina), que é branco */
+  display: flex; /* Permite alinhar o span verticalmente */
+  align-items: center; /* Alinha o span verticalmente com o texto */
+}
+
+/* Estilo para o nome do cliente */
+.header-actions h3 .cliente-name { /* Use a nova classe .cliente-name */
+  font-size: 1.1rem; /* Tamanho menor para o nome do cliente */
+  color: #cccccc; /* Cor mais clara para o nome do cliente, visível no fundo escuro */
+  font-weight: normal;
+  margin-left: 0.8rem; /* Aumenta um pouco o espaço entre o título e o nome */
+  opacity: 0.9; /* Adiciona uma leve transparência */
+}
+
+/* Container para os botões de ação */
+.headerButtons {
+  display: flex;
+  gap: 0.75rem; /* Espaço entre os botões */
+  flex-wrap: wrap; /* Permite quebra de linha */
+  justify-content: flex-end; /* Alinha os botões à direita */
+  align-items: center; /* Alinha os botões verticalmente entre si */
+}
+
+/* Estilo geral dos botões de ação no header */
+.headerButtons button {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1.2rem; /* Ajuste padding para um clique mais confortável */
+  border: none;
+  border-radius: 0.3rem; /* Bordas levemente menos arredondadas, similar à imagem */
+  font-size: 0.95rem; /* Tamanho de fonte */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease; /* Adiciona transição para box-shadow */
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve para os botões */
+}
+
+/* Estilo específico para o botão de Pendência */
+.headerButtons .btn-pendencia {
+    background-color: #ffc107; /* Cor amarela do Bootstrap warning */
+    color: #212529; /* Texto escuro */
+}
+
+.headerButtons .btn-pendencia:hover {
+    background-color: #e0a800; /* Amarelo um pouco mais escuro no hover */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Estilo específico para o botão de Finalizar */
+.headerButtons .btn-finalizar {
+    background-color: #007bff; /* Cor azul do Bootstrap primary */
+    color: white; /* Texto branco */
+}
+
+.headerButtons .btn-finalizar:hover {
+    background-color: #0056b3; /* Azul um pouco mais escuro no hover */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.headerButtons button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.headerButtons button svg {
+  margin-right: 0.5rem; /* Espaço entre o ícone e o texto */
+  font-size: 1.1rem; /* Ajusta o tamanho do ícone */
+}
+
+/* Botão: Concluir */
+.btnSuccess {
+  background-color: #28a745; /* Verde */
+}
+.btnSuccess:hover:not(:disabled) {
+  background-color: #218838; /* Verde mais escuro */
+}
+
+/* Botão: Pendência */
+.btnWarning {
+  background-color: #ffc107; /* Amarelo */
+  color: #212529; /* Texto escuro no amarelo */
+}
+.btnWarning:hover:not(:disabled) {
+  background-color: #e0a800; /* Amarelo mais escuro */
+}
+
+/* Botão: Salvar */
+.btnPrimary {
+  background-color: #007bff; /* Azul */
+}
+.btnPrimary:hover:not(:disabled) {
+  background-color: #0056b3; /* Azul mais escuro */
+}
+
+/* Estilo para os cards principais (Performance, Categorias, Detalhado) */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Sombra mais visível */
+  margin-bottom: 1.5rem; /* Espaço entre os cards */
+  border: 1px solid #dee2e6; /* Borda suave */
+}
+
+.tituloSecao {
+  font-size: 1.3rem; /* Tamanho maior para os títulos das seções */
+  color: #333;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+}
+
+/* Container para os gráficos */
+.graficosContainer {
+    display: flex; /* Use flexbox */
+    gap: 2rem; /* Espaço entre os gráficos */
+    flex-wrap: wrap; /* Permite quebra de linha */
+    justify-content: center; /* Centraliza */
+    align-items: center;
+}
+
+.graficosContainer > div { /* Estilo para os containers individuais dos gráficos */
+    flex: 1 1 300px; /* Permite crescer/encolher */
+    min-width: 300px; /* Garante um tamanho mínimo */
+    max-width: 100%;
+}
+
+/* Estilo da Tabela Geral */
+.tabelaestilo {
+  width: 100%;
+  border-collapse: collapse; /* Remove espaço entre bordas */
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.tabelaestilo thead {
+  background-color: #e9ecef; /* Fundo para o cabeçalho */
+}
+
+.tabelaestilo th,
+.tabelaestilo td {
+  padding: 0.75rem 1rem; /* Padding */
+  text-align: left;
+  border-bottom: 1px solid #dee2e6; /* Borda inferior */
+}
+
+.tabelaestilo th {
+    font-weight: 600;
+    color: #495057;
+}
+
+.tabelaestilo tbody tr:hover {
+  background-color: #f8f9fa; /* Fundo no hover */
+}
+
+/* Estilo específico para a nota baixa na tabela */
+.notaBaixaTexto {
+    color: #dc3545; /* Cor vermelha */
+    font-weight: bold;
+}
+
+/* Linha clicável na tabela de subcategorias */
+.clickableRow {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.clickableRow:hover {
+    background-color: #e9ecef !important; /* Fundo no hover, !important para garantir */
+}
+
+
+/* --- Estilos para Abas --- */
+.tabContainer {
+  display: flex; /* Organiza os botões em linha */
+  flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+  margin-bottom: 1.5rem; /* Espaço entre as abas e o conteúdo abaixo */
+  border-bottom: 2px solid #e0e0e0; /* Uma linha sutil na parte inferior do container */
+  gap: 0.5rem; /* Espaço entre os botões das abas */
+}
+
+
+.tabContainer::-webkit-scrollbar { 
+    display: none;
+}
+
+
+.tabButton {
+  padding: 0.75rem 1.2rem; /* Espaçamento interno */
+  border: none; /* Remove a borda padrão do botão */
+  border-bottom: 3px solid transparent; /* Borda inferior transparente para estado normal */
+  background-color: transparent; /* Fundo transparente por padrão */
+  color: #555; /* Cor do texto padrão (cinza escuro) */
+  font-size: 1rem; /* Tamanho da fonte */
+  cursor: pointer; /* Indica que é clicável */
+  transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Transição suave */
+  font-weight: 500; /* Peso da fonte */
+  outline: none; /* Remove o outline ao focar */
+}
+
+.tabButton:hover:not(.activeTab) {
+  color: #007bff;
+  background-color: #f8f9fa; /* Leve fundo no hover */
+}
+
+.activeTab {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+  background-color: #fff; /* Fundo branco para a aba ativa */
+  font-weight: 600;
+}
+
+.tabContent {
+  padding-top: 1rem; 
+
+}
+
+
+
+
+
+.notaBaixa { /* Renomeado de nota-baixa */
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+  font-weight: bold;
+}
+
+.notaAlta {
+  background-color: #d4edda; /* Um verde claro para o fundo */
+  color: #155724; /* Um verde mais escuro para o texto */
+  border-color: #c3e6cb; /* Uma borda sutil em verde */
+  font-weight: bold; /* Opcional: mantém o texto em negrito */
+}
+/* Estilo para notas normais (não baixas) */
+.nota:not(.notaBaixa) {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+
+.recomendacoesContainer { /* Renomeado de recomendacoes-container */
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e9ecef; /* Linha divisória */
+}
+
+.recomendacoesContainer h6 {
+  font-size: 1rem;
+  color: #495057;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.recomendacoesList { /* Renomeado de recomendacoes-list */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.recomendacaoItem { /* Renomeado de recomendacao-item */
+  background-color: #f1f3f5; /* Fundo mais claro para o item */
+  border-radius: 6px;
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+}
+
+.recomendacaoHeader { /* Renomeado de recomendacao-header */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.75rem; /* Espaço entre nome e tag */
+}
+
+.recomendacaoNome { /* Renomeado de recomendacao-nome */
+  font-weight: bold;
+  color: #343a40;
+  font-size: 1rem;
+  flex-grow: 1; /* Permite que o nome ocupe espaço */
+}
+
+.recomendacaoDetalhes { /* Renomeado de recomendacao-detalhes */
+    margin-bottom: 1rem; /* Espaço abaixo dos detalhes */
+}
+.recomendacaoDetalhes p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #5a5a5a;
+  line-height: 1.5;
+}
+
+.recomendacaoAcoes { /* Renomeado de recomendacao-acoes */
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem; /* Espaço acima dos botões */
+  flex-wrap: wrap;
+}
+
+/* Estilos para os botões de ação dentro das recomendações */
+.btnEdit, .btnDelete { /* Renomeado */
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  border: 1px solid transparent; /* Borda padrão transparente */
+  text-decoration: none;
+}
+
+.btnEdit {
+  background-color: #e9ecef; /* Fundo cinza claro */
+  color: #007bff; /* Azul */
+  border-color: #ced4da; /* Borda cinza */
+}
+.btnEdit:hover {
+  background-color: #ced4da;
+}
+
+.btnDelete {
+  background-color: #f8d7da; /* Fundo vermelho claro */
+  color: #dc3545; /* Vermelho */
+  border-color: #f5c6cb; /* Borda vermelha clara */
+}
+.btnDelete:hover {
+  background-color: #f5c6cb;
+}
+
+
+.btnAddRecomendacao { /* Renomeado */
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 0.5rem; /* Bordas mais arredondadas */
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  display: inline-flex; /* Garante que o ícone e texto fiquem alinhados */
+  align-items: center;
+  gap: 0.5rem;
+}
+.btnAddRecomendacao:hover {
+  background-color: #c3e6cb;
+}
+
+
+.semRecomendacoes { /* Renomeado */
+  font-size: 0.95rem;
+  color: #6c757d;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.formularioRecomendacaoContainer { /* Renomeado */
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: #e9ecef; /* Fundo */
+  border-radius: 8px;
+  border: 1px dashed #ced4da; /* Borda tracejada */
+}
+
+
+/* --- Estilos para Modal de Pendência --- */
+.modalOverlay { /* Mantido nome original */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo mais escuro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent { /* Mantido nome original */
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px); /* Efeito de subir mais */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader { /* Mantido nome original */
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.modalHeader h3 {
+  font-size: 1.3rem; /* Tamanho maior */
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.modalBody { /* Mantido nome original */
+  margin-bottom: 1.5rem;
+}
+
+.modalFooter { /* Mantido nome original */
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.modalLabel { /* Novo estilo para labels no modal */
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+.modalTextarea { /* Mantido nome original */
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  min-height: 100px; /* Altura menor */
+  background-color: #f8f9fa;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.modalTextarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  background-color: #fff; /* Fundo branco ao focar */
+}
+
+
+/* Container da seção de categorias no modal */
+.categoriasContainer { /* Mantido nome original */
+  margin-bottom: 1.5rem;
+}
+
+/* Título da lista de categorias no modal */
+.categoriasContainer label.title { /* Mantido nome original */
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem; /* Mais espaço abaixo do título */
+  color: #495057;
+}
+
+/* Lista de categorias no modal */
+.categoriasList { /* Mantido nome original */
+  display: grid; /* Usando grid para melhor layout em colunas */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Colunas responsivas */
+  gap: 0.75rem; /* Espaço entre os itens */
+}
+
+/* Checkbox item no modal */
+.categoriaItem { /* Mantido nome original */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #e9ecef; /* Fundo */
+  padding: 0.5rem 0.75rem; /* Padding */
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.categoriaItem:hover {
+    background-color: #dee2e6;
+}
+
+/* Estilo do checkbox */
+.categoriaItem input[type="checkbox"] {
+  accent-color: #007bff;
+  width: 1.1rem; /* Tamanho um pouco maior */
+  height: 1.1rem;
+  cursor: pointer;
+  flex-shrink: 0; /* Evita que encolha */
+}
+
+/* Texto ao lado do checkbox */
+.categoriaItem span {
+  user-select: none;
+  flex-grow: 1; /* Permite que o texto ocupe espaço */
+}
+
+
+/* Estilos dos botões do modal */
+.btn { /* Estilo base geral para botões */
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btnCancel { /* Mantido nome original */
+  background-color: #6c757d; /* Cinza */
+  color: white;
+}
+.btnCancel:hover:not(:disabled) {
+  background-color: #5a6268;
+}
+
+.btnConfirm { /* Mantido nome original */
+  background-color: #28a745; /* Verde */
+  color: white;
+}
+.btnConfirm:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+
+/* Estilos para tags de prioridade */
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.6rem; /* Ajuste padding */
+  border-radius: 9999px;
+  font-size: 0.7rem; /* Tamanho menor */
+  font-weight: 600; /* Mais negrito */
+  text-transform: uppercase;
+  margin-left: 0.5rem; /* Espaço à esquerda da tag */
+}
+
+.alta { /* Renomeado para corresponder à chave do objeto styles */
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.media { /* Renomeado */
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.baixa { /* Renomeado */
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Mensagens de status (sem dados, vazio) */
+.noData, .emptyMessage { /* Mantido nome original */
+    color: #6c757d;
+    font-style: italic;
+    text-align: center;
+    padding: 1.5rem;
+    width: 100%; /* Ocupa a largura total da célula da tabela */
+    display: block; /* Garante que ocupe a linha toda */
+}
+
+/* Estilo para o botão de ícone (expandir/recolher) */
+.buttonIcone { /* Mantido nome original */
+  background-color: transparent;
+  border: 1px solid #ced4da; /* Borda mais clara */
+  border-radius: 50%;
+  padding: 1px;
+  font-size: 10px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-right: 0.5rem; /* Espaço à direita do ícone */
+  color: #555; /* Cor padrão */
+}
+
+.buttonIcone:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+  color: #333;
+}
+
+.buttonIcone:active {
+  transform: scale(0.9);
+}
+
+.buttonIcone:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .header-actions {
+        flex-direction: column; /* Empilha título e botões */
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    .headerButtons {
+        justify-content: flex-start; /* Alinha botões à esquerda */
+        width: 100%; /* Ocupa a largura total */
+    }
+    .headerButtons button {
+        width: auto; /* Ajusta a largura do botão */
+        padding: 0.5rem 0.75rem; /* Reduz padding */
+        font-size: 0.85rem;
+    }
+    .header-actions h3 {
+        font-size: 1.5rem;
+    }
+     .header-actions h3 span {
+        font-size: 1rem;
+    }
+
+
+    .card {
+        padding: 1rem; /* Reduz padding em cards */
+    }
+    .tituloSecao {
+        font-size: 1.2rem;
+    }
+    .tabelaestilo th,
+    .tabelaestilo td {
+      padding: 0.5rem 0.75rem; /* Reduz padding na tabela */
+      font-size: 0.9rem;
+    }
+
+    .tabButton {
+       padding: 0.75rem 0.75rem;
+       font-size: 0.9rem;
+    }
+
+    .perguntaCard {
+        padding: 1rem;
+    }
+
+    .perguntaHeader {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 0.5rem;
+         padding-bottom: 0.5rem;
+    }
+    .perguntaTexto {
+        font-size: 1rem;
+    }
+    .perguntaNotas {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .recomendacaoItem {
+        padding: 0.8rem;
+    }
+    .recomendacaoHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    .recomendacaoNome {
+        font-size: 0.9rem;
+    }
+    .tag {
+         font-size: 0.65rem;
+         padding: 0.1rem 0.4rem;
+         margin-left: 0; /* Remove margin-left */
+    }
+    .recomendacaoDetalhes p {
+         font-size: 0.9rem;
+    }
+    .recomendacaoAcoes {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+     .btnEdit, .btnDelete, .btnAddRecomendacao {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+        gap: 0.3rem;
+    }
+     .btnAddRecomendacao {
+         padding: 0.5rem 1rem;
+         font-size: 0.85rem;
+         gap: 0.4rem;
+         margin-top: 1rem;
+     }
+
+
+    .modalContent {
+        padding: 1.5rem;
+    }
+    .modalHeader h3 {
+        font-size: 1.1rem;
+    }
+    .modalLabel {
+        font-size: 0.85rem;
+    }
+    .modalTextarea {
+        font-size: 0.85rem;
+        padding: 0.6rem;
+    }
+     .categoriasList {
+         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Colunas menores no modal */
+         gap: 0.5rem;
+     }
+     .categoriaItem {
+         font-size: 0.85rem;
+         padding: 0.4rem 0.6rem;
+     }
+     .categoriaItem input[type="checkbox"] {
+        width: 1rem;
+        height: 1rem;
+     }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Estilos para o contêiner principal (.filter-options) */
+.filter-options {
+  margin-bottom: 1.5rem; /* Substitui mb-4 (ajuste o valor conforme necessário) */
+  display: flex; /* Substitui flex */
+  justify-content: flex-end; /* Substitui justify-end */
+  align-items: center; /* Substitui items-center */
+  width: 100%; /* Ocupa a largura total do seu contêiner pai */
+  box-sizing: border-box; /* Garante que padding/border não afetem a largura total */
+}
+
+/* Estilos para o contêiner do toggle (o label) */
+.toggle-container {
+  display: flex; /* Substitui flex no label */
+  align-items: center; /* Substitui items-center no label */
+  cursor: pointer; /* Substitui cursor-pointer */
+  user-select: none; /* Evita seleção de texto ao clicar */
+  margin-right: 1.5rem; /* Substitui mr-4 (ajuste o valor conforme necessário) */
+}
+
+/* Esconde o checkbox padrão */
+.toggle-checkbox {
+  display: none; /* Remove o input visualmente */
+  /* Métodos alternativos se 'display: none' causar problemas de acessibilidade em alguns casos:
+     opacity: 0;
+     position: absolute;
+     left: -9999px;
+     pointer-events: none;
+  */
+}
+
+/* Estilo para o visual do switch (o trilho) */
+.toggle-slider {
+  position: relative; /* Necessário para posicionar o pseudo-elemento (dedo) */
+  display: inline-block; /* Permite definir width/height */
+  width: 40px; /* Largura do trilho */
+  height: 20px; /* Altura do trilho */
+  background-color: #ccc; /* Cor do trilho quando DESATIVADO (cinza) */
+  border-radius: 20px; /* Deixa as pontas arredondadas */
+  transition: background-color 0.4s; /* Suaviza a transição da cor de fundo */
+  margin-right: 10px; /* Espaço entre o switch e o texto (substitui mr-1 do input) */
+  flex-shrink: 0; /* Impede que o slider encolha em telas pequenas */
+}
+
+/* Estilo para o "dedo" do switch (o círculo) */
+.toggle-slider::before {
+  content: ''; /* Conteúdo obrigatório para pseudo-elementos */
+  position: absolute; /* Posiciona em relação ao .toggle-slider */
+  width: 16px; /* Tamanho do dedo */
+  height: 16px; /* Tamanho do dedo */
+  border-radius: 50%; /* Transforma em círculo */
+  left: 2px; /* Posição inicial do dedo (um pouco para dentro da borda esquerda) */
+  bottom: 2px; /* Posição inicial do dedo (um pouco para dentro da borda inferior) */
+  background-color: white; /* Cor do dedo */
+  transition: transform 0.4s; /* Suaviza a transição do movimento */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave para destacar o dedo */
+}
+
+/* Quando o checkbox ESTÁ MARCADO */
+/* Usamos o seletor + para atingir o .toggle-slider que é o irmão imediatamente seguinte do checkbox marcado */
+.toggle-checkbox:checked + .toggle-slider {
+  background-color: #007bff; /* Cor do trilho quando ATIVADO (azul padrão, ou ajuste) */
+}
+
+/* Quando o checkbox ESTÁ MARCADO, move o "dedo" (pseudo-elemento ::before) */
+/* Novamente, usamos o seletor + para atingir o .toggle-slider irmão e depois o pseudo-elemento ::before */
+.toggle-checkbox:checked + .toggle-slider::before {
+  transform: translateX(20px); /* Move o dedo para a direita */
+}
+
+/* Estilo opcional para o texto */
+.toggle-text {
+  font-size: 0.95rem;
+  color: #333;
+  /* Adicionar flex-grow: 1; se quiser que o texto ocupe espaço e empurre o toggle para a esquerda */
+}

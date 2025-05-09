@@ -14,9 +14,10 @@ interface FormData {
   riscos: string;
   justificativa: string;
   observacoes: string;
-  impacto: string;
+  urgencia: string;
   gravidade: string;
   meses: string;
+  perguntaId?: string;
 }
 
 interface Props {
@@ -24,25 +25,31 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
   subcategorias?: Record<string, any[]>;
+  isEditing?: boolean;
+  onCancel: () => void;
 }
 
-const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit, subcategorias }) => {
+const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit, subcategorias, isEditing, onCancel }) => {
   const opcoesCategoria = [
-    "Governar (GV)", 
-    "Identificar (ID)", 
-    "Proteger (PR)", 
-    "Detectar (DE)", 
-    "Responder (RS)", 
+    "Governar (GV)",
+    "Identificar (ID)",
+    "Proteger (PR)",
+    "Detectar (DE)",
+    "Responder (RS)",
     "Recuperar (RC)"
-  ];  const impactoGravidadeOpcoes = ["1", "2", "3", "4", "5"];
+  ];
+  const urgenciaGravidadeOpcoes = ["1", "2", "3", "4", "5"]; // Renomeado para clareza
 
-  const nistOpcoes = formData.categoria && subcategorias?.[formData.categoria]
-    ? subcategorias[formData.categoria].map((sub) => sub.sigla || sub.id)
+  const siglaCategoria = formData.categoria ? formData.categoria.match(/\((.*?)\)/)?.[1] : null;
+
+  const nistOpcoes = siglaCategoria && subcategorias?.[siglaCategoria]
+    ? subcategorias[siglaCategoria].map((sub) => sub.sigla || sub.id)
     : [];
 
+
   return (
-    <form  data-testid="form-recomendacao" onSubmit={onSubmit} className="form-recomendacao">
-      <h1 className="form-titulo">Nome do Projeto</h1>
+    <form data-testid="form-recomendacao" onSubmit={onSubmit} className="form-recomendacao">
+      <h1 className="form-titulo">{isEditing ? 'Editar Recomendação' : 'Adicionar Nova Recomendação'}</h1>
       <input
         type="text"
         name="nome"
@@ -68,23 +75,38 @@ const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit,
             ))}
           </select>
         </div>
+
         <div className="form-group">
-          <h2 className="form-subtitulo">NIST</h2>
+          <h2 className="form-subtitulo">CODIGO</h2>
           <input
             type="text"
+            name="perguntaId"
+            value={formData.perguntaId || ''}
+            onChange={onChange}
+            required
+            className="form-input"
+            placeholder="EX. GV.RM.1"
+            disabled={!!formData.perguntaId && !isEditing}
+            title={!!formData.perguntaId && !isEditing ? "O ID da pergunta não pode ser alterado após a seleção inicial" : ""}
+          />
+        </div>
+        <div className="form-group">
+          <h2 className="form-subtitulo">NIST Referência</h2>
+           <input
+            type="text"
             name="nist"
-            list="nist-options"
             value={formData.nist}
             onChange={onChange}
             required
             className="form-input"
             placeholder="EX. GV.RM"
+             list="nist-options-ref"
           />
-          <datalist id="nist-options">
-            {nistOpcoes.map((sigla) => (
-              <option key={sigla} value={sigla} />
-            ))}
-          </datalist>
+           <datalist id="nist-options-ref">
+               {nistOpcoes.map((option) => (
+                   <option key={option} value={option} />
+               ))}
+           </datalist>
         </div>
         <div className="form-group">
           <h2 className="form-subtitulo">Tecnologia e Fabricante</h2>
@@ -111,15 +133,16 @@ const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit,
           </select>
         </div>
         <div className="form-group">
-          <h2 className="form-subtitulo">Impacto</h2>
+          {/* Rótulo alterado de Impacto para Urgencia */}
+          <h2 className="form-subtitulo">Urgencia</h2>
           <select
-            name="impacto"
-            value={formData.impacto}
+            name="urgencia" // Atributo name alterado de 'impacto' para 'urgencia'
+            value={formData.urgencia} // Usando o campo 'urgencia' do formData
             onChange={onChange}
             className="form-input"
           >
-            <option value="">Selecione o impacto</option>
-            {impactoGravidadeOpcoes.map((n) => (
+            <option value="">Selecione a urgencia</option>
+            {urgenciaGravidadeOpcoes.map((n) => ( // Usando a lista de opções
               <option key={n} value={n}>{n}</option>
             ))}
           </select>
@@ -133,7 +156,7 @@ const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit,
             className="form-input"
           >
             <option value="">Selecione a gravidade</option>
-            {impactoGravidadeOpcoes.map((n) => (
+            {urgenciaGravidadeOpcoes.map((n) => ( // Usando a lista de opções
               <option key={n} value={n}>{n}</option>
             ))}
           </select>
@@ -159,15 +182,16 @@ const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit,
           />
         </div>
         <div className="form-group">
-          <h2 className="form-subtitulo">meses</h2>
+          <h2 className="form-subtitulo">Meses Estimados</h2>
           <input
-            type="text"
+            type="number"
             name="meses"
             placeholder="Ex: 6"
             value={formData.meses}
             onChange={onChange}
             required
             className="form-input"
+            min="0"
           />
         </div>
         <div className="form-group">
@@ -183,7 +207,7 @@ const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit,
           />
         </div>
         <div className="form-group">
-          <h2 className="form-subtitulo">Investimentos previstos</h2>
+          <h2 className="form-subtitulo">Investimentos Previstos</h2>
           <input
             type="text"
             name="investimentos"
@@ -197,42 +221,42 @@ const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit,
       </div>
 
       <div className="form-detalhes">
-        <h2 className="form-titulo-secao">Detalhes do projeto</h2>
+        <h2 className="form-titulo-secao">Detalhes da Recomendação</h2>
         <div className="form-group">
-          <h2 className="form-subtitulo">Descrição do projeto</h2>
+          <h2 className="form-subtitulo">Descrição Detalhada</h2>
           <textarea
             name="detalhes"
-            placeholder="Detalhes do projeto"
+            placeholder="Descreva detalhadamente a recomendação e suas etapas"
             value={formData.detalhes}
             onChange={onChange}
-            className="form-input"
+            className="form-textarea"
           />
         </div>
         <div className="form-textarea-group">
-          <h3 className="form-subtitulo">Riscos envolvidos</h3>
+          <h3 className="form-subtitulo">Riscos Envolvidos na Implementação</h3>
           <textarea
             name="riscos"
-            placeholder="Riscos envolvidos"
+            placeholder="Quais os riscos ao implementar esta recomendação?"
             value={formData.riscos}
             onChange={onChange}
             className="form-textarea"
           />
         </div>
         <div className="form-textarea-group">
-          <h3 className="form-subtitulo">Justificativa da recomendação</h3>
+          <h3 className="form-subtitulo">Justificativa e Benefícios Esperados</h3>
           <textarea
             name="justificativa"
-            placeholder="Justificativa da recomendação"
+            placeholder="Por que esta recomendação é importante? Quais benefícios trará?"
             value={formData.justificativa}
             onChange={onChange}
             className="form-textarea"
           />
         </div>
         <div className="form-textarea-group">
-          <h3 className="form-subtitulo">Observações adicionais</h3>
+          <h3 className="form-subtitulo">Observações Adicionais</h3>
           <textarea
             name="observacoes"
-            placeholder="Observações adicionais"
+            placeholder="Alguma observação extra ou contexto?"
             value={formData.observacoes}
             onChange={onChange}
             className="form-textarea"
@@ -240,13 +264,22 @@ const FormularioRecomendacao: React.FC<Props> = ({ formData, onChange, onSubmit,
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="form-botao"
-        id="form-botao-recomendacao"
-      >
-        Salvar Recomendação
-      </button>
+      <div className="form-botoes">
+          <button
+            type="button"
+            onClick={onCancel}
+            className="form-botao form-botao-cancelar"
+          >
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            className="form-botao form-botao-salvar"
+            id="form-botao-recomendacao"
+          >
+             {isEditing ? 'Salvar Edição' : 'Salvar Recomendação'}
+          </button>
+      </div>
     </form>
   );
 };

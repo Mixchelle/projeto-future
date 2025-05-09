@@ -1,0 +1,482 @@
+/* Container Geral das Perguntas */
+.perguntas-container {
+    padding: 1.5rem; /* Padding interno */
+    background-color: #f8f9fa; /* Fundo claro */
+    border-radius: 8px;
+    margin-top: 1.5rem; /* Espaço acima */
+    border: 1px solid #e9ecef; /* Borda sutil */
+}
+
+/* Estilo Base para o Card de Pergunta */
+.pergunta-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem; /* Padding interno generoso */
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    /* Apenas a borda esquerda */
+    border: none; /* Remove a borda padrão */
+    border-left-style: solid;
+    border-left-width: 5px; /* Borda esquerda mais grossa */
+    transition: border-color 0.3s ease; /* Suaviza a transição da cor da borda */
+}
+
+/* Remove margin-bottom do último card de pergunta dentro do container */
+.perguntas-container .pergunta-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Classes Modificadoras para a Cor da Borda Esquerda */
+.pergunta-card--border-red {
+    border-left-color: #dc3545; /* Vermelho perigo (Bootstrap) */
+}
+
+.pergunta-card--border-blue {
+    border-left-color: #007bff; /* Azul primário (Bootstrap) */
+}
+
+/* Estilo para o Cabeçalho da Pergunta (ID, Texto, Notas) */
+.pergunta-header {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebra de linha para itens */
+    align-items: center; /* Alinha verticalmente no centro */
+
+    gap: 1rem; /* Espaço geral entre os itens flex */
+
+
+}
+
+.pergunta-id {
+    font-weight: bold;
+    color: #343a40;
+    font-size: 1rem;
+    flex-shrink: 0; /* Evita que o ID encolha */
+    /* Adiciona um pequeno espaçamento à direita do ID */
+    margin-right: 0.5rem;
+}
+
+.pergunta-texto {
+    flex-grow: 1; /* Permite que o texto da pergunta ocupe o espaço restante */
+    font-size: 1.1rem;
+    color: #212529;
+    margin: 0; /* Remove margin padrão de h5 */
+    /* Permite que o texto quebre para a próxima linha se necessário */
+    word-break: break-word;
+    min-width: 0; /* Essencial para flex items em contêineres com flex-wrap */
+}
+
+/* Estilo para o container das notas (Política, Prática, Objetivo) */
+.pergunta-notas {
+    display: flex;
+    gap: 1rem; /* Espaço entre as notas */
+    flex-shrink: 0; /* Evita que as notas encolham */
+    flex-wrap: wrap; /* Permite quebra em telas muito pequenas */
+    /* Adiciona um fundo suave para as notas */
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+}
+
+/* Estilo individual para cada nota */
+.nota {
+    font-size: 0.9rem; /* Tamanho para as notas */
+    font-weight: 500;
+    color: #212529; /* Cor padrão escura */
+}
+
+/* Estilo específico para notas baixas (aplicado condicionalmente) */
+.nota--low {
+    color: #dc3545; /* Vermelho perigo */
+    font-weight: bold;
+}
+
+
+/* --- Estilos para as Recomendações --- */
+.recomendacoes-container {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.recomendacoes-container h6 {
+    font-size: 1rem;
+    color: #495057;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.recomendacoes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.recomendacao-item {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .recomendacao-item:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recomendacao-header-inline {
+    background-color: #fff3cd;
+    padding: 0.5rem;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .recomendacao-nome {
+    font-weight: 600;
+    color: #212529;
+    font-size: 1rem;
+    flex-grow: 1;
+    min-width: 100px;
+    word-break: break-word;
+  }
+  
+  /* Tag de prioridade */
+  .tag {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+    text-transform: capitalize;
+  }
+  
+  .tag--alta {
+    background-color: #dc3545;
+  }
+  
+  .tag--media {
+    background-color: #ffc107;
+    color: #212529;
+  }
+  
+  .tag--baixa {
+    background-color: #28a745;
+  }
+  
+  /* Ações */
+  .recomendacao-acoes-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+  
+  .btn-view,
+  .btn-edit,
+  .btn-delete {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-view {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+  
+  .btn-view:hover {
+    background-color: #138496;
+  }
+  
+  .btn-edit {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn-edit:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .btn-delete:hover {
+    background-color: #bd2130;
+  }
+  
+.recomendacao-detalhes {
+    margin-bottom: 1rem;
+}
+
+.recomendacao-detalhes p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #5a5a5a;
+    line-height: 1.5;
+}
+
+.recomendacao-acoes {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Alinha os botões de ação à direita */
+}
+
+.btn-view, .btn-edit, .btn-delete{
+    /* Estilos base para botões */
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    display: inline-flex; /* Usa inline-flex para alinhar ícone e texto */
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    border: 1px solid transparent;
+    text-decoration: none;
+    background-color: transparent; /* Define fundo padrão como transparente */
+    color: inherit; /* Usa cor do texto herdada */
+}
+
+.btn-view {
+    background-color: #007bff; /* Azul */
+    color: white;
+    border-color: #007bff;
+}
+.btn-view:hover {
+    background-color: #0056b3; /* Azul mais escuro */
+    border-color: #004085;
+}
+
+
+.btn-edit {
+    background-color: #e9ecef; /* Cinza claro */
+    color: #007bff; /* Azul */
+    border-color: #ced4da;
+}
+.btn-edit:hover {
+    background-color: #ced4da; /* Cinza um pouco mais escuro */
+}
+
+.btn-delete {
+    background-color: #f8d7da; /* Vermelho claro */
+    color: #dc3545; /* Vermelho */
+    border-color: #f5c6cb;
+}
+.btn-delete:hover {
+    background-color: #f5c6cb; /* Vermelho um pouco mais escuro */
+}
+
+.btn-add-recomendacao {
+    background-color: #e9ecef; /* Cinza claro */
+    color: #495057; /* Cinza escuro para o texto */
+    border: 1px solid #ced4da; /* Borda cinza */
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer; /* Garante que o cursor seja de interação */
+    transition: background-color 0.2s ease, border-color 0.2s ease; /* Suaviza transição */
+}
+
+.btn-add-recomendacao:hover {
+    background-color: #ced4da; /* Cinza um pouco mais escuro no hover */
+    border-color: #adb5bd; /* Borda um pouco mais escura no hover */
+}
+
+/* Você pode querer um estado 'active' também */
+.btn-add-recomendacao:active {
+     background-color: #adb5bd; /* Ainda mais escuro quando clicado */
+     border-color: #6c757d;
+}
+
+.sem-recomendacoes {
+    font-size: 0.95rem;
+    color: #6c757d;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* Estilos para o container do formulário */
+.formulario-recomendacao-container {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    border: 1px dashed #ced4da;
+}
+
+/* Estilos para os botões Salvar e Cancelar no formulário */
+.form-botoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-botao {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.form-botao-salvar {
+    background-color: #007bff; /* Azul primário */
+    color: white;
+}
+
+.form-botao-salvar:hover {
+    background-color: #0056b3; /* Azul mais escuro */
+}
+
+.form-botao-cancelar {
+    background-color: #dc3545; /* Vermelho perigo */
+    color: white;
+}
+
+.form-botao-cancelar:hover {
+    background-color: #c82333; /* Vermelho mais escuro */
+}
+
+/* Estilos para as tags de prioridade (mantido, pode precisar ajustar cores) */
+.tag {
+    padding: 0.2em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white; /* Cor padrão do texto na tag */
+}
+
+.tag--alta {
+    background-color: #dc3545; /* Vermelho para Alta */
+}
+
+.tag--media {
+    background-color: #ffc107; /* Amarelo/Laranja para Média */
+    color: #212529; /* Mudar cor do texto para contraste */
+}
+
+.tag--baixa {
+    background-color: #17a2b8; /* Azul/Ciano para Baixa */
+}
+
+/* ... (existing styles) ... */
+
+/* Novo container para Notas, Info Complementares e Anexos */
+.pergunta-info-notas {
+    display: flex; /* Usa flexbox para organizar os elementos internos */
+    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+    align-items: center; /* Alinha itens verticalmente */
+    gap: 1.5rem; /* Espaço entre os blocos de informação */
+    margin-top: 1rem; /* Espaço acima deste bloco */
+    padding: 1rem;
+    background-color: #ffffff; /* Fundo suave */
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+}
+
+/* Container das notas (Política e Prática) */
+.pergunta-notas-scores {
+    display: flex;
+    gap: 1rem; /* Espaço entre as notas Política e Prática */
+    flex-shrink: 0; /* Evita que este bloco encolha excessivamente */
+}
+
+/* Estilo individual para cada nota (mantido, mas agora dentro de pergunta-notas-scores) */
+.nota {
+    font-size: 0.95rem; /* Ajuste o tamanho se necessário */
+    font-weight: 500;
+    color: #212529;
+}
+
+/* Valor da nota em destaque */
+.nota-valor {
+    font-weight: bold;
+}
+
+/* Estilo específico para notas baixas (mantido) */
+.nota--low {
+    color: #dc3545; /* Vermelho perigo */
+    font-weight: bold;
+}
+.nota--low .nota-valor {
+     color: #dc3545; /* Garante que o valor também seja vermelho */
+}
+
+
+/* Container das Informações Complementares */
+.informacoes-complementares {
+    flex-grow: 1; /* Permite que ocupe o espaço disponível */
+    min-width: 200px; /* Define uma largura mínima para evitar que fique muito estreito */
+}
+
+.informacoes-label {
+    font-weight: 600; /* Deixa o label mais forte */
+    color: #495057; /* Cor para o label */
+    margin-right: 0.5rem; /* Espaço entre label e texto */
+}
+
+.informacoes-texto {
+    font-size: 0.95rem; /* Tamanho do texto */
+    color: #5a5a5a; /* Cor do texto */
+    word-break: break-word; /* Garante que o texto longo quebre a linha */
+}
+
+/* Container do Botão de Anexos */
+.pergunta-anexos {
+    flex-shrink: 0; /* Evita que o botão encolha */
+    /* Opcional: alinhar o botão de anexo no final da linha em telas maiores */
+    margin-left: auto;
+}
+
+/* Estilo do Botão de Anexos */
+.btn-anexos {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    border: 1px solid #ced4da; /* Borda sutil */
+    background-color: #f8f9fa; /* Fundo claro */
+    color: #495057; /* Cor do texto/ícone */
+}
+
+.btn-anexos:hover:not(:disabled) {
+    background-color: #e9ecef; /* Cor de hover */
+    border-color: #adb5bd;
+}
+
+.btn-anexos:disabled {
+    opacity: 0.6; /* Torna o botão desabilitado mais transparente */
+    cursor: not-allowed; /* Muda o cursor */
+}
+
+
+/* ... (restante dos seus estilos) ... */
+
+/* Adicione outras classes de tag conforme necessário (ex: .tag--critica, .tag--informativa) */

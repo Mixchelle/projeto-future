@@ -22,13 +22,14 @@ interface Recomendacao {
   riscos: string;
   justificativa: string;
   observacoes: string;
-  impacto: string;
+  urgencia: string;
   gravidade: string;
   cumprida: boolean;
   data_cumprimento: string | null;
   comprovante: string | null;
   criado_em: string;
   atualizado_em: string;
+  perguntaId: string;
 }
 
 interface FormData {
@@ -45,8 +46,9 @@ interface FormData {
   riscos: string;
   justificativa: string;
   observacoes: string;
-  impacto: string;
+  urgencia: string;
   gravidade: string;
+  perguntaId: string;
 }
 
 const getAuthConfig = () => {

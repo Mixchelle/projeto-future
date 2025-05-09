@@ -1,77 +1,62 @@
 
-
-/* FormSection.css */
-
-/* Container Principal */
 .form-container {
     display: flex;
-    min-height: 100vh;
-    background-color: #f3f4f6; /* Cor de fundo suave */
 }
 
 
-
-/* Barra Lateral das Seções */
-.section-sidebar .normal {
-    width: 195px; /* 64px * 4 */
-    padding:10px; /* 24px */
-    background-color: rgba(223, 95, 10, 0.5); /* Laranja com 50% de transparência */
-    border-right: 1px solid #d1d5db; /* Borda cinza */
-    margin-left: -14px;
-    margin-top: -20px;
-    height: 110%;
-}
-
-/* Estilo quando o menu está expandido */
+/* Estilo quando o menu está expandido das categorias */
 .normal {
-    width: 195px; /* 64px * 4 */
-    padding:10px; /* 24px */
-    background-color: #ededed7d; /* Laranja com 50% de transparência */
-    border-right: 1px solid #d1d5db; /* Borda cinza */
-    margin-left: -14px;
+    width: 195px; 
+    padding:10px; 
+    background-color: rgb(255, 255, 255); 
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* sombra suave */
+
     margin-top: -30px;
-    height: 110%;
+    height: 100%;
     position: fixed;
+    margin-left: -20px;
+    margin-top: -30px;
 }
+
+/* Estilo quando o menu está recolhido das categorias */
+.collapse {
+  width: 65px; 
+  padding: 10px;
+  background-color: rgb(255, 255, 255); 
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); 
+  transition: width 0.3s ease-in-out;
+  padding: 10px; /* 24px */
+  border-right: 1px solid #d1d5db; 
+  margin-left: -20px;
+  margin-top: -30px;
+  height: 100%;
+  position: fixed;
+}
+
 
 .form-content {
-  flex: 1;
-  padding: 2rem; /* 32px */
-  background-color: white;
-  margin-left: 65px; 
 }
 
 .normal-form{
-  margin-left: 195px; 
-  padding: 2rem; /* 32px */
-  background-color: white;
-  width: 100%;
+  margin-left: 180px; 
+  padding: 2rem; 
+  margin-top: -30px;
+  background-color: rgb(255, 255, 255); 
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .collapse-form{
-  margin-left: 65px; 
-  padding: 2rem; /* 32px */
-  background-color: white;
-  width: 100%;
-}
-/* Estilo quando o menu está recolhido */
-.collapse {
-    width: 65px; /* Largura reduzida */
-    padding: 10px;
-    background-color:#ededed7d; /* Laranja com 50% de transparência */
-    border-right: 1px solid #d1d5db;
-    transition: width 0.3s ease-in-out;
-    padding: 10px; /* 24px */
-    border-right: 1px solid #d1d5db; /* Borda cinza */
-    margin-left: -14px;
-    margin-top: -30px;
-    height: 110%;
-    position: fixed;
+  padding: 2rem; 
+  margin-left: 48px;
+  margin-top: -30px;
+  background-color: rgb(255, 255, 255); 
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); 
+
 }
 
-/* Estilo da lista de seções */
+
 .section-list {
-    list-style: none; /* Remove os marcadores padrão */
+    list-style: none; 
     padding: 0;
     margin: 0;
 }
@@ -82,11 +67,11 @@
 
 .section-item {
     font-size: 1rem;
-    color: #374151; /* Cinza escuro */
-    margin-bottom: 0.75rem; /* Espaçamento entre os itens */
+    color: #374151; 
+    margin-bottom: 0.75rem; 
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Espaçamento entre o emoji e o texto */
+    gap: 0.5rem; 
     transition: 0.5s;
 }
 
@@ -94,37 +79,36 @@
 .section-button {
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Espaçamento entre o emoji e o texto */
+    gap: 0.5rem;
     width: 100%;
     padding: 0.5rem;
     background-color: transparent;
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    color: #374151; /* Cinza escuro */
+    color: #374151;
     text-align: left;
     transition: background-color 0.2s ease;
-    border-radius: 0.5rem; /* Bordas arredondadas */
+    border-radius: 0.5rem;
 }
 
 .section-button:hover {
-    background-color: #FF7900; /* Laranja ao passar o mouse */
-    color: white; /* Texto branco ao passar o mouse */
+    background-color: #FF7900; 
+    color: white; 
 }
 
 /* Estilo do emoji */
 .section-emoji {
-    font-size: 1rem; /* Tamanho do emoji */
+    font-size: 1rem; 
 }
 
 /* Estilo do texto */
 .section-text {
     font-weight: normal;
-    color: inherit; /* Herda a cor do botão */
+    color: inherit;
 }
 
 /* Formulário */
-
 
 .main-title {
     font-size: 1.75rem;
@@ -291,11 +275,28 @@
 
 /* Barra de Progresso */
 .progresso-container {
-    width: 100%;
-
-    margin-bottom: 1.5rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.progresso-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
 }
 
+.progresso-title {
+  font-weight: 500;
+}
+
+.progresso-contador {
+  font-weight: 600;
+}
 .barra-progresso {
     width: 100%;
     height: 10px;
@@ -310,7 +311,13 @@
     border-radius: 5px;
     transition: width 0.3s ease; /* Animação suave */
 }
-
+.progresso-percentual {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+  text-align: center;
+  font-weight: 500;
+}
 .indicador-progresso {
     font-size: 0.875rem;
     font-weight: 500;
@@ -319,6 +326,12 @@
     text-align: center;
 }
 
+
+.footer_question{
+
+  display: flex;
+  justify-content: space-between;
+}
 
 .footer_question{
 
@@ -402,7 +415,17 @@ button {
     box-shadow: rgba(240, 133, 46, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px,
       rgba(240, 46, 170, 0.2) 15px 15px;
   }
-  
+  .btn:disabled:hover,
+.btn[disabled]:hover {
+  /* Remove efeitos de hover quando desabilitado */
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 2px solid rgb(245, 108, 10);
+  border-right: 2px solid rgb(226, 131, 43);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
   .snackbar {
     position: fixed;
     bottom: 20px;
@@ -856,7 +879,7 @@ margin-top: 30px;
 .titulo-cfor-cliente {
   background-color: white;
   padding: 24px; /* espaçamento interno */
-  border-radius: 12px; /* cantos arredondados */
+  border-radius: 12px; 
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* sombra suave */
   margin-bottom: 20px;
 }
@@ -867,4 +890,76 @@ margin-top: 30px;
   color: #888484;
   font-weight: 500;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.indicador-progresso {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.texto-progresso {
+  /* Personalize conforme quiser */
+}
+
+.separador {
+  color: #999;
+}
+
+.contador-perguntas {
+  /* Personalize conforme quiser */
+}
+
+.aviso-analise {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.checkbox-analise {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 3px;
+  position: relative;
+  cursor: not-allowed;
+}
+
+.checkbox-analise:checked::after {
+  content: "";
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #cbd5e1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1px;
+}
+
+.checked-question {
+  display: inline-flex;
+  align-items: center;
+  background-color: #09855b; /* green-500 */
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem; /* pequeno */
+  margin-left: 0.5rem;
+}
+
+.checked-question .check-icon {
+  margin-right: 4px;
+  font-size: 0.9rem; /* menor */
 }

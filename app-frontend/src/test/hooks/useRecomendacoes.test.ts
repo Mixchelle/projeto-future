@@ -65,7 +65,7 @@ describe('useRecomendacoes', () => {
       riscos: 'Riscos envolvidos',
       justificativa: 'Justificativa técnica',
       observacoes: 'Observações adicionais',
-      impacto: 'Alto',
+      urgencia: 'Alto',
       gravidade: 'Grave',
       cumprida: false,
       data_cumprimento: null,
@@ -140,7 +140,7 @@ describe('useRecomendacoes', () => {
       riscos: 'Novos riscos',
       justificativa: 'Nova justificativa',
       observacoes: 'Novas observações',
-      impacto: 'Médio',
+      urgencia: 'Médio',
       gravidade: 'Moderada',
     };
 

@@ -14,7 +14,7 @@
 @import "./LoadingSpinner.css";
 @import "./ErrorMessage.css";
 @import "./FloatingSocialMenu.css";
-
+@import "./PerguntaCard.css";
 
 
 /* Reset e estilos base */
@@ -34,14 +34,23 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
-  margin-top: 60px; /* Altura do Header */
+  margin-top: 60px; 
   margin-left: 160px;
   transition: margin-left 0.3s ease-in-out;
-  background-color: rgb(255, 255, 255);
   height: 100vh;
-  width: 100%;
 }
 
+
+.main-content-collapsed{
+  margin-left: 80px;
+  transition: margin-left 0.3s ease-in-out;
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px; 
+  transition: margin-left 0.3s ease-in-out;
+  height: 100vh;
+
+}
 
 
 

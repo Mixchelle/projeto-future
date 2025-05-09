@@ -103,8 +103,8 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
     <div data-testid="sidebar">
       <Header className={isCollapsed ? "collapsed-header" : ""} />
 
-      <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`} role="navigation" aria-label="Menu lateral">
-        <div className="sidebar-header">
+      <div id="sidebar" className={`sidebar ${isCollapsed ? "collapsed" : ""}`} role="navigation" aria-label="Menu lateral">
+      <div className="sidebar-header">
           <button
             className="menu-button"
             onClick={toggleSidebar}

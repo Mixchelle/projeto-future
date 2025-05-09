@@ -78,6 +78,7 @@ interface FormularioCompleto {
 }
 
 interface FormularioEmAndamento {
+  observacoes_pendencia?: any;
   id: number;
   formulario: number;
   formulario_nome: string;
@@ -88,6 +89,11 @@ interface FormularioEmAndamento {
 }
 
 interface FormularioEmAnaliseExibicao {
+  status: string;
+  analista_responsavel: string;
+  setor: ReactNode;
+  data_submissao: string | number | Date;
+  prioridade: string;
   id_formulario_respondido: number;
   id_cliente: number;
   nome_cliente: string;
@@ -119,11 +125,17 @@ export const useFormulario = () => {
     };
   };
 
+ 
 
-  
+  async function getFormulariosTodos() {
+    const response = await axios.get(` http://localhost:8000/form/formularios-respondidos-todos/`, getAuthConfig());
+    console.log("Formulários respondidos todos:", response.data);
+  }
+
 
   async function getFormularios() {
     try {
+    getFormulariosTodos();
       const response = await axios.get(`${API_URL}/formularios/`, getAuthConfig());
       setFormularios(response.data);
       
@@ -170,7 +182,7 @@ export const useFormulario = () => {
         `${API_URL}/formularios/${formularioId}/clientes/${clienteId}/`,
         getAuthConfig()
       );
-  
+  console.log('response', response)
       const formulariosRespondidos = JSON.parse(localStorage.getItem('formulariosRespondidos') || '{}');
   
       formulariosRespondidos[formularioId] = {
@@ -248,17 +260,25 @@ export const useFormulario = () => {
 
   const colocarEmPendencia = async (formularioId: number, categorias: string[], observacoes: string) => {
     try {
+      const categoriasTexto = categorias.length
+        ? `\nCategorias com pendência: ${categorias.join(", ")}.`
+        : "";
+  
+      const observacoesComCategorias = `${observacoes.trim()}${categoriasTexto}`;
+      console.log('observacoesComCategorias', observacoesComCategorias)
       const response = await axios.post(
         `${API_URL}/formularios/${formularioId}/pendencia/`,
-        { observacoes },
+        { observacoes: observacoesComCategorias },
         getAuthConfig()
       );
+  
       return response.data;
     } catch (error) {
       console.error("Erro ao colocar formulário em pendência:", error);
       throw error;
     }
   };
+  
   useEffect(() => {
     getFormularios();
   }, []);
@@ -272,13 +292,14 @@ export const useFormulario = () => {
         `${API_URL}/clientes/${clienteId}/formularios-em-andamento/`,
         getAuthConfig()
       );
-  
+  console.log('response andamentooooo', response)
       const emAndamento = response.data ? response.data.map((form: FormularioEmAndamento) => ({
         id: form.id,
         nome: form.formulario_nome,
         status: form.status,
         data: form.atualizado_em,
-        progresso: form.progresso
+        progresso: form.progresso,
+        observacoes_pendencia: form.observacoes_pendencia,
       })) : [];
   
       setFormulariosEmAndamento(emAndamento);

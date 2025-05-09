@@ -1,9 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Sidebar from "@/components/Sidebar";
-import { FiHome, FiFileText, FiMenu, FiPaperclip, FiCheck, FiX, FiCheckCircle, FiCircle, FiChevronDown } from "react-icons/fi";import { useFormulario } from "@/hooks/useFormulario";
+import { FiHome, FiFileText, FiMenu, FiPaperclip, FiCheck, FiX, FiCheckCircle, FiCircle, FiChevronDown , FiAlertCircle } from "react-icons/fi";
+import { useFormulario } from "@/hooks/useFormulario";
 import { useRouter } from "next/navigation";
 import QuestionMap from "@/components/QuestionMap";
+import { useSidebarCollapsed } from "@/hooks/useSidebarCollapsed";
 
 interface RespostaPergunta {
   politica: string;
@@ -39,6 +41,7 @@ export default function NistPage() {
   const [showSnackbar, setShowSnackbar] = useState<boolean>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string>("");
   const [atualizarCategorias, setAtualizarCategorias] = useState<boolean>(false);
+  const isSidebarCollapsed = useSidebarCollapsed();
 
   const [showSuccessDialog, setShowSuccessDialog] = useState<boolean>(false);
   const [categoriasIncompletas, setCategoriasIncompletas] = useState<string[]>([]);
@@ -281,7 +284,7 @@ useEffect(() => {
       ).length;
       
       setPerguntasRespondidasTotal(perguntasCompletas);
-      const novoProgressoTotal = (perguntasCompletas / (totalPerguntas - 1)) * 100;
+      const novoProgressoTotal = (perguntasCompletas / (totalPerguntas)) * 100;
       setProgressoTotal(novoProgressoTotal);
     }
   }, [respostas, totalPerguntas]);
@@ -596,10 +599,10 @@ useEffect(() => {
       );
     });
   };
-
   const className = isMobile
-  ? "form-mobile" 
-  :  "main-content flex"; 
+  ? "sidebar-mobile" 
+  : isSidebarCollapsed    
+  ? "main-content-collapsed" : "main-content"; 
 
   const classCategorias = isMobile
   ? "categorias-mobile"
@@ -730,20 +733,32 @@ useEffect(() => {
           <div className={`${classQuestion } `}>
 
           {/* Barra de Progresso da Categoria Atual */}
-          <div className="progresso-container mb-6 flex items-center justify-between">
-            <div className="barra-progresso flex-1 mr-4 bg-gray-200 rounded-full h-4">
-              <div
-                className="progresso-preenchido bg-blue-500 h-4 rounded-full"
-                style={{ width: `${progressoTotal}%` }}></div>
-            </div>
-            <div className="indicador-progresso flex items-center">
-              <span className="text-sm font-medium text-gray-700">{Math.round(progressoTotal)}% concluído</span>
-              <span className="mx-2 text-sm font-medium text-gray-700">|</span>
-              <span className="text-sm font-medium text-gray-700">
-              {perguntasRespondidasTotal}/{totalPerguntas} 
-              </span>
-            </div>
-          </div>
+          <div className="progresso-container">
+  <div className="progresso-header">
+    <span className="progresso-title">Progresso geral</span>
+    <span className="progresso-contador">
+      {perguntasRespondidasTotal}/{totalPerguntas}
+    </span>
+  </div>
+  
+  <div className="barra-progresso">
+    <div
+      className="progresso-preenchido"
+      style={{ width: `${progressoTotal}%` }}
+    ></div>
+  </div>
+  
+  <div className="progresso-percentual">
+    {Math.round(progressoTotal)}% concluído
+  </div>
+</div>
+
+{isFormDisabled && (
+  <div className="aviso-analise">
+  <FiAlertCircle style={{ marginRight: '8px', color: '#FFA000', fontSize: '1.5rem' }} />
+  <span>Este formulário está em análise e não pode ser editado.</span>
+</div>
+)}
           <h1 
             className="main-title text-2xl font-bold mb-6 text-gray-800"
             data-testid="active-section-title"
@@ -755,23 +770,28 @@ useEffect(() => {
           {perguntas.length > 0 && (
             <div className="question-container mb-6" data-testid="question-container">
               <label className="question-label flex items-center space-x-2">
-                <span 
-                  className={`question-text text-sm font-medium ${
-                    respostas[perguntas[currentQuestionIndex].id]?.politica && 
-                    respostas[perguntas[currentQuestionIndex].id]?.pratica
-                      ? "text-green-600"
-                      : "text-gray-700"
-                  }`}
-                  data-testid="question-text"
-                >
-                  {perguntas[currentQuestionIndex].codigo}: {perguntas[currentQuestionIndex].questao}
-                  {respostas[perguntas[currentQuestionIndex].id]?.politica && 
-                  respostas[perguntas[currentQuestionIndex].id]?.pratica && (
-                    <FiCheck className="ml-2 text-green-500 inline" />
-                  )}
-                </span>
+              <span
+  className={`question-text ${
+    respostas[perguntas[currentQuestionIndex].id]?.politica &&
+    respostas[perguntas[currentQuestionIndex].id]?.pratica
+      ? "respondida"
+      : "nao-respondida"
+  }`}
+  data-testid="question-text"
+>
+  {perguntas[currentQuestionIndex].codigo}: {perguntas[currentQuestionIndex].questao}
+  {respostas[perguntas[currentQuestionIndex].id]?.politica &&
+    respostas[perguntas[currentQuestionIndex].id]?.pratica && (
+<span className="checked-question">
+  <FiCheck className="check-icon" />
+  Respondida
+</span>
+
+  )}
+</span>
               </label>
               <span></span>
+              <br />
               <div className="selectors-container flex space-x-4 mb-6">
                 <div className="politica-selector flex-1">
                   <label 
@@ -885,7 +905,7 @@ useEffect(() => {
           )}
 
           {/* Navegação entre perguntas */}
-          <div className="footer_question flex justify-between items-center mt-6">
+          <div className="footer_question">
             <button
               onClick={handlePerguntaAnterior}
               disabled={currentQuestionIndex === 0}
@@ -923,25 +943,16 @@ useEffect(() => {
           <br />
           
           {/* Botão de enviar */}
-          {isFormDisabled ? (
-  <p className="text-red-500 mb-2">
-    Este formulário está em análise e não pode ser editado.
-  </p>
-) : (
-  <button 
+          <button 
     disabled={isFormDisabled}
     onClick={handleEnviarFormulario}
     className={`btn px-4 py-2 rounded-lg ${
       todasQuestoesRespondidas() 
-        ? "bg-blue-500 text-white hover:bg-blue-600" 
-        : "bg-gray-300 text-gray-500 cursor-not-allowed"
-    }`}
+  }`}
     data-testid="enviar-formulario-button"
   >
     Enviar Formulário
   </button>
-)}
-
 
         </div>
       </div>

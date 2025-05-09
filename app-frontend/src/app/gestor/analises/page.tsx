@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useFormulario } from "@/hooks/useFormulario";
 import { FiFileText, FiHome, FiBarChart2 } from "react-icons/fi";
 import Sidebar from "@/components/Sidebar";
-import { useSidebarCollapsed } from "@/hooks/useSidebarCollapsed";
 
 export default function AnalisesList() {
   const {
@@ -13,7 +12,7 @@ export default function AnalisesList() {
     buscarFormulariosEmAnalise,
   } = useFormulario();
 
-  const isSidebarCollapsed = useSidebarCollapsed();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   useEffect(() => {
     buscarFormulariosEmAnalise();
@@ -23,15 +22,15 @@ export default function AnalisesList() {
     <div className="app-container">
       <Sidebar 
         menuItems={[
-          { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
-          { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
-          { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
+          { name: "Home", icon: <FiHome size={20} />, path: "/gestor" },
+          { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/gestor/analises" },
+          { name: "Relatórios", icon: <FiFileText size={20} />, path: "/gestor/relatorios" }
         ]}
       
       />
 
-<main className={`${isSidebarCollapsed ? "main-content-collapsed" : "main-content"}`}>
-<div className="analises-section">
+      <main className={` flex main-content ${isSidebarOpen ? "sidebar-open" : "sidebar-collapsed"}`}>
+        <div className="analises-section">
           <h2 className="section-title">Avaliaçoes</h2>
 
           {loadingFormulariosEmAnalise ? (

@@ -5,9 +5,10 @@ import Sidebar from "@/components/Sidebar";
 import { FiHome, FiFileText } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { useFormulario } from "@/hooks/useFormulario";
+import { useSidebarCollapsed } from "@/hooks/useSidebarCollapsed";
 
 export default function FormularioPage() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const isSidebarCollapsed = useSidebarCollapsed();
   const router = useRouter();
   const { formularios, getFormularios } = useFormulario();
   const [isMobile, setIsMobile] = useState(false);
@@ -16,11 +17,12 @@ export default function FormularioPage() {
     getFormularios();
   }, []);
 
-  const handleFormularioClick = (formulario: { id: number; nome: string ;}) => {
+  const handleFormularioClick = (formulario: { id: number; nome: string ; status: strings}) => {
     // Salva o ID do formulário no localStorage
     localStorage.setItem('selectedFormularioId', formulario.id.toString());
     localStorage.setItem('nomefomulario', formulario.nome.toString());
 
+    localStorage.setItem('statusFormulario', formulario.status);
 
     const nomeFormatado = formulario.nome.toLowerCase().split(" ")[0]; 
     router.push(`/cliente/formulario/${nomeFormatado}`);
@@ -40,10 +42,9 @@ export default function FormularioPage() {
 
 
   const className = isMobile
-    ? "content-mobile" 
-    : isSidebarOpen    
-      ? "main-content fundo flex-1 flex flex-col transition-all duration-300 "  
-      : "collapsed main-content fundo flex-1 flex flex-col transition-all duration-300 "; 
+  ? "sidebar-mobile" 
+  : isSidebarCollapsed    
+  ? "main-content-collapsed" : "main-content"; 
 
   return (
     <div className="flex">

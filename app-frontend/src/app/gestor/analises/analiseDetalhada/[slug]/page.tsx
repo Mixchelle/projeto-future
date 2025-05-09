@@ -5,12 +5,10 @@ import AnaliseDetail from "@/components/AnaliseDetail";
 import Sidebar from "@/components/Sidebar";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { FiHome, FiBarChart2, FiFileText } from "react-icons/fi";
-import { useSidebarCollapsed } from "@/hooks/useSidebarCollapsed";
 
 
 export default function AnaliseDetailPage() {
   const [formularioRespondidoId, setFormularioRespondidoId] = useState<number | null>(null);
-  const isSidebarCollapsed = useSidebarCollapsed();
 
   useEffect(() => {
       const storedId = localStorage.getItem("formularioRespondidoId");
@@ -27,12 +25,12 @@ export default function AnaliseDetailPage() {
   <Sidebar 
  
     menuItems={[
-      { name: "Home", icon: <FiHome size={20} />, path: "/analista" },
-      { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/analista/analises" },
-      { name: "Relatórios", icon: <FiFileText size={20} />, path: "/analista/relatorios" }
+      { name: "Home", icon: <FiHome size={20} />, path: "/gestor" },
+      { name: "Análises", icon: <FiBarChart2 size={20} />, path: "/gestor/analises" },
+      { name: "Relatórios", icon: <FiFileText size={20} />, path: "/gestor/relatorios" }
     ]}
   />
-  <div className={`${isSidebarCollapsed ? "main-content-collapsed" : "main-content"}`}>
+  <div className="flex justify-center items-center w-full h-full">
     <LoadingSpinner />
   </div>
 </div>;

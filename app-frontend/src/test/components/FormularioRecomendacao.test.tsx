@@ -17,7 +17,7 @@ const mockFormData = {
   riscos: "",
   justificativa: "",
   observacoes: "",
-  impacto: "",
+  urgencia: "",
   gravidade: "",
   meses: "",
 };

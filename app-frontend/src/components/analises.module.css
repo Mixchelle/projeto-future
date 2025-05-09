@@ -582,3 +582,151 @@
   background-color: #dcfce7;
   color: #166534;
 }
+
+/* Estilos para as perguntas e recomendações */
+.perguntas-container {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.pergunta-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pergunta-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.pergunta-id {
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.pergunta-texto {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.pergunta-notas {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.nota {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background-color: #e8f5e9;
+  font-size: 0.85rem;
+}
+
+.nota-baixa {
+  background-color: #ffebee;
+  color: #c62828;
+  font-weight: bold;
+}
+
+.recomendacoes-container {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.recomendacoes-container h6 {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.recomendacoes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.recomendacao-item {
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.recomendacao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.recomendacao-nome {
+  font-weight: bold;
+}
+
+.recomendacao-detalhes p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.recomendacao-acoes {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.btn-edit, .btn-delete, .btn-add-recomendacao {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #bbdefb;
+}
+
+.btn-delete {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.btn-add-recomendacao {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.sem-recomendacoes {
+  font-size: 0.9rem;
+  color: #757575;
+  font-style: italic;
+}
+
+.formulario-recomendacao-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.nota-baixa {
+  color: #d32f2f;
+  font-weight: bold;
+}
