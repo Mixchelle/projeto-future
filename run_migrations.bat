@@ -1,33 +1,37 @@
 @echo off
-echo Aplicando migrações no Django...
+SET CONTAINER_NAME=future_backend
+SET MIGRATION_ERROR=0
 
-:: Define o nome do container
-set CONTAINER_NAME=future_backend
+echo Dropando dados antes de rodar as migrações...
 
-:: Aguarda até que o container esteja rodando (máx. 30s)
-set /a contador=0
-:esperar_container
-docker ps | findstr /i %CONTAINER_NAME% >nul
-if %errorlevel% neq 0 (
-    set /a contador+=5
-    if %contador% geq 30 (
-        echo Erro: O container %CONTAINER_NAME% não iniciou a tempo.
-        exit /b 1
-    )
-    echo Aguardando o container iniciar...
-    timeout /t 5 /nobreak >nul
-    goto esperar_container
+REM Executa o script para apagar dados
+docker exec %CONTAINER_NAME% python manage.py shell < scripts/reset_forms.py
+
+REM Tenta rodar as migrações
+docker exec %CONTAINER_NAME% python manage.py makemigrations
+IF %ERRORLEVEL% NEQ 0 (
+    SET MIGRATION_ERROR=1
 )
 
-:: Executa as migrations para todos os apps
-docker exec %CONTAINER_NAME% python manage.py makemigrations
 docker exec %CONTAINER_NAME% python manage.py migrate
+IF %ERRORLEVEL% NEQ 0 (
+    SET MIGRATION_ERROR=1
+)
 
-:: Roda o seeder do formulário
+IF %MIGRATION_ERROR% EQU 1 (
+    echo Houve um erro nas migrations. Removendo arquivos de migrations antigos...
+
+    docker exec %CONTAINER_NAME% bash -c "find . -path '*/migrations/*.py' -not -name '__init__.py' -delete"
+    docker exec %CONTAINER_NAME% bash -c "find . -path '*/migrations/*.pyc' -delete"
+
+    echo Tentando recriar as migrations...
+    docker exec %CONTAINER_NAME% python manage.py makemigrations
+    docker exec %CONTAINER_NAME% python manage.py migrate
+)
+
+REM Rodando seeders
 docker exec %CONTAINER_NAME% python manage.py seeder_form
-
-:: Roda o seeder de usuários
 docker exec %CONTAINER_NAME% python manage.py seeder_user
-
+docker exec %CONTAINER_NAME% python manage.py seed_formularios_respondidos
 
 echo Migrações concluídas!
