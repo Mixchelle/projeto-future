@@ -4,6 +4,32 @@ import bleach
 from datetime import timedelta
 from django.db import models
 
+# Configurações para testes no CI
+if os.environ.get('GITHUB_ACTIONS') == 'true':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'cybersec_db',
+            'USER': 'postgres',
+            'PASSWORD': 'dU2q4Lpm12@#$',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
+
+# Configurações do drf-yasg para suprimir warnings
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,
+    'SECURITY_DEFINITIONS': None,
+    'VALIDATOR_URL': None,
+}
+SWAGGER_USE_COMPAT_RENDERERS = False  # Isso resolve o warning específico do formato
+
+# Configuração para evitar warnings de URL
+SILENCED_SYSTEM_CHECKS = [
+    'rest_framework.W001',  # Silencia warnings sobre configurações de paginação
+]
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -135,8 +161,10 @@ MIDDLEWARE = [
     "axes.middleware.AxesMiddleware",  # Middleware do django-axes
 ]
 
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  # Adiciona a URL do frontend
+# ]
 CORS_ALLOW_ALL_ORIGINS = True
-
 
 ROOT_URLCONF = "config.urls"
 

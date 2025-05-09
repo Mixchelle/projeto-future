@@ -17,3 +17,7 @@ matplotlib==3.10.1
 cryptography==44.0.2
 drf-yasg==1.21.7
 gunicorn==21.2.0
+pytest
+bandit
+pytest-django
+pytest-cov

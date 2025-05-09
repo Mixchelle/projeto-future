@@ -19,7 +19,7 @@ class Recomendacao(models.Model):
         ("alta", "Alta"),
     ]
 
-    IMPACTO_CHOICES = [
+    URGENCIA_CHOICES = [
         ("1", "Muito Baixo"),
         ("2", "Baixo"),
         ("3", "Moderado"),
@@ -61,6 +61,7 @@ class Recomendacao(models.Model):
     nist = models.CharField(max_length=50)
     prioridade = models.CharField(max_length=50, choices=PRIORIDADE_CHOICES)
     responsavel = models.CharField(max_length=255, default="Não definido")
+    
 
     # Datas e prazos
     data_inicio = models.DateField()
@@ -75,7 +76,7 @@ class Recomendacao(models.Model):
     observacoes = models.TextField(default="Nenhuma observação adicional")
 
     # Avaliação
-    impacto = models.CharField(max_length=1, choices=IMPACTO_CHOICES)
+    urgencia = models.CharField(max_length=1, choices=URGENCIA_CHOICES)
     gravidade = models.CharField(max_length=1, choices=GRAVIDADE_CHOICES)
 
     # Status
@@ -86,6 +87,9 @@ class Recomendacao(models.Model):
     # Metadata
     criado_em = models.DateTimeField(auto_now_add=True)
     atualizado_em = models.DateTimeField(auto_now=True)
+
+    perguntaId = models.TextField(default="Não informado")
+
 
     class Meta:
         verbose_name = "Recomendação"

@@ -166,7 +166,7 @@ class Command(BaseCommand):
                 ),
                 (
                     "ID.AM-05",
-                    "Ativos são priorizados com base na classificação, criticidade, recursos e impacto na missão?",
+                    "Ativos são priorizados com base na classificação, criticidade, recursos e urgencia na missão?",
                 ),
                 (
                     "ID.AM-07",
@@ -190,11 +190,11 @@ class Command(BaseCommand):
                 ),
                 (
                     "ID.RA-04",
-                    "Os impactos potenciais e as probabilidades de ameaças explorarem vulnerabilidades são identificados e registrados?",
+                    "Os urgencias potenciais e as probabilidades de ameaças explorarem vulnerabilidades são identificados e registrados?",
                 ),
                 (
                     "ID.RA-05",
-                    "Ameaças, vulnerabilidades, probabilidades e impactos são usados para entender o risco inerente e informar a priorização da resposta ao risco?",
+                    "Ameaças, vulnerabilidades, probabilidades e urgencias são usados para entender o risco inerente e informar a priorização da resposta ao risco?",
                 ),
                 (
                     "ID.RA-06",
@@ -202,7 +202,7 @@ class Command(BaseCommand):
                 ),
                 (
                     "ID.RA-07",
-                    "Mudanças e exceções são gerenciadas, avaliadas quanto ao impacto no risco, registradas e rastreadas?",
+                    "Mudanças e exceções são gerenciadas, avaliadas quanto ao urgencia no risco, registradas e rastreadas?",
                 ),
                 (
                     "ID.RA-08",
@@ -342,7 +342,7 @@ class Command(BaseCommand):
                 ("DE.AE-03", "Informações são correlacionadas de múltiplas fontes?"),
                 (
                     "DE.AE-04",
-                    "O impacto estimado e o alcance dos eventos adversos são compreendidos?",
+                    "O urgencia estimado e o alcance dos eventos adversos são compreendidos?",
                 ),
                 (
                     "DE.AE-06",

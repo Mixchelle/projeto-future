@@ -99,4 +99,11 @@ class FormularioRespondidoListSerializer(serializers.ModelSerializer):
             "atualizado_em",
             "versao",
             "progresso",
+            "observacoes_pendencia",
         ]
+
+
+class FormularioRespondidoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FormularioRespondido
+        fields = '__all__'  # Isso inclui todos os campos do modelo

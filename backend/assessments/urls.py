@@ -26,4 +26,5 @@ urlpatterns = [
     path('executive-report/', ExecutiveReportView.as_view(), name='executive-report'),
     path('submit/', SubmitReportView.as_view(), name='submit-report'),  # Rota para o SubmitReportView
     path('reports/lgpd_score/', ReportViewSet.as_view({'get': 'list'}), name='lgpd-score'),  # Adicionando a rota para lgpd_score
+    path('questions/by_category/', QuestionViewSet.as_view({'get': 'by_category'}), name='questions-by-category'),
 ]

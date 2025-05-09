@@ -10,6 +10,7 @@ from .views import (
     FormularioCompletoView,
     FormulariosEmAndamentoView,
     TodosFormulariosEmAnaliseView,
+    TodosFormulariosRespondidosView,
 )
 
 router = DefaultRouter()
@@ -51,6 +52,7 @@ urlpatterns = [
         TodosFormulariosEmAnaliseView.as_view(),
         name="formularios-em-analise-todos",
     ),
+    path('formularios-respondidos-todos/', TodosFormulariosRespondidosView.as_view(), name='todos-formularios-respondidos'),
 
       path(
         'formularios/<int:form_id>/pendencia/',

@@ -5,6 +5,7 @@ from users.models import CustomUser
 from form.models import FormularioRespondido
 
 class RecomendacaoSerializer(serializers.ModelSerializer):
+    # Campos de entrada
     cliente = serializers.PrimaryKeyRelatedField(read_only=True)
     formulario_respondido = serializers.PrimaryKeyRelatedField(read_only=True)
     analista = serializers.PrimaryKeyRelatedField(read_only=True)
@@ -12,7 +13,7 @@ class RecomendacaoSerializer(serializers.ModelSerializer):
     # Campos de exibição
     categoria_display = serializers.CharField(source='get_categoria_display', read_only=True)
     prioridade_display = serializers.CharField(source='get_prioridade_display', read_only=True)
-    impacto_display = serializers.CharField(source='get_impacto_display', read_only=True)
+    urgencia_display = serializers.CharField(source='get_urgencia_display', read_only=True)
     gravidade_display = serializers.CharField(source='get_gravidade_display', read_only=True)
 
     class Meta:

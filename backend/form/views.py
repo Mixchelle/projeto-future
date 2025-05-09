@@ -8,6 +8,7 @@ from rest_framework.authentication import TokenAuthentication
 
 
 from .serializers import (
+    FormularioRespondidoSerializer,
     FormularioSerializer,
     CategoriaSerializer,
     PerguntaSerializer,
@@ -162,7 +163,7 @@ class FormularioCompletoView(APIView):
                     created = True
                 else:
                     # Atualiza a versão 1 se for rascunho
-                    if versao_1.status != "rascunho":
+                    if versao_1.status != ["rascunho", "pendente"]:
                         return Response(
                             {
                                 "error": "Só é possível editar formulários com status 'rascunho'"
@@ -237,23 +238,18 @@ class TodosFormulariosEmAnaliseView(APIView):
 
 
 class FormularioPendenciaView(APIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+
 
     def post(self, request, form_id):
-        """
-        Atualiza o status do formulário para 'pendente' e adiciona observações
-        Requer:
-        - observacoes: texto com as observações da pendência
-        """
+
         formulario = get_object_or_404(FormularioRespondido, id=form_id)
         
         # Verifica se o usuário tem permissão (analista)
-        if not request.user.is_staff:
-            return Response(
-                {"error": "Apenas analistas podem colocar formulários em pendência"},
-                status=status.HTTP_403_FORBIDDEN
-            )
+        # if not request.user.is_staff:
+        #     return Response(
+        #         {"error": "Apenas analistas podem colocar formulários em pendência"},
+        #         status=status.HTTP_403_FORBIDDEN
+        #     )
         
         observacoes = request.data.get('observacoes')
         if not observacoes:
@@ -275,3 +271,18 @@ class FormularioPendenciaView(APIView):
             },
             status=status.HTTP_200_OK
         )
+    
+
+class TodosFormulariosRespondidosView(APIView):
+    def get(self, request):
+        try:
+            # Busca todos os formulários respondidos
+            formularios_respondidos = FormularioRespondido.objects.all()
+
+            # Usa o serializer para formatar os dados
+            serializer = FormularioRespondidoSerializer(formularios_respondidos, many=True)
+
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
